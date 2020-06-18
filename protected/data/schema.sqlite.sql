@@ -1,0 +1,123 @@
+CREATE TABLE category (
+	`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`root` INTEGER DEFAULT NULL,
+	`lft` INTEGER NOT NULL,
+	`rgt` INTEGER NOT NULL,
+	`level` INTEGER NOT NULL,
+	`page_name` TEXT UNIQUE NOT NULL,
+	`article` TEXT NOT NULL DEFAULT '',
+	`title` TEXT NOT NULL,
+	`brief` TEXT NOT NULL DEFAULT '',
+	`quantity` INTEGER NOT NULL DEFAULT 1,
+	`cost` NUMERIC NOT NULL DEFAULT 0,
+	`status` INTEGER NOT NULL DEFAULT 1,
+	`created_at` INTEGER NOT NULL DEFAULT 0,
+	`updated_at` INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE product (
+	`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`slug` TEXT UNIQUE NOT NULL,
+	`article` TEXT NOT NULL DEFAULT '',
+	`pretitle` TEXT NOT NULL DEFAULT '',
+	`title` TEXT NOT NULL,
+	`brief` TEXT NOT NULL DEFAULT '',
+	`description` TEXT NOT NULL DEFAULT '',
+	`quantity` INTEGER NOT NULL DEFAULT 1,
+	`purchase_price` NUMERIC NOT NULL DEFAULT 0,
+	`price` NUMERIC NOT NULL DEFAULT 0,
+	`is_order` INTEGER NOT NULL DEFAULT 0,
+	`photos` TEXT NOT NULL DEFAULT '',
+	`layout` TEXT NOT NULL DEFAULT '',
+	`meta_title` TEXT NOT NULL DEFAULT '',
+	`meta_keywords` TEXT NOT NULL DEFAULT '',
+	`meta_description` TEXT NOT NULL DEFAULT '',
+	`is_nl2br` INTEGER NOT NULL DEFAULT 0,
+	`is_hidden` INTEGER NOT NULL DEFAULT 0,
+	`specification` TEXT NOT NULL DEFAULT '',
+	`definition` TEXT NOT NULL DEFAULT '',
+	`features` TEXT NOT NULL DEFAULT '',
+	`priority` INTEGER NOT NULL DEFAULT 0,
+	`created_at` INTEGER NOT NULL DEFAULT 0,
+	`updated_at` INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE category_product (
+	`category_id` INTEGER NOT NULL,
+	`product_id` INTEGER NOT NULL,
+	PRIMARY KEY (`category_id`, `product_id`)
+);
+
+CREATE TABLE `user` (
+	`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`email` TEXT UNIQUE NOT NULL,
+	`password` TEXT NOT NULL,
+	`role` INTEGER NOT NULL DEFAULT 0,
+	`name` TEXT NOT NULL DEFAULT '',
+	`surname` TEXT NOT NULL DEFAULT '',
+	`phone` TEXT NOT NULL DEFAULT '',
+	`city` TEXT NOT NULL DEFAULT '',
+	`address` TEXT NOT NULL DEFAULT '',
+	`created_at` INTEGER NOT NULL DEFAULT 0,
+	`updated_at` INTEGER NOT NULL DEFAULT 0
+);
+
+#----
+
+CREATE TABLE review (
+	`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`product_id` INTEGER NOT NULL,
+	`user_id` INTEGER NOT NULL DEFAULT 0,
+	`display_name` TEXT NOT NULL,
+	`text` TEXT NOT NULL,
+	`dignities` TEXT NOT NULL,
+	`shortcomings` TEXT NOT NULL,
+	`resume` TEXT NOT NULL,
+	`rating` INTEGER NOT NULL,
+	`is_approved` INTEGER NOT NULL DEFAULT 0,
+	`created_at` INTEGER NOT NULL DEFAULT 0
+);
+
+ALTER TABLE product ADD `rating` INTEGER NOT NULL DEFAULT 0;
+
+CREATE TABLE `order` (
+	`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`user_id` INTEGER NOT NULL DEFAULT 0,
+	`name` TEXT NOT NULL DEFAULT '',
+	`phone` TEXT NOT NULL DEFAULT '',
+	`city` TEXT NOT NULL DEFAULT '',
+	`address` TEXT NOT NULL DEFAULT '',
+	`notes` TEXT NOT NULL DEFAULT '',
+	`amount` NUMERIC NOT NULL DEFAULT 0,
+	`status` INTEGER NOT NULL DEFAULT 0,
+	`created_at` INTEGER NOT NULL DEFAULT 0,
+	`updated_at` INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE order_product (
+	`order_id` INTEGER NOT NULL,
+	`product_id` INTEGER NOT NULL,
+	`quantity` INTEGER NOT NULL DEFAULT 1,
+	`price` NUMERIC NOT NULL DEFAULT 0,
+	PRIMARY KEY (`order_id`, `product_id`)
+);
+
+ALTER TABLE `category` ADD `description` TEXT NOT NULL DEFAULT '';
+ALTER TABLE `category` ADD `photos` TEXT NOT NULL DEFAULT '';
+ALTER TABLE `category` ADD `layout` TEXT NOT NULL DEFAULT '';
+ALTER TABLE `category` ADD `meta_title` TEXT NOT NULL DEFAULT '';
+ALTER TABLE `category` ADD `meta_keywords` TEXT NOT NULL DEFAULT '';
+ALTER TABLE `category` ADD `meta_description` TEXT NOT NULL DEFAULT '';
+ALTER TABLE `category` ADD `priority` INTEGER NOT NULL DEFAULT 0;
+
+ALTER TABLE `review` ADD `updated_at` INTEGER NOT NULL DEFAULT 0
+
+
+CREATE TABLE `news` (
+  `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  `title` TEXT NOT NULL,
+  `image` TEXT NOT NULL DEFAULT '',
+  `description` TEXT NOT NULL DEFAULT '',
+  `content` TEXT NOT NULL DEFAULT '',
+  `created_at` INTEGER NOT NULL DEFAULT 0
+);

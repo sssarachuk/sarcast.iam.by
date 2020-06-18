@@ -1,0 +1,1 @@
+<?$this->widget('CStarRating', $product_rating_options);?>

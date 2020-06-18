@@ -1,0 +1,971 @@
+/*
+* Name Extension: Cmsmart megamenu
+* Author: The Cmsmart Development Team 
+* Date Created: 06/09/2013
+* Websites: http://cmsmart.net
+* Technical Support: Forum - http://cmsmart.net/support
+* GNU General Public License v3 (http://opensource.org/licenses/GPL-3.0)
+* Copyright © 2011-2013 Cmsmart.net. All Rights Reserved.
+*/
+
+.nav-container,
+.nav-container-mobile {  
+  position: relative;  
+  z-index: 4; 
+  width: 100%;
+}
+.nav-container-mobile {display: none;}
+
+.nav {    
+    margin: 0 auto;
+}
+.nav .grid-full { 
+    position: relative; 
+    z-index: 9; 
+    width: 100%; 
+    padding: 0px;
+    background:#ececec;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e4e4e4));
+    background: -moz-linear-gradient(top,  #f6f6f6,  #e4e4e4);
+    background: -o-linear-gradient(top,  #f6f6f6,  #e4e4e4);
+    background: -ms-linear-gradient(top,  #f6f6f6,  #e4e4e4);
+    border-radius: 3px;
+    border-bottom: 1px solid #c1c1c1;
+}
+.nav .grid-full > li {border-right: 1px solid #c1c1c1;}
+.nav .grid-full > li.parent {}
+.nav .grid-full > li:first-child {}
+.nav .grid-full ul li a {
+    display: inline-block;
+    float: none;
+}
+.grid-full .grid-full-home-link {}
+.grid-full .grid-full-home-link span {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+.grid-full li {
+    float: left;
+}
+.grid-full li a .thumbnail{
+    background:none;
+    border: 0;
+    border-radius: 0;
+    display: block;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+}
+.grid-full > li > a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  padding: 0;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: bold;
+}
+.grid-full > li:first-child > a:before  {border-radius: 3px 0 0 3px;}
+
+.nav .grid-full > li.parent > a > span:after { 
+  content: "\f107";
+  display: inline-block; 
+  font-size:15px; 
+  border-radius: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  position: absolute;
+  right: 10px;
+  top: 36%;
+}
+.nav .grid-full > li.parent > a > span {padding-right: 25px;}
+.grid-full > li > a .thumbnail {display: none;}
+.grid-full > li > a:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0;
+  bottom: 0;
+  height: 3px;
+  background: none;
+} 
+.grid-full > li > a:after {
+  bottom: auto;
+  top: 0;
+}
+.grid-full > li > a:before {
+  content: "";
+  position: absolute;
+  left: 0%;
+  width: 100%;
+  bottom: 50%;
+  height: 0%;
+  background: #0c0c0c;
+} 
+.grid-full li a span {  display: block;}
+.grid-full > li > a > span {
+  padding: 22px 19px;
+  cursor: pointer;
+  white-space: normal;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+/* .grid-full > li > a > em {
+    position: absolute;
+    top: 21px;
+    left: 15px;
+    font-style: normal;
+    display: inline-block;
+    z-index: 3;
+    transform: scale(2,2); 
+    -o-transform: scale(2,2); 
+    -moz-transform: scale(2,2); 
+    -webkit-transform: scale(2,2); 
+    opacity: 0;
+}*/
+
+
+.grid-full > li > .level-top {
+    left:-999999px;
+    top: 62px;
+    right: 0;
+    width: 100%;
+    position: absolute;
+    z-index: -99999;
+    border: none;
+}
+.grid-full > li > .level-top .level.column5 {
+  background:url(../../../images/bkg-sub.png) no-repeat left bottom #fff;
+}
+.grid-full li.over > .level-top.shown-sub {
+    z-index: 99999;
+
+}
+.grid-full ul ul {
+    position: static !important;
+    width: 100%;
+}
+.nav .grid-full ul.level2{
+    margin: 0px;
+}
+.nav li.parent:hover > ul, 
+.nav li.parent:hover > div {
+    left: 0;
+}
+
+
+.grid-full ul span, 
+.grid-full ul li.last li span{
+    padding:0px;
+}
+
+.grid-full div.level-top > ul.level{
+    padding: 0;
+    float: left;
+    top: 0px;
+    background:#fff;
+    border: 1px solid #c8c8c8;
+    border-radius: 5px;
+    width: 100% !important;
+}
+.grid-full .parent div.level-top > ul.level .level > .catagory_children {
+    padding: 19px;
+    float: left;
+}
+
+.grid-full div.level-top ul.level ul.level{
+    float: left;
+    width: 100%;
+    margin: 0px;
+    padding: 0;
+    height:  auto;
+}
+.grid-full ul ul, .grid-full ul div {
+    position: relative;
+    top: 0;
+}
+.grid-full .level1 .catagory-level1 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: normal;
+}
+.grid-full .level1.parent > .catagory-level1:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 100% !important;
+  height: 3px;
+}
+.grid-full .level1 .catagory-level1:hover,
+.grid-full .level1.active .catagory-level1,
+.grid-full .level1:hover .catagory-level1 {
+    color: #777;
+}
+.grid-full .level1.menu-product{
+    padding-top: 10px;
+}
+.grid-full ul .level1.menu-product img {
+    float: left;
+    width: 90px;
+    padding: 10px;
+    height: auto;
+    margin-right: 10px;
+    box-shadow: 0 1px 5px hsla(0, 0%, 0%, 0.3);
+}
+.grid-full ul .level1.menu-product .levelproduct{
+    float: left;
+}
+.grid-full ul .level1.menu-product .levelproduct.fast{
+    margin-left: 0px;
+}
+.grid-full ul .level1.menu-product .availability{
+    margin-left: -55px;
+    margin-top: 10px;
+}
+.grid-full ul.menu-product li.level2 a{
+    display: block;
+     float: left;
+}
+.grid-full ul.menu-product li.level2 a .product-name{
+    line-height: 15px;
+    color: hsl(0, 0%, 0%);
+    text-shadow: 0 0 0 hsl(0, 86%, 58%);
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+   	padding: 0px !important;
+}
+.grid-full ul.menu-product li.level2 div.rating-box{
+    float: left;
+    left: -141px;
+    margin-right: 88px;
+    margin-top: 5px;
+    position: static;
+    width: 55px;
+}
+.nav-container .grid-full > li > a {}
+.grid-full .level a span{}
+
+/* .grid-full .grid-full-home-link:hover a, 
+.grid-full .level.over > a, 
+.grid-full .level.active > a {
+    background: #4d453d;
+}*/
+.grid-full .level.over a:before,
+.grid-full .level.active a:before,
+.grid-full .level.over a:after,
+.grid-full .level.active a:after { 
+    width: 100%; 
+    height: 100%;
+    left: 0;
+    bottom: 0;
+} 
+
+.grid-full .level.over > a span,
+.grid-full .level.over > a:hover span,
+.grid-full .level.active > a span { 
+    color: #fff;
+}
+.grid-full .level.over > a em,
+.grid-full .level.active > a em { 
+ 
+} 
+
+.grid-full .grid-full-home-link:hover .level-top a, 
+.grid-full .level.over .level-top a,  
+.grid-full .level.active .level-top a{
+    background: none;
+    overflow: visible;
+}
+
+.grid-full .level.over .menu-product a, 
+.grid-full .level.over .catagory_children span,  
+.grid-full .level.over p a span,
+.grid-full .level.over p a {
+    background: none;
+}
+
+.nav .grid-full > li > a > span, 
+.grid-full .level.over .catagory_children a span, 
+.grid-full .level.over .catagory_children a,
+.grid-full ul .level1.menu-product button a span {
+    background: none;
+}
+.grid-full > li > a > span.spanchildren,
+.grid-full > li.over > a > span.spanchildren,
+.nav .grid-full > li.nav-3 > a > span.spanchildren {
+ /*   float: right;
+    height: 10px;
+    margin-right: 15px;
+    margin-top: -27px;
+    padding: 0 !important;
+    width: 10px;
+    background: url("../../../images/cmsmart/megamenu/arrow_switch.png") no-repeat scroll right center transparent; */
+    display: none;
+}
+.grid-full ul .level1.menu-product .price-box{
+    float: left;
+    margin: 10px 0;
+}    
+.grid-full ul .level1.menu-product .price-box .old-price .price{
+    padding: 0px;
+    margin-right: 10px;
+}
+.grid-full ul .level1.menu-product .price-box .special-price .price{
+    margin-top: -1px;
+    float: left;
+}
+.grid-full .catagory_children {}
+.grid-full .catagory_children:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.grid-full .catagory_children .level1{
+	margin-right: 2%;
+  float: left;    
+  background: none;
+}
+.grid-full .column1 .catagory_children .level1 {width: 100% !important; margin: 0;}
+.grid-full .catagory_children .level1 span{
+	padding: 0px !important;
+    text-transform: uppercase !important;
+    text-shadow: none;
+    position: relative;
+}
+.grid-full .static-block-right{
+	float: right;
+}
+.grid-full .catagory_children .level1 .level-top{
+	width: 100%;
+	background: none;
+	box-shadow: none;
+	padding: 0px;
+    left: 0px;
+    position: static !important;
+}
+.grid-full .catagory_children .level-top .level1{
+	margin: 0px;
+   
+}
+.grid-full .catagory_children .level-top .static-block {
+    margin-top: 5px;
+}
+.grid-full .catagory_children .catagory_children li.level2 {
+    width: 100%;
+    margin:0 0 5px;
+    position: relative;
+}
+
+.grid-full .catagory_children .catagory_children li a span,
+.nav .grid-full li.first ul li.nav-1-1 .catagory_children span {
+    text-shadow: none;
+    float: left;
+}
+.grid-full .level1 .level2 img{
+   margin-right: 5px;
+}
+.grid-full .menu-product1 a{
+    float: left;   
+}
+.grid-full .menu-product1 .level2 span {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: normal;
+    text-transform: none !important;
+}
+ 
+.grid-full .menu-product1 a span.product-name{
+    color: #333;
+    margin-top: 5px;
+}
+.grid-full ul li .price-box{
+    margin-left: 29px;
+    margin-top: -13px;
+    position: static;
+    top: -20px;
+    width: 140px;
+}
+.grid-full ul li .price-box p{
+    float: left;
+    font-size: 12px;
+}
+.grid-full ul li.levelproduct .price-box .special-price span {
+    float: left;
+    margin-left: 5px;
+    font-size: 12px;
+}
+.grid-full .catagory_children .level-top .level1.menu-product1{
+    float: left;
+    width: 100%;
+}
+.grid-full .catagory_children .catagory_children li.level2.last{
+    margin-bottom: 0px;
+    border-bottom: 0px solid red;
+}
+.grid-full .catagory_children .catagory_children li.level2.no-level-thumbnail{}
+.grid-full .catagory_children .catagory_children li.level2.no-level-thumbnail .thumbnail,
+.grid-full .catagory_children .catagory_children li.level4.no-level-thumbnail .thumbnail{
+    /* background: url("../../../images/cmsmart/megamenu/no-thumbnail.png") no-repeat scroll 5px center transparent;
+    float: left;
+    height: 28px;
+    width: 15px; */
+    display: none;
+}
+
+.grid-full .level1 .catagory_children{
+    position: static;
+    width: 100%;
+}
+.grid-full .level-top .level2.column2{
+    background: #ffffff;
+    float: left;
+    margin-left: 135px;
+    margin-top:0px;
+    position: absolute !important;
+    z-index: 9999999;
+    width: 756px;
+    border: 1px solid #dce1e6;
+    display: none;
+    left: 0;
+}
+
+.grid-full .level-top ul, .grid-full .level-top div{
+    left: 0px;
+}
+.grid-full .level-top .catagory_children .level2.column1{
+    background: #ffffff;
+    float: left;
+    margin: 0;
+    position: absolute !important;
+    z-index: 9999999;
+}
+.grid-full .level-top .catagory_children .level2.column1 .catagory_children{
+}
+.grid-full .level-top .catagory_children .level2 .catagory_children{
+}
+.grid-full .catagory_children li.level3 .level4{
+    left: 0px;
+    margin-left: 0px;
+}
+.grid-full .level-top .level3 .catagory_children{
+    margin-left: 0;
+    margin-top: 0;
+    position: relative !important;
+}
+.grid-full .catagory_children .level3 .level-top .level3{
+    position: relative !important;
+}
+.grid-full .catagory_children .catagory_children li.level2:hover > a,
+.grid-full .catagory_children .catagory_children li.level2.active > a {
+    color: #fff;
+    background: #000;
+    position: relative;
+    text-decoration: none !important;
+    width: 100%;
+    z-index: 999999999;
+}
+.grid-full .catagory_children .catagory_children li.level2 a{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #777;
+    font-size: 13px;
+    font-weight: normal;
+    display: block;
+    line-height: 20px;
+    margin: 0 0 0 -10px;
+    padding: 4px 5px 4px 10px;
+    position: relative;
+    width: 100%;
+}
+.grid-full .catagory_children .catagory_children li.level2 a:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.grid-full .catagory_children .catagory_children li.level2.parent:hover a{
+
+}
+.grid-full .catagory_children .catagory_children li.level2.parent:hover li a{
+     box-shadow: none;
+     width: auto;
+}
+
+.grid-full .catagory_children li.level3{
+    float: left;
+    width: 100%;
+}
+.grid-full .level2 .catagory_children.column1 {
+    background: #fff;
+     box-shadow: 0 0 21px rgba(0,0,0,0.18);
+    -moz-box-shadow: 0 0 21px rgba(0,0,0,0.18);
+    -webkit-box-shadow:0 0 21px rgba(0,0,0,0.18);
+    padding: 20px;
+    margin-top: -20px;
+    display: none;
+}
+.grid-full .level2:hover .catagory_children.column1 {
+    display: block;
+}
+.grid-full .level2 .catagory_children.column1
+.grid-full .catagory_children.column1 li.level3 a{
+     margin: 0;
+}
+.grid-full .catagory_children li.level3.level-top{
+    float: left;
+}
+.grid-full .catagory_children.column1 li.level3 a:hover,
+.grid-full .catagory_children.column1 li.level3.active a {
+    background: #fb1f1f;
+    color: #fff;
+}
+.grid-full .level2 .static-block-left{
+    float: left;
+}
+.grid-full .level2 .catagory_children.column2{
+    float: left;
+    width: 320px;
+}
+.grid-full .level2 .catagory_children.column2.catagory_children{
+    border: none;
+    margin-top: 20px;
+}
+.grid-full .level2 .catagory_children.column2 ul.level3 .catagory_children{
+    margin-top: -20px;   
+    border: none; 
+ }
+.grid-full .level2 .catagory_children.column2 .level3{
+    float: left;
+    margin-right: 10px;
+    border: none;
+    margin: 0;
+}
+.grid-full .level-top .level2 .level4 .menu-content{
+    display:  none;
+}
+.grid-full .level2 .catagory_children .level3 { margin-bottom: 10px;}
+.grid-full .level2 .catagory_children .level3:last-child {margin-bottom: 0;}
+.grid-full .level2 .catagory_children .level3 a,
+.grid-full .catagory_children .catagory_children li.level2:hover .level3 a{
+}
+.grid-full .catagory_children .catagory_children li.level2 .level4 a,
+.grid-full .catagory_children .catagory_children li.level2:hover .level4 a{
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+.grid-full .level2 .catagory_children .level3 .catagory_children {
+    float: left;
+    width: 100%;
+}
+.grid-full .catagory_children .catagory_children li.level4.no-level-thumbnail{
+    height: 30px;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px dotted #dce1e6;
+  
+}
+.grid-full .level .catagory_children .level2 .catagory_children li.level3 a span, 
+.nav .grid-full .level .catagory_children .level2 li.first ul li.level3.nav-1-1 .catagory_children span {
+   
+}
+.grid-full .level .catagory_children .level2 .catagory_children li.level4 a span, 
+.nav .grid-full .level .catagory_children .level2 li.first ul li.level4.nav-1-1 .catagory_children span {
+     text-transform: none !important;
+}
+.grid-full .level2:hover .level-top .level2.column2,
+.grid-full .level2:hover .level-top .level2.column1,
+.grid-full .level2.active .level-top .level2.column1 {
+    display: block;
+    left: auto;
+    right: -100%;
+}
+.grid-full .old-price .price{
+    color: #999;
+}
+.grid-full .catagory_children .catagory_children li.level2:hover .level3 a{
+    border: none;
+}
+.grid-full .catagory_children .catagory_children.leftchildren{
+    border-bottom: 0 none;
+    float: left;
+    margin: 0;
+}
+.grid-full .static-block p{
+    line-height: 23px;
+}
+.grid-full .catagory_children .level-top .static-block p a span{
+    text-transform: none !important;
+} 
+
+.grid-full .btn-carthover2 span span{
+    color: hsl(0, 100%, 73%);
+    height: 25px;
+    margin-left: 20px;
+    padding: 0 !important;
+}
+.grid-full ul.add-to-links li{
+    width: 85px;
+    float: left;
+}
+.grid-full .level a.link-wishlist, 
+.grid-full .level:hover a.link-wishlist, 
+.grid-full a.link-wishlist, 
+.grid-full .level-top:hover a.link-wishlist  {
+  background: url(../../../images/cmsmart/megamenu/wl_1.png) no-repeat scroll 0 1px;
+  display: block;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 35px;
+  overflow: hidden;
+  margin: 0px;
+  padding-left: 20px;
+  line-height: 18px;
+}
+.grid-full .add-to-links li:hover a.link-wishlist:hover{
+    background: url(../../../images/cmsmart/megamenu/wl.png) no-repeat scroll 0 1px;
+}
+.grid-full .level a.link-compare,
+.grid-full .level:hover a.link-compare,
+.grid-full a.link-compare,  
+.grid-full .level-top:hover  a.link-compare {
+  display: block;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 35px;
+  overflow: hidden;
+  background: url(../../../images/cmsmart/megamenu/cp_1.png) no-repeat scroll 0 1px;
+  margin-top: 0px;
+  padding-left: 20px;
+  line-height: 35px;
+}
+.grid-full .add-to-links li:hover a.link-compare:hover{
+    background: url(../../../images/cmsmart/megamenu/cp.png) no-repeat scroll 0 1px;
+    }
+.grid-full .level-top:hover button span ,.grid-full .level-top:hover .add-to-links span{
+    background: none;
+}
+
+.grid-full ul.add-to-links{
+    float: left;
+    position: inherit !important;
+    width: 100%;
+    margin-top: -10px;
+}
+.grid-full .level1.menu-product-one .level2 img{
+    margin-top: 5px;
+    width: 100%;
+}
+.grid-full .level1.menu-product-one .price-box {
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.grid-full .level1.menu-product-one .price-box p.old-price{
+    margin-left: 25px;
+    margin-right: 30px;
+    margin-top: 4px;
+}
+.grid-full .level1.menu-product-one .price-box p.special-price{
+     margin-top: 2px;
+    }
+.grid-full .level1.menu-product-one .price-box p span{
+    font-size: 14px;
+}
+.grid-full .level1.menu-product-one div.rating-box
+{
+    position: static !important;
+    top: 50px;
+    width: 55px;
+}
+.grid-full .level1.menu-product-one li a{
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.grid-full > .grid-full-home-link a span {
+    background: none repeat scroll 0 0 transparent;
+}
+.grid-full .level1.menu-product-one ul.add-to-links{
+    margin-top: 5px;
+    border-top: 1px solid #dedede;
+    padding-top: 5px;
+}
+.grid-full .level1.menu-product-one ul.add-to-links li
+{
+    width: 45%;
+    float: left;    
+    white-space: normal;
+}
+.grid-full .level1.menu-product-one ul.add-to-links span
+{
+    float: left;
+}
+.grid-full .level1.menu-product-one ul.add-to-links li a{
+    height: auto;
+    line-height: 20px;
+    text-align: left;
+    white-space: normal;
+    width: auto;
+}
+.grid-full .catagory_children .catagory_children li:hover a span{
+
+}
+.grid-full .catagory_children .catagory_children li:hover .catagory_children a span{
+    text-decoration: none;
+}
+.grid-full .catagory_children .catagory_children li:hover .catagory_children .catagory_children li:hover a span, 
+.grid-full .catagory_children .catagory_children li.active a span,
+.grid-full .catagory_children .catagory_children  .catagory_children li.level4.active a span {
+     
+}
+.grid-full .level2 .catagory_children.column2 .level3 div{
+    float: left;
+}
+.grid-full .pin-bottom:before{
+    border-color: transparent;
+    border-style: solid;
+    border-width: 4px;
+    content: "";
+    height: 0;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    transition: border-color 450ms ease-in-out 0s;
+    width: 0;
+    display: none;
+}
+.grid-full .level span.cat-label {
+    background: #3a80e9;
+    border: medium none;
+    color: #fff;
+    float: left;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    padding: 3px 5px 5px 5px!important;
+    position: absolute;
+    text-transform: uppercase;
+    top:-10px;
+    right: 15%;
+    border-radius: 2px;
+}
+.grid-full .level span.cat-label em {
+  background: #ed425a;
+  margin: -3px -5px -5px; 
+  padding: 3px 5px 5px 5px; 
+  display: block;
+  border-radius: 2px;
+  font-style: normal;
+}
+.isStuck .grid-full > .level > a span.cat-label {
+  top:1px; 
+  right: 6%;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.grid-full .level1 span.cat-label {
+    background:#fff !important;
+    float: none;
+    font-weight: 500 !important;
+    padding: 5px !important;
+    position: absolute;
+    right: -7px;
+    top: -25px;
+}
+.grid-full .level1 .pin-bottom:before{
+    top: 22px;
+}
+
+.grid-full .level:hover .level1 span.cat-label {
+    background: red;
+    color: #000;
+    
+}
+.grid-full .level:hover span.cat-label, 
+.grid-full .level:hover .level1:hover span.cat-label,
+.grid-full .catagory_children .level1:hover .catagory_children .level2:hover span.cat-label {
+    /* background: #fff;
+    color: #fff; */
+}
+   
+.grid-full li.level > a > span > .cat-label.pin-bottom:before,
+.grid-full li.level1 > a > span > .cat-label.pin-bottom:before,
+.grid-full li.level.over li.level2 > a > span > .cat-label.pin-bottom:before,
+.grid-full .catagory_children .level1 .catagory_children  .level2 .pin-bottom:before {
+    border-top-color: #3a80e9;
+    }
+.grid-full li.level.over > a > span > .cat-label.pin-bottom:before,
+.grid-full li.level1.over > a > span > .cat-label.pin-bottom:before,
+.grid-full li.level.over li.level1.over li.level2.over .cat-label.pin-bottom:before,
+.grid-full .level:hover .level1:hover .pin-bottom:before,
+.grid-full .catagory_children .level1:hover .catagory_children .level2:hover .pin-bottom:before {
+    
+}
+.grid-full .level:hover .level1:hover .level2 span.cat-label{
+    background: red;
+}
+
+.grid-full .catagory_children .level1 .catagory_children  .level2 span.cat-label{
+    line-height: 15px;
+    right: -10px;
+    top: -15px;
+}
+.grid-full .catagory_children .level1 .catagory_children  .level2 .pin-bottom:before{
+    left: 15px;
+    top: 22px;
+}
+.grid-full ul li, .grid-full ul li.active,.grid-full ul li.last{
+    background: none;
+}
+.grid-full .menu-product1 li{
+    float: left;
+    width: 100%;
+}
+.grid-full .old-price .price-label,.grid-full .special-price .price-label {
+    display: none;
+}
+.grid-full .special-price{
+    padding: 0px;
+}
+.grid-full ul.level div{
+     position: static;
+}
+
+.grid-full .btn-carthover2 span span {
+    color: hsl(0, 100%, 73%);
+    height: 14px;
+    padding: 0 !important;
+}
+.grid-full .btn-carthover2 {
+    background: url("../../../images/cmsmart/megamenu/icon_cart_hover.png") no-repeat scroll 0 0 transparent;
+    height: 25px;
+    margin-top: 0px;
+}
+.grid-full .menu-product ul.add-to-links{
+    display: block;
+    margin-left: -2px;
+    margin-top: 10px;
+    position: relative !important;
+    width: 185px;
+}
+.grid-full .menu-product ul.add-to-links .separator{
+    float: left;
+}
+.grid-full .menu-product a.link-compare, 
+.grid-full .menu-product a.link-compare, 
+.grid-full .level-top:hover .menu-product  a.link-compare {
+
+  line-height: 20px;
+}
+.nav .grid-full ul.menu-product1 li .price-box{
+     margin-left: 28px;
+}
+.nav .grid-full li.first ul li.nav-1-1 span{
+     line-height: inherit;
+}
+.nav .grid-full ul.menu-product1.menu-product-one .price-box{
+    margin-left: 0;
+    margin-top: 5px;
+    text-align: center;
+}
+.nav .grid-full ul ul.menu-product1 li{
+    line-height: 20px;
+    margin-bottom:  25px;
+}
+.grid-full .add-to-links .separator {
+    display: block;
+    float: left;
+}
+.nav .grid-full li.first ul li.nav-1-1 .levelproducttow span,
+.nav .grid-full li.first ul li.nav-1-1 .menu-product1 span
+{
+    line-height: normal;
+}
+.grid-full .level .menu-product-one a.link-compare{
+    margin-left: 25px;
+}
+.grid-full .catagory_children .catagory_children li.level4.last.no-level-thumbnail{
+    border:  none;
+}
+.nav li.level.nav-home-link .level-top{
+	box-shadow: none;
+}
+
+
+.menu-banner {padding:19px; clear: both; padding-left: 0; }
+.menu-banner:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.menu-banner a:hover {opacity: 0.8;}
+.menu-banner img {width: 100%; border-radius: 3px;} 
+
+.menu-box-right {}
+.menu-box-title {font-size: 16px; line-height: 20px; margin-bottom: 20px;}
+
+.menu-content-1 {padding:0 19px 19px;  float: left; width: 100%;  }
+.menu-content-1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.menu-content-1 a {display: block !important; max-width: 100%;}
+.menu-content-1 a:hover {opacity: 0.6;}
+.menu-content-1  img {max-width: 100%;}
+
+
+.grid-full > li > a:before,
+.grid-full > li > a:after,
+.grid-full > li > a > span,
+.grid-full > li > a > em,
+.grid-full .level > a em,
+.grid-full .level > a em,
+.grid-full a {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) { 
+  .grid-full > li > a {font-size: 14px;}
+    .nav,
+    .catagory_children {width: auto !important;}
+
+    .col-left-1 .title-menu {font-size: 18px; line-height: 20px; margin-bottom: 5px;}
+    .col-left-1 p {margin-bottom: 15px;}
+    .grid-full div.level-top ul.level {width: 100% !important;}
+
+    .grid-full .parent div.level-top > ul.level .level > .catagory_children {
+      padding: 20px;
+    }
+    .grid-full .parent div.level-top > ul.level.column3 .level > .catagory_children {
+      width: 660px !important; 
+    }
+    .column3 .static-block-right {width: 270px !important;}
+    .menu-banner,
+    .menu-content-1 {padding: 20px;}
+}
+
+@media only screen and (max-width: 991px) {
+   .nav-container,
+   .pseudoStickyBlock {display: none !important;}
+   .nav-container-mobile {
+    display: block; 
+    margin-left: -16px;
+     margin-right: -16px; 
+     padding-left: 16px; 
+     padding-right: 16px; 
+     width: auto;
+   }
+}

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /category/hialbums1
+Disallow: /admin/
+Sitemap: https://sarachuk.com/sitemap.xml
