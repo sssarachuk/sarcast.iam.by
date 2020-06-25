@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label' => 'Управление альбомом', 'url' => array('manage')),
+	array('label' => 'Управление альбомами', 'url' => array('manage')),
 	array('label' => 'Список альбомов', 'url' => array('index')),
 );
 ?>

@@ -4619,7 +4619,7 @@ html .icon-md {
 }
 
 /**
-* Post classic 
+* Post classic
 */
 .post-classic {
   text-align: center;
@@ -5254,7 +5254,7 @@ html:not(.mobile):not(.tablet) .quote-boxed:hover .quote-boxed__shape {
   }
 }
 
-/** 
+/**
 * Quote big
 */
 .quote-big .q {
@@ -8036,9 +8036,9 @@ html [class*='section-'].section-bottom-0 {
 }
 
 @media (min-width: 768px) {
-  .section-md {
-    /*padding: 70px 0; */
-  }
+  /*.section-md {
+    padding: 70px 0;
+  }*/
   .section-lg {
     padding: 80px 0;
   }
@@ -8060,9 +8060,9 @@ html [class*='section-'].section-bottom-0 {
   .section-sm {
     padding: 80px 0;
   }
-  .section-md {
-    /*padding: 95px 0;*/
-  }
+  /*.section-md {
+    padding: 95px 0;
+  }*/
   .section-lg {
     padding: 100px 0;
   }
@@ -18185,14 +18185,14 @@ html:not(.lt-ie10) .not-animated {
   }
 }
 
-/* 
+/*
  * 	Owl Carousel - Auto Height Plugin
  */
 .owl-height {
   transition: height 500ms ease-in-out;
 }
 
-/* 
+/*
  *  Core Owl Carousel CSS File
  */
 .owl-carousel {
@@ -18276,7 +18276,7 @@ html:not(.lt-ie10) .not-animated {
   display: block;
 }
 
-/* 
+/*
  * 	Owl Carousel - Lazy Load Plugin
  */
 .owl-carousel .owl-item .owl-lazy {
@@ -18284,7 +18284,7 @@ html:not(.lt-ie10) .not-animated {
   transition: opacity 400ms ease;
 }
 
-/* 
+/*
  * 	Owl Carousel - Video Plugin
  */
 .owl-carousel .owl-video-wrapper {
@@ -33636,7 +33636,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     color: red;
 }
 
-#text-success{
+[id^="text-success"] {
     color: green;
     font-size: 18px;
     font-weight: bold;
@@ -33653,9 +33653,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 text-decoration: underline;
 }
 
-/*Sarachuk*/
+/*Sergey Sarachuk*/
 
-#callback .form-wrap {
+form[id^="callback"] .form-wrap {
     margin-top: 0;
 }
 
@@ -33666,12 +33666,12 @@ text-decoration: underline;
     background-image: -webkit-linear-gradient(19deg, #e23a9a, #ff6a00);
     background-image: -o-linear-gradient(19deg, #e23a9a, #ff6a00);
     background-image: linear-gradient(109deg, #e23a9a, #ff6a00);
-    box-shadow: 3px 3px 7px 0 rgba(0,0,0,.25);    
+    box-shadow: 3px 3px 7px 0 rgba(0,0,0,.25);
 }
 
 input.input-pink {
     background:#fff;
     padding:5px;
     border: 1px solid #828282 !important;
-    border-radius:5px;      
+    border-radius:5px;
 }

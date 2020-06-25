@@ -20,6 +20,7 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'title',
-        'slug',
+		'slug',
+		'photos',
 	),
 )); ?>

@@ -12,12 +12,12 @@
  * @property integer $created_at
  * @property integer $updated_at
  * 2020-05-27:
- * $title_eng, $invisibility, $gallery1_link, $gallery2_link, $text1, $text1_eng, $text2, $text2_eng, $seo_description, $seo_description_eng, $seo_keywords, $seo_keywords_eng
+ * $title_eng, $gallery1_link, $gallery2_link, $text1, $text1_eng, $text2, $text2_eng, $seo_description, $seo_description_eng, $seo_keywords, $seo_keywords_eng
  */
 class Album extends ActiveRecord
 {
         public $image;
-        
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Album the static model class
@@ -46,7 +46,7 @@ class Album extends ActiveRecord
 			array('title, title_eng, h1, h1_eng, folder, category_id', 'required'),
             array('folder, title, title_eng, seo_description, seo_description_eng', 'unique'),
 			array('created_at, updated_at, category_id', 'numerical', 'integerOnly'=>true),
-			array('sort, invisibility', 'numerical'),
+			array('sort', 'numerical'),
 			array('title, title_eng, h1, h1_eng, slug, folder, gallery1_link, gallery2_link, seo_description, seo_description_eng, seo_keywords, seo_keywords_eng', 'length', 'max'=>255),
             array('text1, text1_eng, text2, text2_eng', 'length', 'min'=>0),
 			// The following rule is used by search().
@@ -65,20 +65,20 @@ class Album extends ActiveRecord
 		return array(
 		);
 	}
-        
+
         public function behaviors() {
 		$behaviors = array(
 			'SlugBehavior' => array(
 				'class' => 'application.models.behaviors.SlugBehavior',
 				'slug_colAttribute' => 'slug',
-				'title_colAttribute' => 'title_eng',                
+				'title_colAttribute' => 'title_eng',
 				//'max_slug_chars' => 125,
 				'overwriteAttribute' => FALSE
-			),                  
+			),
 		);
 		$behaviors = parent::behaviors($behaviors);
 		return $behaviors;
-	}             
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -98,7 +98,6 @@ class Album extends ActiveRecord
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 			'sort'	=> 'Сортировка',
-            'invisibility'	=> 'Скрыть альбом',
             'gallery1_link'	=> 'Галерея 1 (ссылка)',
             'gallery2_link'	=> 'Галерея 2 (ссылка)',
             'text1'	=> 'Текстовое описание в начале альбома (RUS)',
@@ -138,7 +137,7 @@ class Album extends ActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-        
+
 	/**
         * Возвращает картинки товара для вывода
         * @param int $limit
@@ -161,8 +160,8 @@ class Album extends ActiveRecord
 			return implode($delimiter, $arrPhotos);
 		}
 		return '';
-	}   
-        
+	}
+
 	/**
      * Возвращает url картинки товара для вывода
      * @param int $limit
@@ -188,5 +187,5 @@ class Album extends ActiveRecord
 			return $arrPhotos;
 		}
 		return '';
-	}           
+	}
 }

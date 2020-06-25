@@ -32,7 +32,7 @@
 		<?php echo $form->textField($model,'slug'); ?>
 		<?php echo $form->error($model,'slug'); ?>
 		<small>(оставьте пустым для автогенерации)</small>
-	</div>    
+	</div>
     <br>
     <div class="row">
 		<?php echo $form->labelEx($model,'h1'); ?>
@@ -60,6 +60,13 @@
 		<?php echo $form->textField($model,'h1_nav_eng'); ?>
 		<?php echo $form->error($model,'h1_nav_eng'); ?>
 		<small>(перевод на английский язык)</small>
+	</div>
+	<br>
+	<div class="row">
+		<?php echo $form->labelEx($model,'sort'); ?>
+		<?php echo $form->textField($model,'sort'); ?>
+		<?php echo $form->error($model,'sort'); ?>
+		<small>(сортировка по возрастанию, цифры меньше 0 скрывают с Главной страницы)</small>
 	</div>
     <br>
     <div class="row">
@@ -125,7 +132,15 @@
 		<?php echo $form->textField($model,'seo_keywords_eng'); ?>
 		<?php echo $form->error($model,'seo_keywords_eng'); ?>
 		<small>(meta-тег keywords для seo, на английском, не рекомендуется заполнять)</small>
-	</div>	    
+	</div>
+    <br>
+    <div class="row">
+		<?php echo $form->labelEx($model,'photos'); ?>
+		<?php echo $form->textArea($model,'photos',array('rows'=>3, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'photos'); ?>
+		<small>(один адрес файла на строку)</small><br>
+		<small>(адреса брать из Управления Альбомами, а сортировать здесь)</small>
+	</div>
     <br>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить'); ?>

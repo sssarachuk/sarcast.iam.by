@@ -43,8 +43,9 @@ $('.search-form form').submit(function(){
 	'filter'=>$model,
 	'columns'=>array(
 		'title',
-                'slug',
-                'price',
+		'slug',
+		'category_id',
+		'price',
 		array(
 			'class'=>'CButtonColumn',
 		),

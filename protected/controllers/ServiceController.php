@@ -49,6 +49,8 @@ class ServiceController extends Controller {
 	public function actionIndex(){
             
                     $services = Service::model()->findAll();
+        
+                    $categories = Category::model()->findAll();
  
                     $this->metaTags = array(
             			'title'			=> К_ЗАГОЛОВОК_СТРАНИЦЫ_ЦЕН,
@@ -58,6 +60,7 @@ class ServiceController extends Controller {
  
                     $this->render('index',array(
                             'services' => $services,
+                            'categories' => $categories,
                     ));
 
 	}

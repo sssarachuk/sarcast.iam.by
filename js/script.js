@@ -710,28 +710,31 @@ $document.ready(function () {
       document.body.className += ' ' + plugins.rdNavbar.attr("data-body-class");
     }
     //активное и выпадающее меню
-    $(function () { 
-	 var pathname_url = window.location.pathname; 
-	 var href_url = window.location.href; 	 
-	 var eventDropdownNav = (function () { 
-		 if ('ontouchstart' in document.documentElement) { 
-		 return 'touchstart'; 
-		 } else { 
-		 return 'click'; 
-		 } 
-	 })(); 	 
-	 $(".rd-navbar-nav li").each(function () { 
-		 var link = $(this).find("a").attr("href"); 
-		 
-		 if (pathname_url == link || href_url == link) { 
-		 $(this).addClass("active"); 
-		 $(this).parents("li.rd-navbar--has-dropdown").addClass("active"); 
-		 } 
-		 
-		 $(this).find("a").on(eventDropdownNav, function () { 
-		 $(this).parent().toggleClass('opened'); 
-		 }); 
-	 }); 
+    $(function () {
+	 var pathname_url = window.location.pathname;
+	 var href_url = window.location.href;
+     var hash_url = window.location.hash;
+
+	 var eventDropdownNav = (function () {
+		 if ('ontouchstart' in document.documentElement) {
+		 return 'touchstart';
+		 } else {
+		 return 'click';
+		 }
+	 })();
+	 $(".rd-navbar-nav li").each(function () {
+		 var link = $(this).find("a").attr("href");
+		 var link_hash = link.replace(hash_url,'');
+
+		 if (pathname_url == link || href_url == link || pathname_url == link_hash || href_url == link_hash) {
+		 $(this).addClass("active");
+		 $(this).parents("li.rd-navbar--has-dropdown").addClass("active");
+		 }
+
+		 $(this).find("a").on(eventDropdownNav, function () {
+		 $(this).parent().toggleClass('opened');
+		 });
+	 });
     });
   }
 
@@ -820,7 +823,7 @@ $document.ready(function () {
         initLightGallery($('[data-lightgallery="group-slick"]'), 'lightGallery-in-carousel');
         initLightGallery($('[data-lightgallery="item-slick"]'), 'lightGallery-in-carousel');
       });
-      
+
       $slickItem.slick({
         slidesToScroll: parseInt($slickItem.attr('data-slide-to-scroll')) || 1,
         asNavFor: $slickItem.attr('data-for') || false,
@@ -1528,7 +1531,7 @@ $document.ready(function () {
       var $dateTimePicker = $(plugins.bootstrapDateTimePicker[i]);
       var options = {};
 
-      options['format'] = 'dddd DD MMMM YYYY - HH:mm';    
+      options['format'] = 'dddd DD MMMM YYYY - HH:mm';
       if ($dateTimePicker.attr("data-time-picker") == "date") {
         options['format'] = 'dddd DD MMMM YYYY';
         options['minDate'] = new Date();
@@ -1543,7 +1546,7 @@ $document.ready(function () {
       $dateTimePicker.bootstrapMaterialDatePicker(options);
     }
   }
-  
+
   /**
    * jQuery Countdown
    * @description  Enable countdown plugin
@@ -1613,8 +1616,8 @@ $document.ready(function () {
 
             revealOffset = animationDuration * 1.2;
           }
-          
-         
+
+
           setTimeout(function () {
             $selectedEvent.parent().after("<div class='rdc-calendar-event-panel' id='calendarEvent" + event.data + "'><div class='event-panel'></div></div>");
             eventRow = hiddenEvents.clone().appendTo($('#calendarEvent' + event.data + ' .event-panel'));
@@ -1622,7 +1625,7 @@ $document.ready(function () {
             eventRow.parent().css("height", "0");
             eventRow.parent().animate({height: ch + "px"}, animationDuration);
             console.log(ch);
-            
+
           }, revealOffset);
         }
 
@@ -1688,7 +1691,7 @@ $document.ready(function () {
     function validate(form){
         var noerror = true;
         var patern_email = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i;
-        var patern_phone = /[^0-9\-\+\s\(\)]/;        
+        var patern_phone = /[^0-9\-\+\s\(\)]/;
         var patern_number = /\[0-9]/g;
         form.find('.error').removeClass('error');
         jQuery('.wrap-error').remove();
@@ -1697,19 +1700,19 @@ $document.ready(function () {
                 jQuery(this).addClass('error');
                 show_error(jQuery(this),'Поле не может быть пустым!');
                 noerror = false;
-            }                       
+            }
         });
-        
-        form.find('select.required_select').each(function(){           
+
+        form.find('select.required_select').each(function(){
             if (jQuery(this).val() == ''){
                 jQuery(this).addClass('error');
                 show_error(jQuery(this),'Выберите хотя бы одно значение');
                 noerror = false;
-            }                       
-        });        
-        
-        
-        form.find('input.check_file').each(function(){   
+            }
+        });
+
+
+        form.find('input.check_file').each(function(){
             string = jQuery(this).val();
             ext = jQuery(this).attr('data-ext');
 
@@ -1720,11 +1723,11 @@ $document.ready(function () {
             }else if(ext.indexOf(string.split(".").pop()) == -1){
                 jQuery(this).addClass('error');
                 show_error(jQuery(this),'Неверный формат файла!');
-                noerror = false;                
-            }                       
+                noerror = false;
+            }
         });
-        
-        form.find('input.check_photo').each(function(){   
+
+        form.find('input.check_photo').each(function(){
             string = jQuery(this).val();
             ext = jQuery(this).attr('data-ext');
 
@@ -1735,46 +1738,43 @@ $document.ready(function () {
             }else if(ext.indexOf(string.split(".").pop()) == -1){
                 jQuery(this).addClass('error');
                 show_error(jQuery(this),'Неверный формат файла!');
-                noerror = false;                
-            }                       
-        });        
-        
-        form.find('.check_pass').each(function(){           
+                noerror = false;
+            }
+        });
+
+        form.find('.check_pass').each(function(){
             if ($('#password').val() != $('#password_confirm').val()){
                 jQuery(this).addClass('error');
                 show_error(jQuery(this),'Пароли не совпадают');
                 noerror = false;
-            }                       
-        });        
-        
+            }
+        });
+
         form.find('.required_lenth').each(function(){
             if (jQuery(this).val().length < 3){
                 jQuery(this).addClass('error');
                 show_error(jQuery(this),'Поле не может быть меньше 3-х символов');
                 noerror = false;
-            }                       
+            }
         });
-        
+
         form.find('.required_ckeckbox').each(function(){
-            
             var n = jQuery(this).find("input:checked").length;
             if(n == 0){
                 jQuery(this).addClass('error');
                 show_error(jQuery(this),'Нужно выбрать хотя бы одно значение');
-                noerror = false;                
+                noerror = false;
             }
-            
-            
-        });        
-        
+        });
+
         form.find('.email').each(function(){
             if (jQuery(this).val() != '' && jQuery(this).val().search(patern_email) != 0 && !jQuery(this).hasClass('error')){
                 jQuery(this).addClass('error');
                 show_error(jQuery(this),'Неверный e-mail!');
                 noerror = false;
-            }           
+            }
         });
-        
+
         form.find('.check_login').each(function(){
             field = jQuery(this);
             if(jQuery(this).val()){
@@ -1790,10 +1790,10 @@ $document.ready(function () {
                         noerror = false;
                       }
                   }
-                });  
-            }        
+                });
+            }
         });
-        
+
         form.find('.check_email').each(function(){
             field2 = jQuery(this);
             if(jQuery(this).val()){
@@ -1810,10 +1810,10 @@ $document.ready(function () {
                             noerror = false;
                           }
                       }
-                    }); 
-            }        
-        }); 
-        
+                    });
+            }
+        });
+
         form.find('.ps_real').each(function(){
             field2 = jQuery(this);
             if(jQuery(this).val()){
@@ -1830,72 +1830,64 @@ $document.ready(function () {
                             noerror = false;
                           }
                       }
-                    }); 
-            }        
-        });        
+                    });
+            }
+        });
 
        form.find('.phone').each(function(){
            if (jQuery(this).val() != '' && patern_phone.test(jQuery(this).val()) && !jQuery(this).hasClass('error')){
                jQuery(this).addClass('error');
                show_error(jQuery(this),'Неверный формат телефона!');
                noerror = false;
-           }   
+           }
        });
        form.find('#phone').each(function(){
            if (jQuery(this).val() != '' && patern_phone.test(jQuery(this).val()) && !jQuery(this).hasClass('error')){
                jQuery(this).addClass('error');
                show_error(jQuery(this),'Неверный формат телефона!');
                noerror = false;
-           }   
-       });       
-       
+           }
+       });
+
        form.find('.number').each(function(){
            if (jQuery(this).val() != '' && patern_number.test(jQuery(this).val()) && !jQuery(this).hasClass('error')){
                jQuery(this).addClass('error');
                show_error(jQuery(this),'Можно вводить только целые числа!');
                noerror = false;
-           }   
-       });       
+           }
+       });
 
        form.find('.password').each(function(){
            if (jQuery(this).val().length < 6 && !jQuery(this).hasClass('error')){
                jQuery(this).addClass('error');
                show_error(jQuery(this),'Длина пароля не меньше 6 символов!');
                noerror = false;
-           }   
+           }
        });
-       
+
         form.find('#private_policy').each(function(){
             if(!jQuery(this).is(':checked')){
                 jQuery("#privacy_error").addClass('error');
                 show_error(jQuery("#privacy_error"),'Вы должны принять условия!');
-                noerror = false;                
+                noerror = false;
             }
-        });  
-        
+        });
+
         form.find('#private_policy2').each(function(){
             if(!jQuery(this).is(':checked')){
                 jQuery("#privacy_error2").addClass('error');
                 show_error(jQuery("#privacy_error2"),'Вы должны принять условия!');
-                noerror = false;                
+                noerror = false;
             }
-        });         
-        
-        /*form.find('.private_policy2').each(function(){
-            if(!jQuery(this).is(':checked')){
-                jQuery("#privacy_error_2").addClass('error');
-                show_error(jQuery("#privacy_error"),'Вы должны принять условия!');
-                noerror = false;                
-            }
-        });*/         
+        });
 
        form.find('.password2').each(function(){
            if (jQuery(this).val() != jQuery('.password').val() && !jQuery('.password').hasClass('error')){
                jQuery(this).addClass('error');
                show_error(jQuery(this),'Пароли не совпадают!');
                noerror = false;
-           }   
-       });     
+           }
+       });
 
        form.find('input.inputagree').each(function(){
           if (!jQuery(this).is(':checked')){
@@ -1915,37 +1907,38 @@ $document.ready(function () {
                       if (data.responseText == 'N'){
                            el_form.addClass('error');
                            show_error(el_form,'Ошибка! неверный защитный код');
-                           noerror = false;                   
+                           noerror = false;
                       }
                       else{
                           jQuery('.wrap-captcha').remove();
                       }
                    }
                });
-           }   
+           }
        });
-       
+
        if(!noerror){
-           jQuery('body,html').animate({scrollTop:jQuery(".text-error:first").offset().top-110}, 200);
+				 		//скрол валидации
+					 //jQuery('body,html').animate({scrollTop:jQuery(".text-error:first").offset().top-120}, 200);
        }
        return noerror;
     }
 
   function show_error(el,text){
       var id = 'error' + Math.floor(Math.random()*1000)*Math.floor(Math.random()*1000);
-      
+
       var jQueryerror = jQuery('<div class="wrap-error" style="opacity:0.01" id="' + id + '"><div class="text-error form-validation">' + text + '</div></div>');
-      el.after(jQueryerror);      
+      el.after(jQueryerror);
       jQuery('#' + id).css('bottom',- jQuery('#' + id).height() + 2);
       el.attr('data-error',id).addClass('error');
-      jQuery('#' + id).fadeTo(200,1);  
+      jQuery('#' + id).fadeTo(200,1);
   }
 //mail form
-$(document).on('submit','#callback',function(){   
+$(document).on('submit','#callback',function(){
     var form = $(this);
     $("#text-success").html('');
-    
-    if (validate($(this))){   
+
+    if (validate($(this))){
         $.ajax({
           type: 'POST',
           url: '/site/send/',
@@ -1956,18 +1949,22 @@ $(document).on('submit','#callback',function(){
                     $("#text-success").html('Успешно отправлено!');
                     //$(".f-1").val('');
                 }
-           
           }
-        });        
+        });
     }
     return false;
 });
-//mail form 2
-$(document).on('submit','#callback2',function(){   
+//mail form others
+$('form[id^="callback-"]').each(function() {
+	var form2_id = $(this).attr("id").replace("callback-",'');
+	var callback2 = "#callback-" + form2_id;
+	var text_success2 = "#text-success-" + form2_id;
+
+	$(document).on('submit',callback2,function(){
     var form = $(this);
-    $("#text-success2").html('');
-    
-    if (validate($(this))){   
+    $(text_success2).html('');
+
+    if (validate($(this))){
         $.ajax({
           type: 'POST',
           url: '/site/send/',
@@ -1975,36 +1972,14 @@ $(document).on('submit','#callback2',function(){
           //dataType: 'json',
           success: function(result){
                 if(result == '1'){
-                    $("#text-success2").html('Успешно отправлено!');
+                    $(text_success2).html('Успешно отправлено!');
                     //$(".f-1").val('');
                 }
-           
           }
-        });        
+        });
     }
     return false;
-});
-//mail form footer
-$(document).on('submit','#callback-footer',function(){   
-    var form = $(this);
-    $("#text-success-footer").html('');
-    
-    if (validate($(this))){   
-        $.ajax({
-          type: 'POST',
-          url: '/site/send/',
-          data: form.serialize(),
-          //dataType: 'json',
-          success: function(result){
-                if(result == '1'){
-                    $("#text-success-footer").html('Успешно отправлено!');
-                    //$(".f-1").val('');
-                }
-           
-          }
-        });        
-    }
-    return false;
+	});
 });
 
 /**

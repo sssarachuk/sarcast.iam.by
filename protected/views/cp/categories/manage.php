@@ -44,7 +44,8 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'title',
         'h1',
-        'slug',
+		'slug',
+		'sort',
 		array(
 			'class'=>'CButtonColumn',
 		),

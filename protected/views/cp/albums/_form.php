@@ -73,7 +73,7 @@
 	<div class="row">
 		<?=CHtml::label('Изображение', 'image')?>
 		<?=CHtml::activeFileField($model, 'image'); ?>
-	</div>	
+	</div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить'); ?>
 	</div>
@@ -82,16 +82,9 @@
 		<?php echo $form->labelEx($model,'sort'); ?>
 		<?php echo $form->textField($model,'sort'); ?>
 		<?php echo $form->error($model,'sort'); ?>
-		<small>(введите больше цифру, если хотите понизить приоритет)</small>
+		<small>(сортировка по возрастанию, цифры меньше 0 делают альбом скрытым)</small>
 	</div>
     <br>
-    <div class="row">
-		<?php echo $form->labelEx($model,'invisibility'); ?>
-		<?php echo $form->textField($model,'invisibility'); ?>
-		<?php echo $form->error($model,'invisibility'); ?>
-		<small>(0 показывает, 1 скрывает альбом, 2 отображает также на Главной)</small>
-	</div>
-    <br>       
     <div class="row">
 		<?php echo $form->labelEx($model,'gallery1_link'); ?>
 		<?php echo $form->textField($model,'gallery1_link'); ?>
@@ -175,7 +168,7 @@
 	</div>
     <br>
     <div class="row">
-		<?php echo $form->labelEx($model,'seo_description'); ?>		
+		<?php echo $form->labelEx($model,'seo_description'); ?>
 		<?php echo $form->textArea($model,'seo_description',array('rows'=>3, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'seo_description'); ?>
 		<small>(meta-тег description для seo, на русском)</small><br>

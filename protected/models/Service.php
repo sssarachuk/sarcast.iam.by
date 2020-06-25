@@ -41,13 +41,13 @@ class Service extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, description', 'required'),
-			array('created_at, updated_at', 'numerical', 'integerOnly'=>true),
-			array('title, slug, pretitle, notes, price', 'length', 'max'=>255),
-                        array('photos', 'safe'),
+			array('title, title_eng, description, description_eng, category_id', 'required'),
+			array('created_at, updated_at, category_id', 'numerical', 'integerOnly'=>true),
+			array('title, title_eng, slug, pretitle, pretitle_eng, notes, price, price_rub, price_usd, price_eur', 'length', 'max'=>255),
+            array('photos', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, slug, price, description, photos, created_at, updated_at, pretitle, notes', 'safe', 'on'=>'search'),
+			array('id, title, title_eng, slug, price, description, description_eng, photos, created_at, updated_at, pretitle, notes, category_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,7 +67,7 @@ class Service extends ActiveRecord
 			'SlugBehavior' => array(
 				'class' => 'application.models.behaviors.SlugBehavior',
 				'slug_colAttribute' => 'slug',
-				'title_colAttribute' => 'title',
+				'title_colAttribute' => 'title_eng',
 				//'max_slug_chars' => 125,
 				'overwriteAttribute' => FALSE
 			),                  
@@ -83,12 +83,19 @@ class Service extends ActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+            'category_id' => 'Категория',
 			'title' => 'Название услуги',
-                        'pretitle' => 'Заголовок',
+            'title_eng' => 'Название услуги ENG',
+            'pretitle' => 'Заголовок',
+            'pretitle_eng' => 'Заголовок ENG',
 			'slug' => 'Slug',
 			'price' => 'Цена',
-                        'notes' => 'Примечание',
+            'price_rub' => 'Цена RUB',
+            'price_usd' => 'Цена USD',
+            'price_eur' => 'Цена EUR',
+            'notes' => 'Примечание',
 			'description' => 'Описание',
+            'description_eng' => 'Описание ENG',
 			'photos' => 'Фото',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
@@ -107,15 +114,18 @@ class Service extends ActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+        $criteria->compare('category_id',$this->category_id);
 		$criteria->compare('title',$this->title,true);
+        $criteria->compare('title_eng',$this->title_eng,true);
 		$criteria->compare('slug',$this->slug,true);
 		$criteria->compare('price',$this->price,true);
 		$criteria->compare('description',$this->description,true);
+        $criteria->compare('description_eng',$this->description_eng,true);
 		$criteria->compare('photos',$this->photos,true);
 		$criteria->compare('created_at',$this->created_at);
 		$criteria->compare('updated_at',$this->updated_at);
-                $criteria->compare('pretitle',$this->pretitle);
-                $criteria->compare('notes',$this->notes);
+        $criteria->compare('pretitle',$this->pretitle);
+        $criteria->compare('notes',$this->notes);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

@@ -27,11 +27,15 @@ class SiteController extends Controller
 	 */
 	public function actionIndex() {
 		$this->layout = '//layouts/main';
-        
+
         $sliders = Slider::model()->findAll();
-        
-        $albums = Album::model()->findAll('id!=-1'.' ORDER BY sort');
-                
+
+        $categories = Category::model()->findAll('sort >=0 ORDER BY sort');
+
+        $albums = Album::model()->findAll('id!=-1 ORDER BY sort');
+
+        $services = Service::model()->findAll('id!=-1 ORDER BY id');
+
 		$this->metaTags = array(
 			'title'			=> К_ЗАГОЛОВОК_ГЛАВНОЙ_СТРАНИЦЫ,
 			'description'	=> К_ОПИСАНИЕ_ГЛАВНОЙ_СТРАНИЦЫ,
@@ -41,6 +45,8 @@ class SiteController extends Controller
 		$this->render('index', array(
                     'sliders' => $sliders,
                     'albums' => $albums,
+                    'categories' => $categories,
+                    'services' => $services,
                             ));
 	}
 
@@ -69,11 +75,11 @@ class SiteController extends Controller
                             $headers .= "Content-type: text/html; charset='UTF-8' \r\n";
                             $headers .= "From: " . $model->email . "\r\n";
                             $headers .= "X-mailer: Furniture Mailer\r\n";
-                            
+
                             $content = 'Email: '.$model->email.' <br />';
                             $content .= 'Телефон: '.$model->phone.' <br />';
                             $content .= 'Сообщение: '.$model->body.' <br />';
-                            mail(Yii::app()->params['adminEmail'], 'Furniture Store '. $model->email, $content, $headers);        
+                            mail(Yii::app()->params['adminEmail'], 'Furniture Store '. $model->email, $content, $headers);
                             //mail(Yii::app()->params['shopManagerEmail'], $model->subject, $content, $headers);
                             //Yii::app()->user->setFlash('contact', 'Спасибо вам за ваше сообщение. We will answer it as soon as possible.');
                             $this->refresh();
@@ -204,42 +210,42 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
 		}
 		$this->redirect("/");
 	}*/
-        
+
         public function actionAbout(){
-			$page = Page::model()->find('name=:name', array(':name'=>'about'));			
-			
+			$page = Page::model()->find('name=:name', array(':name'=>'about'));
+
             $this->render('about',array('page' => $page));
         }
-		
+
         public function actionContacts(){
-			$page = Page::model()->find('name=:name', array(':name'=>'contacts'));			
-			
+			$page = Page::model()->find('name=:name', array(':name'=>'contacts'));
+
             $this->render('contacts',array('page' => $page));
         }
-        
+
         public function actionSend(){
             if(!isset($_POST['name']) || !$_POST['name'])
                 $_POST['name'] = 'Noname';
-            
+
            if(isset($_POST['name']) && $_POST['name']){
                 $headers = "MIME-Version: 1.0\r\n";
                 $headers .= "Content-type: text/html; charset='UTF-8' \r\n";
                 $headers .= "From: " . Yii::app()->params['adminEmail'] . "\r\n";
                 $headers .= "X-mailer: Furniture Mailer\r\n";
 
-                $content = 'Имя: '.$_POST['name'].' <br />';																
+                $content = 'Имя: '.$_POST['name'].' <br />';
                 $content .= 'Телефон: '.$_POST['phone'].' <br />';
                 if(isset($_POST['email']) && $_POST['email']) $content .= 'Email: '.$_POST['email'].' <br />';
                 if(isset($_POST['date']) && $_POST['date']) $content .= 'Дата: '.$_POST['date'].' <br />';
                 if(isset($_POST['message']) && $_POST['message']) $content .= 'Сообщение: '.$_POST['message'].' <br />';
                 $content .= 'Подарки: '.К_ПОДАРКИ_НА_ЭМЕЙЛ;
-               
-                if(isset($_POST['email']) && $_POST['email']) {                   
+
+                if(isset($_POST['email']) && $_POST['email']) {
                    mail(Yii::app()->params['shopManagerEmail'], 'Копия письма клиенту - Обратная связь от '.К_ДОМЕН_САЙТА, 'Подарки (ссылка на гугл файлообменник): https://drive.google.com/open?id=1BawVGaCiRb5Nf-_yJr6rDrIPR59Oh-Ff', $headers);
-                   mail($_POST['email'], 'Обратная связь от '.К_ДОМЕН_САЙТА, 'Подарки (ссылка на гугл файлообменник): https://drive.google.com/open?id=1BawVGaCiRb5Nf-_yJr6rDrIPR59Oh-Ff', $headers);                
-                }               
-                mail(Yii::app()->params['adminEmail'], 'Обратная связь от '.К_ДОМЕН_САЙТА, $content, $headers);                
-                echo '1';               
+                   mail($_POST['email'], 'Обратная связь от '.К_ДОМЕН_САЙТА, 'Подарки (ссылка на гугл файлообменник): https://drive.google.com/open?id=1BawVGaCiRb5Nf-_yJr6rDrIPR59Oh-Ff', $headers);
+                }
+                mail(Yii::app()->params['adminEmail'], 'Обратная связь от '.К_ДОМЕН_САЙТА, $content, $headers);
+                echo '1';
            }
-        }    
+        }
 }

@@ -3,39 +3,130 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/lib/image.php');
 $IMG = new ModelToolImage();
 ?>
 
-<!--1 6 квадратов + кнопки Узнать стоимость + Получить подарки (показать подарки)
-переход по квадрату идет к слайдерам на каждый вид съемки
-2 сверху Описание + Подробное этой съемки
- + по центру мини-слайдер
- + снизу Пакеты услуг таблица + кнопка Стоимость Х вида съемки
-2.1 свадебные
-2.2 семейные
-2.3 женские
-2.4 мужские
-2.5 детские
-2.6 путешествия
-часто задаваемые вопросы
-Подарки-квиз + кнопка Воцап-->
-
-
 <!--Слайдер-->
 <section class="section section-variant-1 bg-white text-center" style="padding:0 0 15px 0;">
         <div class="shell">
           <div class="range range-30 range-md-center">
            <h1><?= К_ЗАГОЛОВОК2_ГЛАВНОЙ_СТРАНИЦЫ ?></h1>
-            <div class="cell-md-11 cell-lg-10">            
-              <!-- Single post-->			  
+            <div class="cell-md-11 cell-lg-10">
+              <!-- Single post-->
+              <div class="owl-carousel-wrap owl-carousel_style-1">
+              <div class="owl-carousel-wrap owl-carousel_style-1">
+                <div class="owl-carousel" data-autoplay="true" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav" >
+
+                <? $counter = 1; ?>
+                <?php foreach($sliders as $slider): ?>
+                    <?php $images_url = $slider->showImagesUrl(); ?>
+                    <? if (!isset($images_url) || empty($images_url))
+                          break; ?>
+                      <div class="owl-stage-outer">
+                        <div class="owl-stage">
+                          <div class="owl-item">
+                            <div class="item">
+                              <?php $resized_image = $IMG->resize($images_url, 968, 0);
+                                    $size = getimagesize($_SERVER['DOCUMENT_ROOT'].$resized_image); ?>
+                              <img class="owl-lazy" data-src="<?=$resized_image;?>"
+                               src="<? if ($counter == 1) echo $IMG->resize($images_url, 96, 0); ?>"
+                               alt="<?=К_ЗАГОЛОВОК_ГЛАВНОЙ_СТРАНИЦЫ?> - Фото <?=$counter ?>" <? echo $size[3]; ?> >
+                              <? $counter++; ?>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                <?php endforeach; ?>
+
+                </div>
+                <div class="owl-outer-navigation" id="owl-carousel-nav">
+                  <button class="owl-arrow owl-arrow-prev">
+                    <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
+                    <line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.5" y1="8" x2="1" y2="8" ></line>
+                    <polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="8.8,15 1,8 8.8,1"></polyline>
+                    </svg>
+                  </button>
+                  <button class="owl-arrow owl-arrow-next">
+                    <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
+                    <line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1" y1="8" x2="27.5" y2="8"></line>
+                    <polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="19.7,15 27.5,8 19.7,1"></polyline>
+                    </svg>
+                  </button>
+                  </div>
+              </div></div>
+              <!-- Single post-->
+            </div>
+          </div>
+        </div>
+</section>
+<!--Слайдер-->
+<!--кнопка Узнать подробнее-->
+<section id="send-form" class="section section-md bg-white oh text-center">
+<div class="shell">
+    <div>
+        <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">
+                  <div class="cell-sm-6 cell-md-7">
+                    <div class="col-xs-12 col-sm-2">
+                    </div>
+                   <div class="col-xs-12 col-sm-6">
+                     <p class="h3" style="margin:0;">Оставьте заявку чтобы получить <span style="display: inline-block;"><b>3 подарка</b></span> и консультацию</p>
+                     <form id="callback" class="callback rd-mailform form_inline" method="post" action="">
+                          <div class="form__inner">
+                            <div class="form-wrap">
+                              <input class="form-input phone f-1 required input-pink" id="contact-phone" type="text" name="phone">
+                              <label class="form-label rd-input-label icon-gray-7" for="contact-phone" style="padding:5px;">Введите телефон</label>
+                            </div>
+                            <div class="form-button" style="padding-left:5px; padding-right:5px;">
+                              <button class="button button-primary button-ujarak button-pink" type="submit">Узнать подробнее&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+                            </div>
+                          </div>
+                          <span id="text-success"></span>
+                          <textarea class="form-input f-1" id="contact-message" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>, Gift: true</textarea>
+                        </form>
+                        <p class="icon-gray-7">*предложения и свободные даты ограничены</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                      <img src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0OCA3OS4xNjQwMzYsIDIwMTkvMDgvMTMtMDE6MDY6NTcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjE5NjEzQzZEQjRBMDExRUE4NkZCOUM4Nzc1QkQyQjA3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjE5NjEzQzZDQjRBMDExRUE4NkZCOUM4Nzc1QkQyQjA3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NkMzRTUyQUVBMEY5MTFFQUFBQ0FBODc2Q0E4QTk4M0EiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NkMzRTUyQUZBMEY5MTFFQUFBQ0FBODc2Q0E4QTk4M0EiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAAGBAQEBQQGBQUGCQYFBgkLCAYG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" alt="Подарок 1" width="120" height="120">
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
+</section>
+<!--кнопка Узнать подробнее-->
+<!--Категории Альбомов-->
+<?php foreach($categories as $category): ?>
+<section id="<?=$category->slug?>" class="section section-variant-1 bg-white text-center">
+        <div class="shell">
+          <div class="range range-30 range-md-center">
+             <div class="cell-md-11 cell-lg-10">
+                 <h2><?=$category->h1?></h2>
+              </div>
+            <?php $images_url = $category->showImagesUrl(); ?>
+            <? $counter = 1; ?>
+            <? if (isset($images_url) && !empty($images_url)) { ?>
+            <!-- Slider-->
+            <div class="cell-md-11 cell-lg-10">
 			  <div class="owl-carousel-wrap owl-carousel_style-1">
-                    <div class="owl-carousel-wrap owl-carousel_style-1"> 					
-				  <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav" >
-				  <!--У всех фото должна быть заранее одинаковая высота-->
-					  <div><div><img class="owl-lazy" data-src="images/m-slider1.jpg" src="data:image/jpeg;base64,/9j/4QBCRXhpZgAASUkqAAgAAAABAJiCAgAeAAAAGgAAAAAAAABDb3B5cmlnaHQgwqkgU0lBUkhFSSBTQVJBQ0hVSwAAAP/hBr9odHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wUmlnaHRzPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvcmlnaHRzLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczpJcHRjNHhtcENvcmU9Imh0dHA6Ly9pcHRjLm9yZy9zdGQvSXB0YzR4bXBDb3JlLzEuMC94bWxucy8iIHhtcFJpZ2h0czpNYXJrZWQ9IlRydWUiIHhtcFJpZ2h0czpXZWJTdGF0ZW1lbnQ9Imh0dHA6Ly92ay5jb20vc3NzYXJhY2h1ayIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSI4REJFNkY1NDZGNkMxMzg1OUY5NDVDOEU0Q0Y3QkI5NSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1NTkwNDIzMzk5OUIxMUVBOUEwQ0Q0NUIwRTAwMkMzQSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1NTkwNDIzMjk5OUIxMUVBOUEwQ0Q0NUIwRTAwMkMzQSIgeG1wOkNyZWF0b3JUb29sPSJDYXB0dXJlIE9uZSAyMCBXaW5kb3dzIiBwaG90b3Nob3A6QXV0aG9yc1Bvc2l0aW9uPSJwaG90b2dyYXBoZXIiPiA8eG1wUmlnaHRzOlVzYWdlVGVybXM+IDxyZGY6QWx0PiA8cmRmOmxpIHhtbDpsYW5nPSJ4LWRlZmF1bHQiPkFsbCByaWdodHMgcmVzZXJ2ZWQuIE5vIHJlcHJvZHVjdGlvbiBvZiBhbnkga2luZDwvcmRmOmxpPiA8L3JkZjpBbHQ+IDwveG1wUmlnaHRzOlVzYWdlVGVybXM+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmJjZGRkZWU2LWQ2NmQtMjQ0Zi04ZmVhLTI2Zjg0NTU2YTBlNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpiY2RkZGVlNi1kNjZkLTI0NGYtOGZlYS0yNmY4NDU1NmEwZTciLz4gPGRjOnJpZ2h0cz4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+Q29weXJpZ2h0IMKpIFNJQVJIRUkgU0FSQUNIVUs8L3JkZjpsaT4gPC9yZGY6QWx0PiA8L2RjOnJpZ2h0cz4gPGRjOmNyZWF0b3I+IDxyZGY6U2VxPiA8cmRmOmxpPlNpYXJoZWkgU2FyYWNodWs8L3JkZjpsaT4gPC9yZGY6U2VxPiA8L2RjOmNyZWF0b3I+IDxJcHRjNHhtcENvcmU6Q3JlYXRvckNvbnRhY3RJbmZvIElwdGM0eG1wQ29yZTpDaVRlbFdvcms9IiszNzUtMzMtMzk1OTY2NjsgKzM3NS0yNS02NjYzOTU5IiBJcHRjNHhtcENvcmU6Q2lVcmxXb3JrPSJodHRwOi8vc3NzYXJhY2h1ay5jb20iIElwdGM0eG1wQ29yZTpDaUFkckN0cnk9IkJlbGFydXMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/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" alt="" width="968" height="537"></div></div>					  
-					  <div><div><img class="owl-lazy" data-src="images/m-slider2.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="images/m-slider3.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="images/m-slider4.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="images/m-slider6.jpg" alt="" width="968" height="537"></div></div>
+          <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav-<?=$category->slug?>" >
+
+                            <?php foreach($images_url as $url) : ?>
+                               <div class="owl-stage-outer">
+                                  <div class="owl-stage">
+                                    <div class="owl-item">
+                                      <div class="item">
+                                        <?php $resized_image = $IMG->resize($url, 968, 0); ?>
+                                        <?php $size = getimagesize($_SERVER['DOCUMENT_ROOT'].$resized_image); ?>
+                                        <img class="owl-lazy" data-src="<?=$resized_image;?>" alt="<?=$category->h1;?> - Фото <?=$counter ?>" <?php echo $size[3];?>>
+                                        <? $counter++; ?>
+                                      </div>
+                                    </div>
+                                  </div>
+                               </div>
+                            <?php endforeach; ?>
 					</div>
-					<div class="owl-outer-navigation" id="owl-carousel-nav">
+					<div class="owl-outer-navigation" id="owl-carousel-nav-<?=$category->slug?>">
 						<button class="owl-arrow owl-arrow-prev">
 						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
 							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.5" y1="8" x2="1" y2="8" ></line>
@@ -49,68 +140,97 @@ $IMG = new ModelToolImage();
 						  </svg>
 						</button>
 					  </div>
-				</div></div>
+				</div>
             </div>
+            <!-- Slider-->
+            <? } ?>
+            <div class="cell-xs-12 bg-white">
+                  <a href="/category/<?=$category->slug?>"><div class="button button-primary button-ujarak button-pink">Посмотреть больше <span class="icon mdi mdi-arrow-right"></span></div></a>
+                  <br>
+                  <p class="icon-gray-7">*все серии фотографий целиком</p>
+            </div>
+            <div class="cell-md-11 cell-lg-10">
+                <p><?=$category->text1?></p>
+            </div>
+            <!--стоимость-->
+            <? if (isset($services) && !empty($services)) { ?>
+            <span id="price-<?=$category->slug?>"></span>
+            <div class="cell-xs-12 bg-gray-lighter" style="padding: 15px;">
+            <h3>Цена - <?=$category->h1_nav?></h3>
+            <div class="tabs-custom tabs-horizontal tabs-corporate" id="tabs-<?=$category->slug?>" >
+                <ul class="nav nav-tabs">
+                    <? $counter = 1; ?>
+                    <?php foreach($services as $service): ?>
+                        <? if ($service->category_id == $category->id) { ?>
+                           <? if ($counter == 2) { ?>
+                               <li class="active"><a href="#tabs-<?=$category->slug?>-<?=$counter?>" data-toggle="tab"><?=$service->title?></a></li>
+                           <? } else {?>
+                                <li><a href="#tabs-<?=$category->slug?>-<?=$counter?>" data-toggle="tab"><?=$service->title?></a></li>
+                            <? } ?>
+                            <? $counter++; ?>
+                        <? } ?>
+                    <?php endforeach; ?>
+                </ul>
+                   <div class="tab-content">
+                    <? $counter = 1; ?>
+                   <?php foreach($services as $service): ?>
+                        <? if ($service->category_id == $category->id) { ?>
+
+                                <div class="tab-pane fade<? if ($counter == 2) { echo " in active"; } ?>" id="tabs-<?=$category->slug?>-<?=$counter?>">
+
+                                <div class="col-xs-12 col-sm-3">
+                                  </div>
+                                <div class="col-xs-12 col-sm-6">
+                                  <form id="callback-<?=$service->id?>" class="callback rd-mailform form_inline" method="post" action="">
+                                  <div class="form__inner">
+                                    <div class="form-wrap">
+                                      <input class="form-input phone f-1 required input-pink" id="contact-phone-<?=$service->id?>" type="text" name="phone">
+                                      <label class="form-label rd-input-label icon-gray-7" for="contact-phone-<?=$service->id?>" style="padding:5px;">Введите телефон</label>
+                                    </div>
+                                    <div class="form-button" style="padding-left:5px; padding-right:5px;">
+                                      <button class="button button-primary button-ujarak button-pink" type="submit">Оставить заявку&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+                                    </div>
+                                  </div>
+                                  <span id="text-success-<?=$service->id?>"></span>
+                                  <textarea class="form-input f-1" id="contact-message-<?=$service->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?><br><br>Service: price <?=$service->price?><br><?=$category->title?><br><?=$service->description?><br></textarea>
+                                </form>
+                                  </div>
+                                  <div class="col-xs-12 col-sm-3">
+                                  </div>
+
+                                  <div class="col-xs-12 col-sm-12">
+                                  </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                  <p><?=$service->description?></p>
+                                  <div class="box-info"><span class="box-info__title"><?=$service->price?></span></div>
+                                  <br><br>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                  <?php $images_url = $service->showImagesUrl(); ?>
+                                  <img class="lazy nosave" data-src="<?=$IMG->resize(is_array($images_url) ? $images_url[0] : $images_url, 0, 400);?>" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" alt="Цена <?=$category->h1?> - <?=$service->title;?> фото <?=$service->id;?>" height="400">
+                                </div>
+
+                              </div>
+
+                            <? $counter++; ?>
+                        <? } ?>
+                    <?php endforeach; ?>
+                    </div>
+              </div>
+            </div>
+            <? } ?>
+            <!--стоимость-->
           </div>
         </div>
 </section>
-<!--Слайдер-->
-<!--кнопка Узнать подробнее-->
-<section id="send-form" class="section section-md bg-white oh text-center">
-<div class="shell">
-    <div>
-        <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">
-                  <div class="cell-sm-6 cell-md-7">                    
-                     <!--<div class="box-width-1 box-centered layout-columns__main">
-                        <p class="h3" style="margin:0;">Оставьте свои контакты, расскажу о всех предложениях и ценах</p>           
-                         <form id="callback" class="callback rd-mailform form_inline" method="post" action="">                
-                          <div class="form__inner">                           
-                            <div class="form-wrap">
-                              <input class="form-input phone f-1 required input-pink" id="contact-phone" type="text" name="phone">
-                              <label class="form-label rd-input-label icon-gray-7" for="contact-phone" style="padding:5px;">Введите телефон</label>
-                            </div>
-                            <div class="form-button" style="padding-left:5px; padding-right:5px;">
-                              <button class="button button-primary button-ujarak button-pink" type="submit">Узнать подробнее&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>    
-                            </div>
-                          </div>
-                          <span id="text-success"></span>
-                        </form>
-                        <p class="icon-gray-7">*предложения и свободные даты ограничены</p>
-                     </div>-->                     
-                    <div class="col-xs-12 col-sm-3">                      
-                    </div> 
-                   <div class="col-xs-12 col-sm-6">
-                     <p class="h3" style="margin:0;">Оставьте свои контакты, расскажу о всех предложениях и ценах</p>
-                     <form id="callback" class="callback rd-mailform form_inline" method="post" action="">                
-                          <div class="form__inner">                           
-                            <div class="form-wrap">
-                              <input class="form-input phone f-1 required input-pink" id="contact-phone" type="text" name="phone">
-                              <label class="form-label rd-input-label icon-gray-7" for="contact-phone" style="padding:5px;">Введите телефон</label>
-                            </div>
-                            <div class="form-button" style="padding-left:5px; padding-right:5px;">
-                              <button class="button button-primary button-ujarak button-pink" type="submit">Узнать подробнее&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>    
-                            </div>
-                          </div>
-                          <span id="text-success"></span>
-                        </form>
-                        <p class="icon-gray-7">*предложения и свободные даты ограничены</p>
-                    </div>    
-                    <div class="col-xs-12 col-sm-3">                      
-                    </div>                                                                           
-                </div>                 
-                </div>                 
-        </div>
-        <span id="portfolio-1"></span>
-    </div>
-</div>
-</section>
-<!--кнопка Узнать подробнее-->  
+<?php endforeach; ?>
+<!--Категории Альбомов-->
 <!--Ключевые преимущества-->
 <section class="section section-md bg-gray-lighter oh text-center" style="padding-top: 5px;">
 <div class="shell">
     <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
-        <div class="row">            
+        <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">
                  <br>
                  <h2>Почему, 5 лет подряд, клиенты доверяют мне?</h2>
@@ -140,557 +260,13 @@ $IMG = new ModelToolImage();
                     <div class="box-minimal__text">Снимаю правильные композиционные кадры, грамотно выбираю ракурсы и кадрирование. Путешествую и посещаю лучшие музеи и выставки, поэтому сразу вижу лучшие позы, свет, и локацию</div>
                   </article>
                 </div>
-              </div>                
-            </div>           
+              </div>
+            </div>
         </div>
     </div>
 </div>
 </section>
 <!--Ключевые преимущества-->
-<!--6 квадратов-->
-<!--<section class="section section-md bg-white oh text-center">
-<div class="shell">
-    <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
-        <div class="row">            
-            <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                     <a href="#weddings" >                                              
-                      <img class="lazy" data-src="up/i/album/Vitalij-Irina-Svadebnaya-fotosessiya-Mozyr/9.jpg" src="<?=$IMG->resize('up/i/album/Vitalij-Irina-Svadebnaya-fotosessiya-Mozyr/9.jpg', 60, 40, true);?>" alt="" width="600" height="400">                      
-                      <noscript><img src="up/i/album/Vitalij-Irina-Svadebnaya-fotosessiya-Mozyr/9.jpg" data-src="" alt="" ></noscript>
-                    </a>
-                      <div class="row"><a href="#weddings"><div class="col-sm-12 heading-4" style="min-height: 60px;">Свадебное портфолио</div></a></div>                      
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                     <a href="#families" >                                              
-                      <img class="lazy" data-src="up/i/album/2019-09-10-Tatyana-Lyubina/TL-332-Sarachuk.com.jpg" src="<?=$IMG->resize('up/i/album/2019-09-10-Tatyana-Lyubina/TL-332-Sarachuk.com.jpg', 60, 40, true);?>" alt="" width="600" height="400">                      
-                      <noscript><img src="up/i/album/2019-09-10-Tatyana-Lyubina/TL-332-Sarachuk.com.jpg" data-src="" alt="" ></noscript>
-                    </a>
-                      <div class="row"><a href="#families"><div class="col-sm-12 heading-4" style="min-height: 60px;">Семейное портфолио</div></a></div>                      
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                     <a href="#girls" >                                              
-                      <img class="lazy" data-src="up/i/album/2016-09-15-Alina-Sarachuk/Photo-747-Sarachuk.com.jpg" src="<?=$IMG->resize('up/i/album/2016-09-15-Alina-Sarachuk/Photo-747-Sarachuk.com.jpg', 60, 40, true);?>" alt="" width="600" height="400">                      
-                      <noscript><img src="up/i/album/2016-09-15-Alina-Sarachuk/Photo-747-Sarachuk.com.jpg" data-src="" alt="" ></noscript>
-                    </a>
-                      <div class="row"><a href="#girls"><div class="col-sm-12 heading-4" style="min-height: 60px;">Женское портфолио</div></a></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                     <a href="#men" >                                              
-                      <img class="lazy" data-src="up/i/album/2016-05-29-Sasha-Mozeiko/Photo-823-Sarachuk.com.jpg" src="<?=$IMG->resize('up/i/album/2016-05-29-Sasha-Mozeiko/Photo-823-Sarachuk.com.jpg', 60, 40, true);?>" alt="" width="600" height="400">                      
-                      <noscript><img src="up/i/album/2016-05-29-Sasha-Mozeiko/Photo-823-Sarachuk.com.jpg" data-src="" alt="" ></noscript>
-                    </a>
-                      <div class="row"><a href="#men"><div class="col-sm-12 heading-4" style="min-height: 60px;">Мужское портфолио</div></a></div>                      
-            </div>            
-        </div>
-    </div>
-</div>
-</section>-->
-<!--6 квадратов-->
-<!--Свадебные-->
-<section id="weddings" class="section section-variant-1 bg-white text-center">
-        <div class="shell">
-          <div class="range range-30 range-md-center">
-           <div class="cell-md-11 cell-lg-10">
-                          <h2>Свадебные фотосессии</h2>                          
-                    </div>
-            <div class="cell-md-11 cell-lg-10">            
-              <!-- Single post-->			  
-			  <div class="owl-carousel-wrap owl-carousel_style-1">
-                    <div class="owl-carousel-wrap owl-carousel_style-1"> 					
-				  <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav2" >				  
-				  <!--У всех фото должна быть заранее одинаковая высота-->					  
-					  <div><div><img class="owl-lazy" data-src="/up/i/album/Alexander-Alina-Svadba-Royal-Hall-Minsk/RH-82.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/Ivan-Valeriya-Svadba-Gomel/16.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/Olya-Fotosessiya-nevesty-Mozyr/12.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/Evgenij-Diana-Svadba-Minsk/59.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/Mihail-Olga-Svadba-Mozyr/6.jpg" alt="" width="968" height="537"></div></div>			  
-					</div>
-					<div class="owl-outer-navigation" id="owl-carousel-nav2">
-						<button class="owl-arrow owl-arrow-prev">
-						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
-							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.5" y1="8" x2="1" y2="8" ></line>
-							<polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="8.8,15 1,8 8.8,1"></polyline>
-						  </svg>
-						</button>
-						<button class="owl-arrow owl-arrow-next">
-						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
-							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1" y1="8" x2="27.5" y2="8"></line>
-							<polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="19.7,15 27.5,8 19.7,1"></polyline>
-						  </svg>
-						</button>
-					  </div>
-				</div></div>
-            </div>
-            
-            <div class="cell-md-11 cell-lg-10">
-            <!--2 квадрата-->
-            <section class="section section-md bg-white oh text-center" style="padding-top: 0px;">
-            <div class="shell">
-                <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
-                    <div class="row">                           
-                                <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">                                 
-                                 <p>Фотосъемка прогулки — важная часть свадебного дня. Именно эти кадры надолго остаются в памяти и составляют основу свадебного фотоальбома. Однако стоит помнить и о ключевых событиях: сборы, официальная часть, банкет. Эти кадры чаще всего вспоминаются и пересматриваются.</p>
-                                 <br>
-                                </div>      
-                             <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                             <?php $album = $albums[0]; ?>
-                             <?php $images_url = $album->showImagesUrl(); ?>
-                              <a href="/album/<?=$album->slug;?>">
-                                  <img class="lazy" data-src="<?=$IMG->resize($images_url[0], 370, 250, true);?>" src="<?=$IMG->resize($images_url[0], 37, 25, true);?>" alt="<?=$album->h1;?>" width="370" height="250">
-                                  <noscript><img src="<?=$IMG->resize($images_url[0], 370, 250, true);?>" data-src="" alt="<?=$album->h1;?>" ></noscript>
-                              </a>
-                              <div class="row"><a href="/album/<?=$album->slug;?>"><div class="col-sm-12 heading-4" style="min-height: 60px;"><?=$album->h1;?></div></a></div>
-                            </div>                            
-                             <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                             <?php $album = $albums[1]; ?>
-                             <?php $images_url = $album->showImagesUrl(); ?>
-                              <a href="/album/<?=$album->slug;?>">
-                                  <img class="lazy" data-src="<?=$IMG->resize($images_url[0], 370, 250, true);?>" src="<?=$IMG->resize($images_url[0], 37, 25, true);?>" alt="<?=$album->h1;?>" width="370" height="250">
-                                  <noscript><img src="<?=$IMG->resize($images_url[0], 370, 250, true);?>" data-src="" alt="<?=$album->h1;?>" ></noscript>
-                              </a>
-                              <div class="row"><a href="/album/<?=$album->slug;?>"><div class="col-sm-12 heading-4" style="min-height: 60px;"><?=$album->h1;?></div></a></div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            </section>
-            <!--2 квадрата-->
-            </div>
-            <div class="cell-xs-12 bg-white" style="margin-top:0;">                 
-                  <a href="/category/wedding"><div class="button button-icon button-icon-right button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-right"></span>Больше свадебных альбомов</div></a>       
-            </div>
-            <!--стоимость-->
-            <!--<div class="cell-xs-12 bg-gray-lighter" style="padding: 15px;">
-              <h3>СВАДЕБНЫЕ - Стоимость</h3>
-              <div class="tabs-custom tabs-horizontal tabs-corporate" id="tabs-1" >
-                
-                <ul class="nav nav-tabs">
-                  <li><a href="#tabs-1-1" data-toggle="tab">Лайт</a></li>
-                  <li class="active"><a href="#tabs-1-2" data-toggle="tab">Стандарт</a></li>
-                  <li><a href="#tabs-1-3" data-toggle="tab">Максимум</a></li>
-                  <li><a href="#tabs-1-4" data-toggle="tab">Доп.опции</a></li>
-                </ul>
-                
-                <div class="tab-content">
-                  <div class="tab-pane fade" id="tabs-1-1">
-                    <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly.  </p>
-                    <p>Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade in active" id="tabs-1-2">
-                    <p>The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click.  </p>
-                    <p>We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. Our blog and social media accounts are available to encourage communication and connection between clients and personnel and tell you more about us in the informal environments where we can have a dialogue instead of just a narrative like that.  With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. </p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="tabs-1-3">
-                    <p>We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers.  </p>
-                    <p>Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. Our blog and social media accounts are available to encourage communication and connection between clients and personnel and tell you more about us.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="tabs-1-4">
-                    <p>Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly.  </p>
-                    <p>You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>-->
-            <!--стоимость-->
-          </div>
-        </div>
-</section>
-<!--Свадебные-->
-<!--Семейные-->
-<section id="families" class="section section-variant-1 bg-white text-center">
-        <div class="shell">
-          <div class="range range-30 range-md-center">
-           <div class="cell-md-11 cell-lg-10">
-                          <h2>Семейные фотосессии</h2>
-                          <p>Творческие образы внесут разнообразия в личный альбом. Грамотный выбор места съемки — важный фактор, от которого зависит результат.</p>
-                    </div>
-            <div class="cell-md-11 cell-lg-10">            
-              <!-- Single post-->			  
-			  <div class="owl-carousel-wrap owl-carousel_style-1">
-                    <div class="owl-carousel-wrap owl-carousel_style-1"> 					
-				  <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav3" >				  
-				  <!--У всех фото должна быть заранее одинаковая высота-->					  
-					  <div><div><img class="owl-lazy" data-src="up/i/album/2018-05-04-Татьяна-Ковалькова/TK-454-Sarachuk.com.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/2019-09-10-Tatyana-Lyubina/TL-327-Sarachuk.com.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/2019-08-18-Анастасия-Назаренко/AN-345-Sarachuk.com.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/2019-10-19-Alexandra-Kirinskaya/AK-4-Sarachuk.com.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/2017-08-20-Lesnie-nimfi/LN-465-Sarachuk.com.jpg" alt="" width="968" height="537"></div></div>					  
-					</div>
-					<div class="owl-outer-navigation" id="owl-carousel-nav3">
-						<button class="owl-arrow owl-arrow-prev">
-						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
-							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.5" y1="8" x2="1" y2="8" ></line>
-							<polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="8.8,15 1,8 8.8,1"></polyline>
-						  </svg>
-						</button>
-						<button class="owl-arrow owl-arrow-next">
-						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
-							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1" y1="8" x2="27.5" y2="8"></line>
-							<polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="19.7,15 27.5,8 19.7,1"></polyline>
-						  </svg>
-						</button>
-					  </div>
-				</div></div>
-            </div>
-            <div class="cell-md-11 cell-lg-10">
-            <!--2 квадрата-->
-            <section class="section section-md bg-white oh text-center" style="padding-top: 0px;">
-            <div class="shell">
-                <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
-                    <div class="row">                           
-                                <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">                                 
-                                 <p>Чтобы у вас сразу сложилось впечатление о том, как я снимаю - вот наглядные примеры полных фотосерий</p>
-                                 <br>
-                                </div>      
-                             <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                             <?php $album = $albums[0]; ?>
-                             <?php $images_url = $album->showImagesUrl(); ?>
-                              <a href="/album/semeinaya-fotosessiya-v-minske">
-                                  <img class="lazy" data-src="<?=$IMG->resize('up/i/album/2018-05-04-Татьяна-Ковалькова/TK-442-Sarachuk.com.jpg', 370, 250, true);?>" src="<?=$IMG->resize('up/i/album/2018-05-04-Татьяна-Ковалькова/TK-442-Sarachuk.com.jpg', 37, 25, true);?>" alt="" width="370" height="250">
-                                  <noscript><img src="<?=$IMG->resize('up/i/album/2018-05-04-Татьяна-Ковалькова/TK-442-Sarachuk.com.jpg', 370, 250, true);?>" data-src="" alt="" ></noscript>
-                              </a>
-                              <div class="row"><a href="/album/semeinaya-fotosessiya-v-minske"><div class="col-sm-12 heading-4" style="min-height: 60px;">Семейная фотосессия мама с дочкой</div></a></div>
-                            </div>                            
-                             <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                             <?php $album = $albums[1]; ?>
-                             <?php $images_url = $album->showImagesUrl(); ?>
-                              <a href="/album/tatyana-semeinaya-fotosessiya-v-mozyre">
-                                  <img class="lazy" data-src="<?=$IMG->resize('up/i/album/2019-09-10-Tatyana-Lyubina/TL-332-Sarachuk.com.jpg', 370, 250, true);?>" src="<?=$IMG->resize('up/i/album/2019-09-10-Tatyana-Lyubina/TL-332-Sarachuk.com.jpg', 37, 25, true);?>" alt="" width="370" height="250">
-                                  <noscript><img src="<?=$IMG->resize('up/i/album/2019-09-10-Tatyana-Lyubina/TL-332-Sarachuk.com.jpg', 370, 250, true);?>" data-src="" alt="" ></noscript>
-                              </a>
-                              <div class="row"><a href="/album/tatyana-semeinaya-fotosessiya-v-mozyre"><div class="col-sm-12 heading-4" style="min-height: 60px;">Семейная фотосессия</div></a></div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            </section>
-            <!--2 квадрата-->
-            </div>
-            <div class="cell-xs-12 bg-white" style="margin-top:0;">                 
-                  <a href="/category/family-and-children"><div class="button button-icon button-icon-right button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-right"></span>Больше семейных альбомов</div></a>       
-            </div>
-            <!--стоимость-->
-            <!--<div class="cell-xs-12 bg-gray-lighter" style="padding: 15px;">
-              <h3>СЕМЕЙНЫЕ - Стоимость</h3>
-              <div class="tabs-custom tabs-horizontal tabs-corporate" id="tabs-2">
-                
-                <ul class="nav nav-tabs">
-                  <li><a href="#tabs-2-1" data-toggle="tab">Лайт</a></li>
-                  <li class="active"><a href="#tabs-2-2" data-toggle="tab">Стандарт</a></li>
-                  <li><a href="#tabs-2-3" data-toggle="tab">Максимум</a></li>
-                  <li><a href="#tabs-2-4" data-toggle="tab">Доп.опции</a></li>
-                </ul>
-                
-                <div class="tab-content">
-                  <div class="tab-pane fade" id="tabs-2-1">
-                    <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly.  </p>
-                    <p>Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade in active" id="tabs-2-2">
-                    <p>The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click.  </p>
-                    <p>We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. Our blog and social media accounts are available to encourage communication and connection between clients and personnel and tell you more about us in the informal environments where we can have a dialogue instead of just a narrative like that.  With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. </p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="tabs-2-3">
-                    <p>We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers.  </p>
-                    <p>Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. Our blog and social media accounts are available to encourage communication and connection between clients and personnel and tell you more about us.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="tabs-2-4">
-                    <p>Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly.  </p>
-                    <p>You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>-->
-            <!--стоимость-->
-          </div>
-        </div>
-</section>
-<!--Семейные-->
-<!--Женские-->
-<section id="girls" class="section section-variant-1 bg-white text-center">
-        <div class="shell">
-          <div class="range range-30 range-md-center">
-           <div class="cell-md-11 cell-lg-10">
-                          <h2>Женские фотосессии</h2>
-                          <p>Хорошие качественные фотографии можно положить в личный альбом или оформить в красивую рамку. Портретная фотосъемка может проходить в студии, на улице или в удобном интерьере.</p>
-                    </div>
-            <div class="cell-md-11 cell-lg-10">            
-              <!-- Single post-->			  
-			  <div class="owl-carousel-wrap owl-carousel_style-1">
-                    <div class="owl-carousel-wrap owl-carousel_style-1"> 					
-				  <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav4" >				  
-				  <!--У всех фото должна быть заранее одинаковая высота-->					  
-					  <div><div><img class="owl-lazy" data-src="images/g1.jpg" src="" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/2016-09-18-MK-Olega-Zotova/OZ-578-Sarachuk.com.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="images/g2.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="images/g3.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="up/i/album/2016-09-15-Alina-Sarachuk/Photo-750-Sarachuk.com.jpg" alt="" width="968" height="537"></div></div>
-					</div>
-					<div class="owl-outer-navigation" id="owl-carousel-nav4">
-						<button class="owl-arrow owl-arrow-prev">
-						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
-							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.5" y1="8" x2="1" y2="8" ></line>
-							<polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="8.8,15 1,8 8.8,1"></polyline>
-						  </svg>
-						</button>
-						<button class="owl-arrow owl-arrow-next">
-						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
-							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1" y1="8" x2="27.5" y2="8"></line>
-							<polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="19.7,15 27.5,8 19.7,1"></polyline>
-						  </svg>
-						</button>
-					  </div>
-				</div></div>
-            </div>
-            <div class="cell-md-11 cell-lg-10">
-            <!--2 квадрата-->
-            <section class="section section-md bg-white oh text-center" style="padding-top: 0px;">
-            <div class="shell">
-                <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
-                    <div class="row">                           
-                                <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">                                 
-                                 <p>Чтобы у вас сразу сложилось впечатление о том, как я снимаю - вот наглядные примеры полных фотосерий</p>
-                                 <br>
-                                </div>      
-                             <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                             <?php $album = $albums[0]; ?>
-                             <?php $images_url = $album->showImagesUrl(); ?>
-                              <a href="/album/kreativnaya-fotosessiya-mk-zotova-v-moskve">
-                                  <img class="lazy" data-src="<?=$IMG->resize('up/i/album/2016-09-18-MK-Olega-Zotova/OZ-598-Sarachuk.com.jpg', 370, 250, true);?>" src="<?=$IMG->resize('up/i/album/2016-09-18-MK-Olega-Zotova/OZ-598-Sarachuk.com.jpg', 37, 25, true);?>" alt="" width="370" height="250">
-                                  <noscript><img src="<?=$IMG->resize('up/i/album/2016-09-18-MK-Olega-Zotova/OZ-598-Sarachuk.com.jpg', 370, 250, true);?>" data-src="" alt="" ></noscript>
-                              </a>
-                              <div class="row"><a href="/album/kreativnaya-fotosessiya-mk-zotova-v-moskve"><div class="col-sm-12 heading-4" style="min-height: 60px;">Креативная фотосессия</div></a></div>
-                            </div>                            
-                             <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                             <?php $album = $albums[1]; ?>
-                             <?php $images_url = $album->showImagesUrl(); ?>
-                              <a href="/album/alina-fotosessiya-v-zabroshennom-dome">
-                                  <img class="lazy" data-src="<?=$IMG->resize('up/i/album/2016-09-15-Alina-Sarachuk/Photo-746-Sarachuk.com.jpg', 370, 250, true);?>" src="<?=$IMG->resize('up/i/album/2016-09-15-Alina-Sarachuk/Photo-746-Sarachuk.com.jpg', 37, 25, true);?>" alt="" width="370" height="250">
-                                  <noscript><img src="<?=$IMG->resize('up/i/album/2016-09-15-Alina-Sarachuk/Photo-746-Sarachuk.com.jpg', 370, 250, true);?>" data-src="" alt="" ></noscript>
-                              </a>
-                              <div class="row"><a href="/album/alina-fotosessiya-v-zabroshennom-dome"><div class="col-sm-12 heading-4" style="min-height: 60px;">Рокерская фотосессия</div></a></div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            </section>
-            <!--2 квадрата-->
-            </div>
-            <div class="cell-xs-12 cell-sm-5 bg-white" style="margin:0 15px 15px 15px;">                 
-                  <a href="/category/girls-studio"><div class="button button-icon button-icon-right button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-right"></span>Больше женских (в студии)</div></a> 
-            </div><br>
-            <div class="cell-xs-12 cell-sm-5 bg-white" style="margin:0 5px 15px 15px;">                 
-                  <a href="/category/girls"><div class="button button-icon button-icon-right button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-right"></span>Больше женских (на локации)</div></a>    
-            </div>
-            <!--стоимость-->
-            <!--<div class="cell-xs-12 bg-gray-lighter" style="padding: 15px;">
-              <h3>Женские - Стоимость</h3>
-              <div class="tabs-custom tabs-horizontal tabs-corporate" id="tabs-3">
-                
-                <ul class="nav nav-tabs">
-                  <li><a href="#tabs-3-1" data-toggle="tab">Лайт</a></li>
-                  <li class="active"><a href="#tabs-3-2" data-toggle="tab">Стандарт</a></li>
-                  <li><a href="#tabs-3-3" data-toggle="tab">Максимум</a></li>
-                  <li><a href="#tabs-3-4" data-toggle="tab">Доп.опции</a></li>
-                </ul>
-                
-                <div class="tab-content">
-                  <div class="tab-pane fade" id="tabs-3-1">
-                    <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly.  </p>
-                    <p>Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade in active" id="tabs-3-2">
-                    <p>The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click.  </p>
-                    <p>We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. Our blog and social media accounts are available to encourage communication and connection between clients and personnel and tell you more about us in the informal environments where we can have a dialogue instead of just a narrative like that.  With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. </p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="tabs-3-3">
-                    <p>We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers.  </p>
-                    <p>Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. Our blog and social media accounts are available to encourage communication and connection between clients and personnel and tell you more about us.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="tabs-3-4">
-                    <p>Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly.  </p>
-                    <p>You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>-->
-            <!--стоимость-->
-          </div>
-        </div>
-</section>
-<!--Женские-->
-<!--Мужские-->
-<section id="men" class="section section-variant-1 bg-white text-center">
-        <div class="shell">
-          <div class="range range-30 range-md-center">
-           <div class="cell-md-11 cell-lg-10">
-                          <h2>Мужские фотосессии</h2>
-                          <p>Фотографии, которые показывают индивидуальность. Их приятно оставить на память, а также использовать в работе и в повседневных целях</p>
-                    </div>
-            <div class="cell-md-11 cell-lg-10">            
-              <!-- Single post-->			  
-			  <div class="owl-carousel-wrap owl-carousel_style-1">
-                    <div class="owl-carousel-wrap owl-carousel_style-1"> 					
-				  <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav5" >				  
-				  <!--У всех фото должна быть заранее одинаковая высота-->					  
-					  <div><div><img class="owl-lazy" data-src="images/m1.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="images/m2.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="images/m3.jpg" alt="" width="968" height="537"></div></div>
-					  <div><div><img class="owl-lazy" data-src="images/m4.jpg" alt="" width="968" height="537"></div></div>
-					</div>
-					<div class="owl-outer-navigation" id="owl-carousel-nav5">
-						<button class="owl-arrow owl-arrow-prev">
-						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
-							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.5" y1="8" x2="1" y2="8" ></line>
-							<polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="8.8,15 1,8 8.8,1"></polyline>
-						  </svg>
-						</button>
-						<button class="owl-arrow owl-arrow-next">
-						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
-							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1" y1="8" x2="27.5" y2="8"></line>
-							<polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="19.7,15 27.5,8 19.7,1"></polyline>
-						  </svg>
-						</button>
-					  </div>
-				</div></div>
-            </div>
-            <div class="cell-md-11 cell-lg-10">
-            <!--2 квадрата-->
-            <section class="section section-md bg-white oh text-center" style="padding-top: 0px;">
-            <div class="shell">
-                <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
-                    <div class="row">                           
-                                <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">                                 
-                                 <p>Чтобы у вас сразу сложилось впечатление о том, как я снимаю - вот наглядные примеры полных фотосерий</p>
-                                 <br>
-                                </div>      
-                             <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                             <?php $album = $albums[0]; ?>
-                             <?php $images_url = $album->showImagesUrl(); ?>
-                              <a href="/album/sasha-fotosessiya-modelnaya-sportivnaya-v-mozyre">
-                                  <img class="lazy" data-src="<?=$IMG->resize('up/i/album/2016-05-29-Sasha-Mozeiko/Photo-823-Sarachuk.com.jpg', 370, 250, true);?>" src="<?=$IMG->resize('up/i/album/2016-05-29-Sasha-Mozeiko/Photo-823-Sarachuk.com.jpg', 37, 25, true);?>" alt="" width="370" height="250">
-                                  <noscript><img src="<?=$IMG->resize('up/i/album/2016-05-29-Sasha-Mozeiko/Photo-823-Sarachuk.com.jpg', 370, 250, true);?>" data-src="" alt="" ></noscript>
-                              </a>
-                              <div class="row"><a href="/album/sasha-fotosessiya-modelnaya-sportivnaya-v-mozyre"><div class="col-sm-12 heading-4" style="min-height: 60px;">Фотосессия баскетболиста</div></a></div>
-                            </div>                            
-                             <div class="col-xs-12 col-sm-6 col-md-6 isotope-item">
-                             <?php $album = $albums[1]; ?>
-                             <?php $images_url = $album->showImagesUrl(); ?>
-                              <a href="/album/vladislav-modelnaya-mujskaya-fotosessiya-v-mozyre">
-                                  <img class="lazy" data-src="<?=$IMG->resize('up/i/album/2018-06-03-Vladislav-Almazov/Photo-801-Sarachuk.com.jpg', 370, 250, true);?>" src="<?=$IMG->resize('up/i/album/2018-06-03-Vladislav-Almazov/Photo-801-Sarachuk.com.jpg', 37, 25, true);?>" alt="" width="370" height="250">
-                                  <noscript><img src="<?=$IMG->resize('up/i/album/2018-06-03-Vladislav-Almazov/Photo-801-Sarachuk.com.jpg', 370, 250, true);?>" data-src="" alt="" ></noscript>
-                              </a>
-                              <div class="row"><a href="/album/vladislav-modelnaya-mujskaya-fotosessiya-v-mozyre"><div class="col-sm-12 heading-4" style="min-height: 60px;">Студийная мужская</div></a></div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            </section>
-            <!--2 квадрата-->            
-            </div>
-            <div class="cell-xs-12 bg-white" style="margin-top:0;">                 
-                  <a href="/category/men"><div class="button button-icon button-icon-right button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-right"></span>Больше мужских фотосессий</div></a> 
-            </div><span></span>
-            <!--стоимость-->
-            <!--<div class="cell-xs-12 bg-gray-lighter" style="padding: 15px;">
-              <h3>МУЖСКИЕ - Стоимость</h3>
-              <div class="tabs-custom tabs-horizontal tabs-corporate" id="tabs-4">
-                
-                <ul class="nav nav-tabs">
-                  <li><a href="#tabs-4-1" data-toggle="tab">Лайт</a></li>
-                  <li class="active"><a href="#tabs-4-2" data-toggle="tab">Стандарт</a></li>
-                  <li><a href="#tabs-4-3" data-toggle="tab">Максимум</a></li>
-                  <li><a href="#tabs-4-4" data-toggle="tab">Доп.опции</a></li>
-                </ul>
-                
-                <div class="tab-content">
-                  <div class="tab-pane fade" id="tabs-4-1">
-                    <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly.  </p>
-                    <p>Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade in active" id="tabs-4-2">
-                    <p>The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click.  </p>
-                    <p>We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. Our blog and social media accounts are available to encourage communication and connection between clients and personnel and tell you more about us in the informal environments where we can have a dialogue instead of just a narrative like that.  With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. </p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="tabs-4-3">
-                    <p>We sincerely hope that each and every user entering our website will find exactly what he/she is looking for. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers.  </p>
-                    <p>Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. Our blog and social media accounts are available to encourage communication and connection between clients and personnel and tell you more about us.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="tabs-4-4">
-                    <p>Our site design and navigation has been thoroughly thought out. The layout is aesthetically appealing, contains concise texts in order not to take your precious time. Text styling allows scanning the pages quickly. Site navigation is extremely intuitive and user-friendly.  </p>
-                    <p>You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site. With advanced features of activating account and new login widgets, you will definitely have a great experience of using our web page. It will tell you lots of interesting things about our company, its products and services, highly professional staff and happy customers. You will always know where you are now and will be able to skip from one page to another with a single mouse click. We use only trusted, verified content, so you can believe every word we are saying. We are always happy to greet the new visitors on our site.</p>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">                           
-                        <a href="#send-form"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-gift"></span>Получить подарки</div></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>-->
-            <!--стоимость-->
-          </div>
-        </div>
-</section>
-<!--Мужские-->
 <!-- FAQ-->
 <section class="section section-md bg-white">
         <div class="shell">
@@ -700,7 +276,7 @@ $IMG = new ModelToolImage();
                           <p></p>
                           <br>
                     </div>
-            <div class="cell-md-9 cell-lg-7">             
+            <div class="cell-md-9 cell-lg-7">
               <!-- Bootstrap collapse-->
               <div class="panel-group panel-group-custom panel-group-corporate" id="accordion1" role="tablist" aria-multiselectable="false">
                 <!-- Bootstrap panel-->
@@ -802,24 +378,24 @@ $IMG = new ModelToolImage();
 <!-- FAQ-->
 <!--Отправить заявку + получить подарок-->
 <!--<section id="send-form2" class="section section-md bg-gray-lighter text-center">
-<div class="shell">         
+<div class="shell">
   <div class="range range-md-center">
     <div class="cell-md-11 cell-lg-10">
      <h2>Проверьте, свободен ли я на вашу дату?</h2>
-     <p>Отправьте заявку прямо сейчас!</p>    
+     <p>Отправьте заявку прямо сейчас!</p>
      <div class="layout-columns__main" style="margin:15px auto;">
       <div class="layout-columns">
-       <div class="layout-columns__main-inner">            
-            <form class="callback" id="callback2" method="post" action="">             
+       <div class="layout-columns__main-inner">
+            <form class="callback" id="callback2" method="post" action="">
               <div class="form-wrap">
                 <input class="form-input required f-1" id="contact-email2" type="email" name="email">
-                <label class="form-label" for="contact-email">E-mail *<span style="color:green; font-size:80%;"> (нужен для отправки подарков):</span></label>                
+                <label class="form-label" for="contact-email">E-mail *<span style="color:green; font-size:80%;"> (нужен для отправки подарков):</span></label>
               </div>
               <div class="form-wrap">
-                <input class="form-input required f-1" id="contact-name2" type="text" name="name">         
+                <input class="form-input required f-1" id="contact-name2" type="text" name="name">
                 <label class="form-label" for="contact-name">Ваше имя *<span style="color:green; font-size:80%;"> (чтобы знать как к вам обращаться):</span></label>
-              </div>              
-              <div class="form-wrap">             
+              </div>
+              <div class="form-wrap">
                 <label class="form-label" for="contact-message">Инфо *<span style="color:green; font-size:80%;"> (как вы меня нашли, и что-то о себе):</span></label>
                 <textarea class="form-input required f-1" id="contact-message2" name="message"></textarea>
               </div>
@@ -828,7 +404,7 @@ $IMG = new ModelToolImage();
                 <label class="form-label" for="contact-date">Дата съемки<span style="color:green; font-size:80%;"> (чтобы узнать свободна ли дата):</span></label>
               </div>
               <div class="form-wrap">
-                <input class="form-input phone f-1" id="contact-phone2" type="text" name="phone">           
+                <input class="form-input phone f-1" id="contact-phone2" type="text" name="phone">
                 <label class="form-label" for="contact-phone">Телефон<span style="color:green; font-size:80%;"> (чтобы забрать Книгу №1, если у вас свадьба):</span></label>
               </div>
                <br>
@@ -836,8 +412,8 @@ $IMG = new ModelToolImage();
               <div class="form-wrap form-button offset-1">
                 <button class="button button-icon button-icon-left button-primary button-ujarak" type="submit"><span class="icon mdi mdi-gift"></span>Отправить запрос + получить подарки</button>
               </div>
-            </form>            
-          </div>              
+            </form>
+          </div>
       </div></div>
 	  <div>
         <div class="row">
@@ -854,11 +430,11 @@ $IMG = new ModelToolImage();
                 </div>
               </div>
             </div>
-                </div> 
+                </div>
         </div>
     </div>
-      <br>                 
-              <a href="#portfolio-1"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-up"></span>Вернуться к портфолио</div></a>         
+      <br>
+              <a href="#portfolio-1"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-up"></span>Вернуться к портфолио</div></a>
     </div>
   </div>
 </div>

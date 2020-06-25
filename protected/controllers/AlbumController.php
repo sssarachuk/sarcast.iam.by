@@ -34,14 +34,14 @@ class AlbumController extends Controller {
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($slug){
-            
+
         $album = Album::model()->find('slug=?', array($slug));
         if (!$album) { throw new CHttpException(404, 'Запрашиваемый вами альбом не найден'); }
 
         $category = Category::model()->findByPk($album->category_id);
 
-        $albums = Album::model()->findAll('category_id='.$category->id.' AND invisibility!=1 ORDER BY sort');
-        if (!$albums) { throw new CHttpException(404, 'Запрашиваемые вами альбомы не найдены'); }        
+        $albums = Album::model()->findAll('category_id='.$category->id.' AND sort>=0 ORDER BY sort');
+        if (!$albums) { throw new CHttpException(404, 'Запрашиваемые вами альбомы не найдены'); }
 
         $this->metaTags = array(
             'title'			=> $album->title,
@@ -52,7 +52,7 @@ class AlbumController extends Controller {
         $this->render('view',array(
                 'album' => $album,
                 'category' => $category,
-                'albums' => $albums,                
+                'albums' => $albums,
         ));
 
 	}

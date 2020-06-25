@@ -32,7 +32,7 @@ class AlbumsController extends Controller
 				'users'=>array('admin'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','slides'),
 				//'users'=>array('@'),
 				'users'=>array('admin'),
 			),
@@ -56,6 +56,21 @@ class AlbumsController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
+    
+    /**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionSlides($id)
+	{        
+        $album = Album::model()->find('id='.$id);
+        $category = Category::model()->findByPk($album->category_id);        
+        
+        $this->render('slides',array(
+			'model'=>$this->loadModel($id),
+            'category' => $category,
+		));
+	}    
 
 	/**
 	 * Creates a new model.
