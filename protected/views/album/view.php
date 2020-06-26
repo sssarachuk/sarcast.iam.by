@@ -97,6 +97,10 @@ $IMG = new ModelToolImage();
   </div>
 </section>
 
+<!--Скачать фотографии-->
+
+<!--Скачать фотографии-->
+
 <section class="section section-md bg-white oh text-center">
         <div class="shell">
     <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">

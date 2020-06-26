@@ -188,4 +188,19 @@ class Album extends ActiveRecord
 		}
 		return '';
 	}
+
+	/**
+	 * Get Filesize
+	 * @param string $file_url
+	 * @return string
+	 */
+	public function getFilesize($file_url) {
+		if(!file_exists($file_url))
+			return "Файл не найден";
+		$bytes = filesize($file_url);
+		$decimals = 2;
+		$sz = 'BKMGTP';
+		$factor = floor((strlen($bytes) - 1) / 3);
+		return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
+	}
 }

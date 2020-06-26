@@ -26,7 +26,7 @@ $this->menu=array(
         'slug',
         'folder',
 		//'created_at',
-        'category_id',        
+        'category_id',
 	),
 )); ?>
 
@@ -36,27 +36,29 @@ $this->menu=array(
 <!--<div><img class="owl-lazy" data-src="images/m-slider2.jpg" alt="" width="968" height="537"></div>-->
 
 <br>
-<div>   
+<div>
     <?php $images_url = $model->showImagesUrl(); ?>
     <? $counter = 0; ?>
     <?php foreach($images_url as $url): ?>
     <?php if ($counter != 0) { ?>
-    <div class="col-xs-12">                           
+    <div class="col-xs-12">
        <img src="<?=$url;?>" width="1000">
+       <br>
+       Размер файла: <?php echo $this->getFilesize($_SERVER['DOCUMENT_ROOT'].$url); ?>
        <br><br>
        <div><b><?=$url;?></b><br><br>
-       
+
       <!--Здесь должна быть кнопка, которая добавляет url фотографии в бд в Категории в поле photos в конец -->
       <p>*скопируйте адрес в блокнот (лучше выбирать только горизонтальные фото), одно имя файла на строку, и затем добавьте в Категориях в Слайды,
       <br>
       а в будущем здесь можно сделать кнопку, которая будет сама добавлять куда надо
-      </p>      
-       
+      </p>
+
        </div>
     </div>
     <? } ?>
     <? $counter = 1; ?>
     <?php endforeach; ?>
 </div>
-                              
-     
+
+
