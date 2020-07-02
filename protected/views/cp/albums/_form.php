@@ -89,14 +89,14 @@
 		<?php echo $form->labelEx($model,'gallery1_link'); ?>
 		<?php echo $form->textField($model,'gallery1_link'); ?>
 		<?php echo $form->error($model,'gallery1_link'); ?>
-		<small>(обработанные фотографии - ссылка например на облако Гугл Фото)</small>
+		<small>(весь отснятый НЕобработанный материал - ссылка на скачивание)</small>
 	</div>
     <br>
     <div class="row">
 		<?php echo $form->labelEx($model,'gallery2_link'); ?>
 		<?php echo $form->textField($model,'gallery2_link'); ?>
 		<?php echo $form->error($model,'gallery2_link'); ?>
-		<small>(весь отснятый НЕобработанный материал - ссылка например на облако Гугл Фото)</small>
+		<small>(готовые отобранные и обработанные фотографии - ссылка на скачивание)</small>
 	</div>
     <br>
     <div class="row">
@@ -165,6 +165,40 @@
 			)
 		));?>
 		<?php echo $form->error($model,'text2_eng'); ?>
+	</div>
+	<br>
+    <div class="row">
+		<?php echo $form->labelEx($model,'review_before'); ?>
+		<?php $this->widget('ext.ckeditor.CKEditorWidget', array(
+			"model" => $model,
+			"attribute" => 'review_before',
+			"defaultValue" => $model->review_before,
+			//Additional Parameter (Check http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html)
+			"config" => array(
+				"height" => "300px",
+				"width" => "100%",
+				"toolbar" => "Full",
+				"language" => "ru"
+			)
+		));?>
+		<?php echo $form->error($model,'review_after'); ?>
+	</div>
+	<br>
+    <div class="row">
+		<?php echo $form->labelEx($model,'review_after'); ?>
+		<?php $this->widget('ext.ckeditor.CKEditorWidget', array(
+			"model" => $model,
+			"attribute" => 'review_after',
+			"defaultValue" => $model->review_after,
+			//Additional Parameter (Check http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html)
+			"config" => array(
+				"height" => "300px",
+				"width" => "100%",
+				"toolbar" => "Full",
+				"language" => "ru"
+			)
+		));?>
+		<?php echo $form->error($model,'review_after'); ?>
 	</div>
     <br>
     <div class="row">

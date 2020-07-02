@@ -102,13 +102,13 @@ return array(
 				//show log messages on web pages
 				array(
 					'class' => 'CWebLogRoute',
-                                        'levels' => 'error, warning, info',
+					'levels' => 'error, warning, info',
 					'enabled' => GOD_MODE
 				)
 			),
 		),
 	),
-        'sourceLanguage' => 'code',
+	'sourceLanguage' => 'code',
 	'language' => 'ru',
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
@@ -123,15 +123,14 @@ return array(
 		'albumImagesWebDir'	=> '/up/i/album/',
 		'albumImagesSysDir'	=> dirname(__FILE__) . '/../../up/i/album/',
 		'serviceImagesWebDir'	=> '/up/i/service/',
-		'serviceImagesSysDir'	=> dirname(__FILE__) . '/../../up/i/service/',             
+		'serviceImagesSysDir'	=> dirname(__FILE__) . '/../../up/i/service/',
 		'exportWebDir'			=> '/up/export/',
 		'exportSysDir'			=> dirname(__FILE__) . '/../../up/export/',
 		'productsPerPage'		=> 20,
-                'translatedLanguages'=>array(
-                    'ru'=>'Russian',
-                    'en'=>'English',
-                    //'lv'=>'Latvian',
-                ),
-                'defaultLanguage'=>'ru',
+		'translatedLanguages'=>array(
+			'ru'=>'Russian',
+			'en'=>'English',
+		),
+		'defaultLanguage'=>'ru',
 	),
 );

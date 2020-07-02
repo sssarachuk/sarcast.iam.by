@@ -16,6 +16,9 @@ $this->menu=array(
 
 <h1>Просмотр альбома &laquo;<?=$model->h1?>&raquo;</h1>
 
+<p>Клиент может <a href="/album/<?=$model->id?>-<?=$model->slug?>" target="_blank" rel="nofollow"><b>скачать фотографии тут</b></a>.</p>
+<p>Все остальные <a href="/album/<?=$model->slug?>" target="_blank" rel="nofollow"><b>видят фотографии тут</b></a>.</p>
+
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(

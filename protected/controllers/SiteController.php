@@ -233,19 +233,46 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
                 $headers .= "From: " . Yii::app()->params['adminEmail'] . "\r\n";
                 $headers .= "X-mailer: Furniture Mailer\r\n";
 
-                $content = 'Имя: '.$_POST['name'].' <br />';
-                $content .= 'Телефон: '.$_POST['phone'].' <br />';
-                if(isset($_POST['email']) && $_POST['email']) $content .= 'Email: '.$_POST['email'].' <br />';
-                if(isset($_POST['date']) && $_POST['date']) $content .= 'Дата: '.$_POST['date'].' <br />';
-                if(isset($_POST['message']) && $_POST['message']) $content .= 'Сообщение: '.$_POST['message'].' <br />';
-                $content .= 'Подарки: '.К_ПОДАРКИ_НА_ЭМЕЙЛ;
+                $content = 'Имя: '.$_POST['name'].'<br>';
+                $content .= 'Телефон: '.$_POST['phone'].'<br>';
+                if(isset($_POST['email']) && $_POST['email']) $content .= 'Email: '.$_POST['email'].'<br>';
+                if(isset($_POST['date']) && $_POST['date']) $content .= 'Дата: '.$_POST['date'].'<br>';
+				if(isset($_POST['message']) && $_POST['message']) $content .= '<br>Сообщение: '.$_POST['message'].'<br><br>';
+				if(isset($_POST['message-footer']) && $_POST['message-footer']) $content .= '<br>Сообщение: '.$_POST['message-footer'].'<br><br>';
+                $content .= 'Подарки: '.К_ПОДАРКИ_НА_ЭМЕЙЛ.'<br><br>';
 
-                if(isset($_POST['email']) && $_POST['email']) {
-                   mail(Yii::app()->params['shopManagerEmail'], 'Копия письма клиенту - Обратная связь от '.К_ДОМЕН_САЙТА, 'Подарки (ссылка на гугл файлообменник): https://drive.google.com/open?id=1BawVGaCiRb5Nf-_yJr6rDrIPR59Oh-Ff', $headers);
-                   mail($_POST['email'], 'Обратная связь от '.К_ДОМЕН_САЙТА, 'Подарки (ссылка на гугл файлообменник): https://drive.google.com/open?id=1BawVGaCiRb5Nf-_yJr6rDrIPR59Oh-Ff', $headers);
-                }
+				if(isset($_POST['contact-question-1']) && $_POST['contact-question-1']) $content .= 'Вопрос 1: '.$_POST['contact-question-1'].'<br>';
+				if(isset($_POST['contact-question-2']) && $_POST['contact-question-2']) $content .= 'Вопрос 2: '.$_POST['contact-question-2'].'<br>';
+				if(isset($_POST['contact-question-3']) && $_POST['contact-question-3']) $content .= 'Вопрос 3: '.$_POST['contact-question-3'].'<br>';
+				if(isset($_POST['contact-question-4']) && $_POST['contact-question-4']) $content .= 'Вопрос 4: '.$_POST['contact-question-4'].'<br>';
+				if(isset($_POST['contact-question-5']) && $_POST['contact-question-5']) $content .= 'Вопрос 5: '.$_POST['contact-question-5'].'<br>';
+
+				if(isset($_POST['is-clientview']) && $_POST['is-clientview'])
+				{
+					//страница clientview
+					$album = Album::model()->find('id='.$_POST['is-clientview']);
+					$content2 = '';
+					if(isset($album->gallery1_link) && $album->gallery1_link)
+						$content2 .= 'Ссылка на фото (галерея 1): '.$album->gallery1_link.'<br><br>';
+					if(isset($album->gallery2_link) && $album->gallery2_link)
+						$content2 .= 'Ссылка на фото (галерея 2): '.$album->gallery2_link.'<br><br>';
+					$content .= '<br>'.$content2;
+					//сохранение в БД
+					$album->review_before = $content;
+					$album->save();
+				}
+				else
+				{
+					$content2 = 'Подарки: '.К_ПОДАРКИ_НА_ЭМЕЙЛ;
+				}
+				//отправка
+				if(isset($_POST['email']) && $_POST['email'])
+				{
+					mail(Yii::app()->params['shopManagerEmail'], 'Копия письма клиенту от '.К_ДОМЕН_САЙТА, $content2, $headers);
+					mail($_POST['email'], 'Обратная связь от '.К_ДОМЕН_САЙТА, $content2, $headers);
+				}
                 mail(Yii::app()->params['adminEmail'], 'Обратная связь от '.К_ДОМЕН_САЙТА, $content, $headers);
-                echo '1';
+				echo '1';
            }
         }
 }

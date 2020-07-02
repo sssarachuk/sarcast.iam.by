@@ -48,7 +48,7 @@ class Album extends ActiveRecord
 			array('created_at, updated_at, category_id', 'numerical', 'integerOnly'=>true),
 			array('sort', 'numerical'),
 			array('title, title_eng, h1, h1_eng, slug, folder, gallery1_link, gallery2_link, seo_description, seo_description_eng, seo_keywords, seo_keywords_eng', 'length', 'max'=>255),
-            array('text1, text1_eng, text2, text2_eng', 'length', 'min'=>0),
+            array('text1, text1_eng, text2, text2_eng, review_before, review_after', 'length', 'min'=>0),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, title_eng, slug, folder, photos, created_at, updated_at, category_id', 'safe', 'on'=>'search'),
@@ -103,7 +103,9 @@ class Album extends ActiveRecord
             'text1'	=> 'Текстовое описание в начале альбома (RUS)',
             'text1_eng'	=> 'Текстовое описание в начале альбома (перевод на ENG)',
             'text2'	=> 'Текстовое описание в конце альбома (RUS)',
-            'text2_eng'	=> 'Текстовое описание в конце альбома (перевод на ENG)',
+			'text2_eng'	=> 'Текстовое описание в конце альбома (перевод на ENG)',
+			'review_before' => 'Отзыв клиента (исходный)',
+			'review_after' => 'Отзыв клиента (измененный для публикации)',
             'seo_description'	=> 'SEO Описание (RUS)',
             'seo_description_eng'	=> 'SEO Description (ENG)',
             'seo_keywords'	=> 'SEO Ключевые слова (RUS)',

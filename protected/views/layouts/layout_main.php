@@ -152,7 +152,7 @@
                         <button class="button button-primary button-ujarak button-pink" type="submit">Забронировать дату&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
                         <br><span id="text-success-footer"></span>
                       </div>
-                      <textarea class="form-input f-1" id="contact-message-footer" name="message" style="display: none !important;">Url from footer: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?></textarea>
+                      <textarea class="form-input f-1" id="contact-message-footer" name="message-footer" style="display: none !important;">Url from footer: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?></textarea>
                   </form>
               <!-- RD Mailform-->
               <ul class="list-icons list-inline-sm">

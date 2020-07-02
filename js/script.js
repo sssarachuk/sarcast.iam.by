@@ -1973,7 +1973,9 @@ $('form[id^="callback-"]').each(function() {
           success: function(result){
                 if(result == '1'){
                     $(text_success2).html('Успешно отправлено!');
-                    //$(".f-1").val('');
+                    $(".f-1").val('');
+                    $('#client-gallery-' + form2_id).css('display','block');
+                    $('#client-button-' + form2_id).css('display','none');
                 }
           }
         });

@@ -24,6 +24,15 @@ $IMG = new ModelToolImage();
                   </ul>
                   <br><br>
                   <a href="#photo-1"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-down"></span>Смотреть фотографии</div></a>
+                <?php if(!empty($album->review_before) && empty($album->review_after)) { ?>
+                  <br><br>
+                  <?php if(!empty($album->gallery1_link)) { ?>
+                    <a href="<?=$album->gallery1_link?>" rel="nofollow" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+                  <?php } ?>
+                  <?php if(!empty($album->gallery2_link)) { ?>
+                    <a href="<?=$album->gallery2_link?>" rel="nofollow" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+                  <?php } ?>
+                <?php } ?>
                 </div>
               </div>
             </div>
@@ -67,37 +76,94 @@ $IMG = new ModelToolImage();
       </div>
 </section>
 
+<section id="form-1" class="section section-md bg-white oh text-center">
+    <div class="shell">
+    <div class="col-xs-12 col-sm-12">
+    <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
+      <h3>Заполните форму чтобы скачать фотографии</h3>
+      <p class="icon-gray-7">*несколько вопросов о вашем впечатлении при работе со мной</p>
+    <?php } else if(!empty($album->gallery1_link) || !empty($album->gallery2_link)) { ?>
+      <!--<h3>Ссылки на фотографии</h3>-->
+    <?php } ?>
+      <br>
+      </div>
+    <div class="col-xs-12 col-sm-3">
+      </div>
+    <div class="col-xs-12 col-sm-6">
+    <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
+      <!-- RD Mailform-->
+      <form class="callback" id="callback-<?=$album->id?>" method="post" action="">
+          <!--Ваш контактный Email-->
+          <div class="form-wrap">
+            <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
+            <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш контактный e-mail *</label>
+          </div>
+          <!--Ваш контактный телефон-->
+          <div class="form-wrap">
+            <input class="form-input phone f-1 required" id="contact-phone-<?=$album->id?>" type="text" name="phone">
+            <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш контактный телефон *</label>
+          </div>
+          <!--Вопросы-->
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-1-<?=$album->id?>">Несколько слов о съемке *</label>
+            <textarea class="form-input required f-1" id="contact-question-1-<?=$album->id?>" name="contact-question-1"></textarea>
+          </div>
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-2-<?=$album->id?>">Несколько слов обо мне *</label>
+            <textarea class="form-input required f-1" id="contact-question-2-<?=$album->id?>" name="contact-question-2"></textarea>
+          </div>
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-3-<?=$album->id?>">Что вам понравилось? *</label>
+            <textarea class="form-input required f-1" id="contact-question-3-<?=$album->id?>" name="contact-question-3"></textarea>
+          </div>
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-4-<?=$album->id?>">Что мне стоит улучшить? *</label>
+            <textarea class="form-input required f-1" id="contact-question-4-<?=$album->id?>" name="contact-question-4"></textarea>
+          </div>
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>">Ссылки на остальных специалистов (для их рекламы) *</label>
+            <textarea class="form-input required f-1" id="contact-question-5-<?=$album->id?>" name="contact-question-5"></textarea>
+          </div>
+          <!--Текст и кнопка-->
+          <span id="text-success-<?=$album->id?>"></span>
+          <div id="client-button-<?=$album->id?>" class="form-wrap form-button offset-1">
+            <br>
+            <button class="button button-primary button-ujarak button-pink" type="submit">Отправить&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+            <!--<p class="icon-gray-7">*после отправки перезагрузите страницу</p>-->
+          </div>
+          <!--Скрытое поле-->
+          <textarea class="form-input f-1" id="contact-message-<?=$album->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>, Path: <?=$album->folder?></textarea>
+          <!--Скрытое поле-->
+          <textarea class="form-input f-1" id="is-clientview-<?=$album->id?>" name="is-clientview" style="display: none !important;"><?=$album->id?></textarea>
+      </form>
+<?php } else { ?>
 
-<section class="section section-md bg-white oh text-center">
-  <div class="shell">
-  <div class="col-xs-12 col-sm-12">
-    <h3>Хотите себе такую съемку? Оставьте заявку</h3>
+  <?php } ?>
+
+    <div id="client-gallery-<?=$album->id?>" style="display: none !important;">
     <br>
+      <?php if(!empty($album->gallery1_link)) { ?>
+        <div>
+          <br>
+          <a href="<?=$album->gallery1_link?>" rel="nofollow" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+        </div>
+      <?php } ?>
+      <?php if(!empty($album->gallery2_link)) { ?>
+        <div>
+          <br>
+          <a href="<?=$album->gallery2_link?>" rel="nofollow" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+        </div>
+      <?php } ?>
     </div>
-  <div class="col-xs-12 col-sm-3">
-    </div>
-  <div class="col-xs-12 col-sm-6">
-    <form id="callback-<?=$album->id?>" class="callback rd-mailform form_inline" method="post" action="">
-    <div class="form__inner">
-      <div class="form-wrap">
-        <input class="form-input phone f-1 required input-pink" id="contact-phone-<?=$album->id?>" type="text" name="phone">
-        <label class="form-label rd-input-label icon-gray-7" for="contact-phone-<?=$album->id?>" style="padding:5px;">Введите телефон</label>
-      </div>
-      <div class="form-button" style="padding-left:5px; padding-right:5px;">
-        <button class="button button-primary button-ujarak button-pink" type="submit">Забронировать дату&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
-      </div>
-    </div>
-    <span id="text-success-<?=$album->id?>"></span>
-    <textarea class="form-input f-1" id="contact-message-<?=$album->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>, Path: <?=$album->folder?></textarea>
-  </form>
-  <p class="icon-gray-7">*вы узнаете цены и свободна ли ваша дата</p>
-    </div>
+
+  </div>
     <div class="col-xs-12 col-sm-3">
     </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<section class="section section-md bg-white oh text-center">
+  <?php if(!empty($album->review_before)) { ?>
+    <section class="section section-md bg-white oh text-center">
         <div class="shell">
     <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
             <div class="row">
@@ -145,3 +211,4 @@ $IMG = new ModelToolImage();
           </div>
       </div>
       </section>
+  <?php } ?>
