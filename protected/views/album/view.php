@@ -123,23 +123,23 @@ $IMG = new ModelToolImage();
                    <? $counter++; ?>
                 <? } ?>
               <?php endforeach; ?>
-
-                <?php if ($counter < 6) ?><!--если недобрали 6шт, то заполнить с начала-->
-                    <?php foreach($albums as $alb): ?>
-                      <?php $images_url = $alb->showImagesUrl(); ?>
-                      <?php if ($alb->id == $album->id) {
-                            break;//нашли текущий альбом, закончили
-                        } elseif ($counter <= 6) { ?>
-                            <div class="col-xs-12 col-sm-6 col-md-4 isotope-item">
-                              <a href="/album/<?=$alb->slug;?>" >
-                                  <img class="lazy" data-src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" src="<?=$IMG->resize($images_url[0], 37, 37, true);?>" alt="<?=$alb->title;?>" width="370" height="370">
-                                  <noscript><img src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" data-src="" alt="<?=$alb->title;?>" ></noscript>
-                                  </a>
-                              <div class="row"><a href="/album/<?=$alb->slug;?>"><div class="col-sm-12 heading-4" style="min-height: 60px;"><?=$alb->h1;?> (<?=count($images_url);?> фото)</div></a></div>
-                           </div>
-                           <? $counter++; ?>
-                        <? } ?>
-                      <?php endforeach; ?>
+              <?php if ($counter == 0) $counter = 1; ?> <!--если текущий альбом был скрыт-->
+              <?php if ($counter < 6) ?><!--если недобрали 6шт, то заполнить с начала-->
+                  <?php foreach($albums as $alb): ?>
+                    <?php $images_url = $alb->showImagesUrl(); ?>
+                    <?php if ($alb->id == $album->id) {
+                          break;//нашли текущий альбом, закончили
+                      } elseif ($counter <= 6) { ?>
+                          <div class="col-xs-12 col-sm-6 col-md-4 isotope-item">
+                            <a href="/album/<?=$alb->slug;?>" >
+                                <img class="lazy" data-src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" src="<?=$IMG->resize($images_url[0], 37, 37, true);?>" alt="<?=$alb->title;?>" width="370" height="370">
+                                <noscript><img src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" data-src="" alt="<?=$alb->title;?>" ></noscript>
+                                </a>
+                            <div class="row"><a href="/album/<?=$alb->slug;?>"><div class="col-sm-12 heading-4" style="min-height: 60px;"><?=$alb->h1;?> (<?=count($images_url);?> фото)</div></a></div>
+                          </div>
+                          <? $counter++; ?>
+                      <? } ?>
+                    <?php endforeach; ?>
 
             </div>
           </div>
