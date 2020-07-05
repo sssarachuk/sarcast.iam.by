@@ -25,7 +25,7 @@ $IMG = new ModelToolImage();
                       <img class="lazy" data-src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" src="<?=$IMG->resize($images_url[0], 37, 37, true);?>" alt="<?=$album->title;?>" width="370" height="370">
                       <noscript><img src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" data-src="" alt="<?=$album->title;?>" ></noscript>
                       </a>
-                  <div class="row"><a href="/album/<?=$album->slug;?>"><div class="col-sm-12 heading-4" style="min-height: 60px;"><?=$album->h1;?> (<?=count($images_url);?> фото)</div></a></div>
+                  <div class="row"><a href="/album/<?=$album->slug;?>"><div class="col-sm-12 heading-4" style="min-height: 60px;"><?=$album->h1;?> (<?=count($images_url)-1;?> фото)</div></a></div>
                 </div>
 
                 <?php endforeach; ?>
