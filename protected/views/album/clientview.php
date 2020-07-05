@@ -121,7 +121,7 @@ $IMG = new ModelToolImage();
             <textarea class="form-input required f-1" id="contact-question-4-<?=$album->id?>" name="contact-question-4"></textarea>
           </div>
           <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>">Ссылки на остальных специалистов (для их рекламы) *</label>
+            <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>">Кто еще работал на съемке? (ссылки на их странички) *</label>
             <textarea class="form-input required f-1" id="contact-question-5-<?=$album->id?>" name="contact-question-5"></textarea>
           </div>
           <!--Текст и кнопка-->
@@ -159,6 +159,16 @@ $IMG = new ModelToolImage();
   </div>
     <div class="col-xs-12 col-sm-3">
     </div>
+    <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
+      <div><span>Поделитесь с друзьями (<?=count($album->showImagesUrl())-1;?> фото, лучшие): </span>
+        <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+        <script src="https://yastatic.net/share2/share.js"></script>
+        <div class="ya-share2"
+        data-services="vkontakte,odnoklassniki,facebook,viber,whatsapp,telegram" data-title="<?=$category->h1?> - <?=$album->h1?> (<?=count($album->showImagesUrl())-1;?> фото)" data-description="<?=$album->title?>" data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>" data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
+        </div>
+      </div>
+    </div>
+
     </div>
   </section>
 

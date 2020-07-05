@@ -94,6 +94,7 @@ class AlbumsController extends Controller
 
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'album' => $album,
 			'category' => $category,
 		));
 	}
