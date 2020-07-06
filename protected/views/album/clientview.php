@@ -164,7 +164,11 @@ $IMG = new ModelToolImage();
         <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
         <script src="https://yastatic.net/share2/share.js"></script>
         <div class="ya-share2"
-        data-services="vkontakte,odnoklassniki,facebook,viber,whatsapp,telegram" data-title="<?=$category->h1?> ✈ <?=$album->h1?> (<?=count($album->showImagesUrl())-1;?> фото)" data-description="<?=$album->seo_description?>" data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>" data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
+        data-services="vkontakte,odnoklassniki,facebook,viber,whatsapp,telegram"
+        data-title="<?=$album->h1?> ✈ <?=$category->h1?>"
+        data-description="<?=$album->title?>"
+        data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
+        data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
         </div>
       </div>
     </div>

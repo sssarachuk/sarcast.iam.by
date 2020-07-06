@@ -45,13 +45,13 @@ class Controller extends CController {
 
 		//Twitter
 		Yii::app()->clientScript->registerMetaTag('summary_large_image', 'twitter:card', null, array(), null);
-		Yii::app()->clientScript->registerMetaTag($album->h1.' ('.$count_ph.' фото)', 'twitter:title', null, array(), null);
+		Yii::app()->clientScript->registerMetaTag($album->h1, 'twitter:title', null, array(), null);
 		Yii::app()->clientScript->registerMetaTag('['.$category->h1.'] '.$album->title, 'twitter:description', null, array(), null);
 		Yii::app()->clientScript->registerMetaTag(TWITTER_АККАУНТ, 'twitter:site', null, array(), null);
 		Yii::app()->clientScript->registerMetaTag($image_url, 'twitter:image:src', null, array(), null);
 		//Other
 		Yii::app()->clientScript->registerMetaTag('article', null, null, ['property' => 'og:type'], null);
-		Yii::app()->clientScript->registerMetaTag($album->h1.' ('.$count_ph.' фото)', null, null, ['property' => 'og:title'], null);
+		Yii::app()->clientScript->registerMetaTag($album->h1, null, null, ['property' => 'og:title'], null);
 		Yii::app()->clientScript->registerMetaTag('['.$category->h1.'] '.$album->title, null, null, ['property' => 'og:description'], null);
 		Yii::app()->clientScript->registerMetaTag($_SERVER['HTTP_HOST'], null, null, ['property' => 'og:site_name'], null);
 		Yii::app()->clientScript->registerMetaTag('ru_RU', null, null, ['property' => 'og:locale'], null);
