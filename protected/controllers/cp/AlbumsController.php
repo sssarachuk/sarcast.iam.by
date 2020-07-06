@@ -55,42 +55,12 @@ class AlbumsController extends Controller
 		$album = Album::model()->find('id='.$id);
 		$category = Category::model()->findByPk($album->category_id);
 
-		$image_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST'].$album->showImagesUrl()[0];
-
-		/* Twitter Card данные */
-		Yii::app()->clientScript->registerMetaTag('summary_large_image', 'twitter:card', null, array(), null);
-		Yii::app()->clientScript->registerMetaTag(TWITTER_АККАУНТ, 'twitter:site', null, array(), null);
-		Yii::app()->clientScript->registerMetaTag($category->h1.' - '.$album->h1, 'twitter:title', null, array(), null);
-		Yii::app()->clientScript->registerMetaTag($album->title, 'twitter:description', null, array(), null);
-		Yii::app()->clientScript->registerMetaTag($image_url, 'twitter:image', null, array(), null);
-		//Yii::app()->clientScript->registerMetaTag($album->h1.' фото', 'twitter:image:alt', null, array(), null);
-
-		//тип объекта og:type
-		Yii::app()->clientScript->registerMetaTag('article', null, null, ['property' => 'og:type'], null);
-		Yii::app()->clientScript->registerMetaTag(date('d/m/Y G:i', $album->created_at), null, null, ['property' => 'article:published_time'], null);
-		Yii::app()->clientScript->registerMetaTag(date('d/m/Y G:i', $album->updated_at), null, null, ['property' => 'article:modified_time'], null);
-		Yii::app()->clientScript->registerMetaTag(АВТОРЫ_КОНТЕНТА, null, null, ['property' => 'article:author'], null);
-		Yii::app()->clientScript->registerMetaTag($category->h1, null, null, ['property' => 'article:section'], null);
-		Yii::app()->clientScript->registerMetaTag($category->seo_keywords, null, null, ['property' => 'article:tag'], null);
-		//название og:title
-		$count_ph = count($album->showImagesUrl())-1;
-		Yii::app()->clientScript->registerMetaTag($category->h1.' - '.$album->h1.' ('.$count_ph.' фото)', null, null, ['property' => 'og:title'], null);
-		//описание og:description
-		Yii::app()->clientScript->registerMetaTag($album->title, null, null, ['property' => 'og:description'], null);
-		//url объекта og:url
-		Yii::app()->clientScript->registerMetaTag(((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST'].'/album/'.$album->slug, null, null, ['property' => 'og:url'], null);
-		//url изображения og:image
-		Yii::app()->clientScript->registerMetaTag($image_url, null, null, ['property' => 'og:image'], null);
-		//ширина og:image:width и высота изображения og:image:height
-		Yii::app()->clientScript->registerMetaTag(getimagesize($image_url)[0], null, null, ['property' => 'og:image:width'], null);
-		Yii::app()->clientScript->registerMetaTag(getimagesize($image_url)[1], null, null, ['property' => 'og:image:height'], null);
-		//альт текст изображения og:image:alt
-		Yii::app()->clientScript->registerMetaTag($album->h1.' фото', null, null, ['property' => 'og:image:alt'], null);
-		//название сайта og:site_name
-		Yii::app()->clientScript->registerMetaTag($_SERVER['HTTP_HOST'], null, null, ['property' => 'og:site_name'], null);
-		//язык сайта og:locale
-		Yii::app()->clientScript->registerMetaTag('ru_RU', null, null, ['property' => 'og:locale'], null);
-		Yii::app()->clientScript->registerMetaTag('en_US', null, null, ['property' => 'og:locale:alternate'], null);
+		$this->actionOpenGraphMetaTags($album, $category);
+		$this->metaTags = array(
+            'title'			=> $album->title.' | '.К_ДОМЕН_САЙТА,
+            'description'	=> $album->seo_description.' | '.К_ДОМЕН_САЙТА,
+            'keywords'		=> $album->seo_keywords
+		);
 
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
@@ -259,4 +229,5 @@ class AlbumsController extends Controller
 			Yii::app()->end();
 		}
 	}
+
 }

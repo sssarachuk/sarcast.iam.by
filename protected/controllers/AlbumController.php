@@ -54,11 +54,12 @@ class AlbumController extends Controller {
         $albums = Album::model()->findAll('category_id='.$category->id.' AND sort>=0 ORDER BY sort');
         if (!$albums) { throw new CHttpException(404, 'Запрашиваемые вами альбомы не найдены'); }
 
+		$this->actionOpenGraphMetaTags($album, $category);
         $this->metaTags = array(
             'title'			=> $album->title,
             'description'	=> $album->seo_description,
             'keywords'		=> $album->seo_keywords
-        );
+		);
 
         $this->render('view',array(
                 'album' => $album,
@@ -68,10 +69,10 @@ class AlbumController extends Controller {
 	}
 
 	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
+	 * Альбом с кнопкой Скачать
+	 * @param slug путь url
 	 */
-	public function actionClientView($slug){//альбом с кнопкой Скачать
+	public function actionClientView($slug){
 
 		$album = Album::model()->find('slug=?', array($slug));
 		if (!$album) { throw new CHttpException(404, 'Запрашиваемый вами альбом не найден'); }
@@ -83,11 +84,12 @@ class AlbumController extends Controller {
 		$albums = Album::model()->findAll('category_id='.$category->id.' AND sort>=0 ORDER BY sort');
         if (!$albums) { throw new CHttpException(404, 'Запрашиваемые вами альбомы не найдены'); }
 
-        $this->metaTags = array(
-            'title'			=> $album->title,
-            'description'	=> $album->seo_description,
+		$this->actionOpenGraphMetaTags($album, $category);
+		$this->metaTags = array(
+            'title'			=> $album->title.' - '.К_ДОМЕН_САЙТА,
+            'description'	=> $album->seo_description.' - '.К_ДОМЕН_САЙТА,
             'keywords'		=> $album->seo_keywords
-        );
+		);
 
         $this->render('clientview',array(
                 'album' => $album,

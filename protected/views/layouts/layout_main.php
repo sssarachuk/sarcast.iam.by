@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="ru">
+<html class="wide wow-animation" lang="ru" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <head>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <meta charset="utf-8">
