@@ -13,7 +13,7 @@
 class Slider extends ActiveRecord
 {
         public $image;
-    
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Slider the static model class
@@ -92,9 +92,10 @@ class Slider extends ActiveRecord
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
+			'pagination'=>array('pageSize'=>25),
 		));
 	}
-        
+
 	/**
         * Возвращает картинки товара для вывода
         * @param int $limit
@@ -117,8 +118,8 @@ class Slider extends ActiveRecord
 			return implode($delimiter, $arrPhotos);
 		}
 		return '';
-	}   
-        
+	}
+
 	/**
      * Возвращает url картинки товара для вывода
      * @param int $limit
@@ -144,6 +145,6 @@ class Slider extends ActiveRecord
 			return $arrPhotos;
 		}
 		return '';
-	}          
-        
+	}
+
 }

@@ -61,7 +61,7 @@ class Service extends ActiveRecord
 		return array(
 		);
 	}
-        
+
         public function behaviors() {
 		$behaviors = array(
 			'SlugBehavior' => array(
@@ -70,11 +70,11 @@ class Service extends ActiveRecord
 				'title_colAttribute' => 'title_eng',
 				//'max_slug_chars' => 125,
 				'overwriteAttribute' => FALSE
-			),                  
+			),
 		);
 		$behaviors = parent::behaviors($behaviors);
 		return $behaviors;
-	}         
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -129,9 +129,10 @@ class Service extends ActiveRecord
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
+			'pagination'=>array('pageSize'=>25),
 		));
 	}
-        
+
 	/**
         * Возвращает картинки товара для вывода
         * @param int $limit
@@ -154,8 +155,8 @@ class Service extends ActiveRecord
 			return implode($delimiter, $arrPhotos);
 		}
 		return '';
-	}   
-        
+	}
+
 	/**
      * Возвращает url картинки товара для вывода
      * @param int $limit
@@ -181,5 +182,5 @@ class Service extends ActiveRecord
 			return $arrPhotos;
 		}
 		return '';
-	}          
+	}
 }

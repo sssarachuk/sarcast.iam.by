@@ -87,9 +87,10 @@ class Page extends ActiveRecord
                 $criteria->compare('text',$this->meta_title,true);
                 $criteria->compare('text',$this->meta_keywords,true);
                 $criteria->compare('text',$this->meta_description,true);
-                
+
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
-		));                 
+			'pagination'=>array('pageSize'=>25),
+		));
 	}
 }

@@ -100,9 +100,10 @@ class Review extends ActiveRecord
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
+			'pagination'=>array('pageSize'=>25),
 		));
 	}
-        
+
 /**
         * Возвращает картинки товара для вывода
         * @param int $limit
@@ -125,8 +126,8 @@ class Review extends ActiveRecord
 			return implode($delimiter, $arrPhotos);
 		}
 		return '';
-	}   
-        
+	}
+
 	/**
      * Возвращает url картинки товара для вывода
      * @param int $limit
@@ -138,7 +139,7 @@ class Review extends ActiveRecord
 		if ($this->photos) {
 			$photos = array_map('trim', explode("\n", $this->photos));
 			$dir = Yii::app()->params['albumImagesWebDir'];
-                        
+
 			$arrPhotos = array();
 			$limit = $limit ? $limit : sizeof($photos);
 			for ($i = 0; $i < $limit; $i++) {
@@ -153,6 +154,6 @@ class Review extends ActiveRecord
 			return $arrPhotos;
 		}
 		return '';
-	}          
-        
+	}
+
 }
