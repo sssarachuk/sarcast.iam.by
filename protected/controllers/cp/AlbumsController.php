@@ -55,6 +55,7 @@ class AlbumsController extends Controller
 		$album = Album::model()->find('id='.$id);
 		$category = Category::model()->findByPk($album->category_id);
 
+		$hashtags = $this->getHashTags($album->seo_keywords);
 		$this->actionOpenGraphMetaTags($album, $category);
 		$this->metaTags = array(
             'title'			=> $album->title.' | '.К_ДОМЕН_САЙТА,
@@ -66,6 +67,7 @@ class AlbumsController extends Controller
 			'model'=>$this->loadModel($id),
 			'album' => $album,
 			'category' => $category,
+			'hashtags' => $hashtags,
 		));
 	}
 

@@ -82,7 +82,7 @@
 		<?php echo $form->labelEx($model,'sort'); ?>
 		<?php echo $form->textField($model,'sort'); ?>
 		<?php echo $form->error($model,'sort'); ?>
-		<small>(сортировка по возрастанию, цифры меньше 0 делают альбом скрытым)</small>
+		<small>(сортировка по возрастанию, цифры меньше 0 делают альбом скрытым, цифра -100500 не показывает даже в скрытых)</small>
 	</div>
     <br>
     <div class="row">
@@ -222,14 +222,14 @@
 		<?php echo $form->labelEx($model,'seo_keywords'); ?>
 		<?php echo $form->textField($model,'seo_keywords'); ?>
 		<?php echo $form->error($model,'seo_keywords'); ?>
-		<small>(meta-тег keywords для seo, на русском, не рекомендуется заполнять)</small>
+		<small>(ключевые фразы seo <b>для русскоязычной аудитории</b>, разделять запятыми, без доп.символов и значков, в начале самые важные фразы т.к. они преобразуются в хэштеги для репоста в соцсети)</small>
 	</div>
     <br>
     <div class="row">
 		<?php echo $form->labelEx($model,'seo_keywords_eng'); ?>
 		<?php echo $form->textField($model,'seo_keywords_eng'); ?>
 		<?php echo $form->error($model,'seo_keywords_eng'); ?>
-		<small>(meta-тег keywords для seo, на английском, не рекомендуется заполнять)</small>
+		<small>(ключевые фразы seo <b>для англоязычной аудитории</b>, разделять запятыми, без доп.символов и значков, в начале самые важные фразы т.к. они преобразуются в хэштеги для репоста в соцсети)</small>
 	</div>
 	<br>
 	<div class="row buttons">

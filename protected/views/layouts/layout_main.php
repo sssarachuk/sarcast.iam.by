@@ -160,7 +160,7 @@
                 <li><a class="icon icon-sm fa fa-phone-square icon-style-camera" href="viber://chat?number=375296039949" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
                 <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="https://www.instagram.com/sarachuk.sergey/" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
                 <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="https://m.vk.com/write6783151" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="https://www.facebook.com/sarachuk.sergey" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="https://www.facebook.com/sarachuk" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
               </ul>
               <!-- Rights-->
               <p class="rights"><a href="tel:+375296039949" rel="nofollow" target="_blank">+375(29)6039949</a></p>

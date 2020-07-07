@@ -41,18 +41,19 @@ class Controller extends CController {
 	 */
 	public function actionOpenGraphMetaTags($album, $category) {
 		$image_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST'].$album->showImagesUrl()[0];
-		$count_ph = count($album->showImagesUrl())-1;
+		//$count_ph = count($album->showImagesUrl())-1;
+		$hashtags = $this->getHashTags($album->seo_keywords);
 
 		//Twitter
 		Yii::app()->clientScript->registerMetaTag('summary_large_image', 'twitter:card', null, array(), null);
-		Yii::app()->clientScript->registerMetaTag($album->h1, 'twitter:title', null, array(), null);
+		Yii::app()->clientScript->registerMetaTag('Альбом «'.$album->h1.'»', 'twitter:title', null, array(), null);
 		Yii::app()->clientScript->registerMetaTag('['.$category->h1.'] '.$album->title, 'twitter:description', null, array(), null);
 		Yii::app()->clientScript->registerMetaTag(TWITTER_АККАУНТ, 'twitter:site', null, array(), null);
 		Yii::app()->clientScript->registerMetaTag($image_url, 'twitter:image:src', null, array(), null);
 		//Other
 		Yii::app()->clientScript->registerMetaTag('article', null, null, ['property' => 'og:type'], null);
-		Yii::app()->clientScript->registerMetaTag($album->h1, null, null, ['property' => 'og:title'], null);
-		Yii::app()->clientScript->registerMetaTag('['.$category->h1.'] '.$album->title, null, null, ['property' => 'og:description'], null);
+		Yii::app()->clientScript->registerMetaTag('Альбом «'.$album->h1.'»', null, null, ['property' => 'og:title'], null);
+		Yii::app()->clientScript->registerMetaTag('['.$category->h1.'] '.$album->title.' '.$hashtags, null, null, ['property' => 'og:description'], null);
 		Yii::app()->clientScript->registerMetaTag($_SERVER['HTTP_HOST'], null, null, ['property' => 'og:site_name'], null);
 		Yii::app()->clientScript->registerMetaTag('ru_RU', null, null, ['property' => 'og:locale'], null);
 		//Yii::app()->clientScript->registerMetaTag('en_US', null, null, ['property' => 'og:locale:alternate'], null);
@@ -67,6 +68,21 @@ class Controller extends CController {
 		Yii::app()->clientScript->registerMetaTag(getimagesize($image_url)[0], null, null, ['property' => 'og:image:width'], null);
 		Yii::app()->clientScript->registerMetaTag(getimagesize($image_url)[1], null, null, ['property' => 'og:image:height'], null);
 		//Yii::app()->clientScript->registerMetaTag($album->h1.' фото', null, null, ['property' => 'og:image:alt'], null);
+	}
+
+	/**
+	 * convert keywords to hashtags string
+	 * @param meta_keywords keywords string from meta tag
+	 */
+	public function getHashTags($meta_keywords = '') {
+		if(!empty($meta_keywords)) {
+			$hashtags = str_replace(' ','',$meta_keywords);
+			$hashtags = str_replace(',',' #',$hashtags);
+			$hashtags = "#".$hashtags;
+		} else {
+			$hashtags = '#'.$_SERVER['HTTP_HOST'];
+		}
+		return $hashtags;
 	}
 
 }

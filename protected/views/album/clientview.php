@@ -165,8 +165,8 @@ $IMG = new ModelToolImage();
         <script src="https://yastatic.net/share2/share.js"></script>
         <div class="ya-share2"
         data-services="vkontakte,odnoklassniki,facebook,viber,whatsapp,telegram"
-        data-title="<?=$album->h1?> ✈ <?=$category->h1?>"
-        data-description="<?=$album->title?>"
+        data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+        data-description="<?=$album->title?> <?=$hashtags?>"
         data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
         data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
         </div>

@@ -50,10 +50,10 @@ class AlbumController extends Controller {
 		}
 
         $category = Category::model()->findByPk($album->category_id);
-
         $albums = Album::model()->findAll('category_id='.$category->id.' AND sort>=0 ORDER BY sort');
         if (!$albums) { throw new CHttpException(404, 'Запрашиваемые вами альбомы не найдены'); }
 
+		$hashtags = $this->getHashTags($album->seo_keywords);
 		$this->actionOpenGraphMetaTags($album, $category);
         $this->metaTags = array(
             'title'			=> $album->title,
@@ -64,7 +64,8 @@ class AlbumController extends Controller {
         $this->render('view',array(
                 'album' => $album,
                 'category' => $category,
-                'albums' => $albums,
+				'albums' => $albums,
+				'hashtags' => $hashtags,
         ));
 	}
 
@@ -84,6 +85,7 @@ class AlbumController extends Controller {
 		$albums = Album::model()->findAll('category_id='.$category->id.' AND sort>=0 ORDER BY sort');
         if (!$albums) { throw new CHttpException(404, 'Запрашиваемые вами альбомы не найдены'); }
 
+		$hashtags = $this->getHashTags($album->seo_keywords);
 		$this->actionOpenGraphMetaTags($album, $category);
 		$this->metaTags = array(
             'title'			=> $album->title.' - '.К_ДОМЕН_САЙТА,
@@ -94,7 +96,8 @@ class AlbumController extends Controller {
         $this->render('clientview',array(
                 'album' => $album,
                 'category' => $category,
-                'albums' => $albums,
+				'albums' => $albums,
+				'hashtags' => $hashtags,
         ));
 	}
 

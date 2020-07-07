@@ -72,7 +72,7 @@ class CategoryController extends Controller {
 	 */
 	public function actionHiddenAlbums(){
 
-                    $albums = Album::model()->findAll('sort<0 ORDER BY sort');
+                    $albums = Album::model()->findAll('sort<0 AND sort !=-100500 ORDER BY sort');
 
                     $this->metaTags = array(
             			'title'			=> К_ЗАГОЛОВОК_СКРЫТЫХ_СТРАНИЦ,

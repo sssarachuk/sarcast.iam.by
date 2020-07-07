@@ -19,14 +19,14 @@ $this->menu=array(
 <p>Клиенту ссылка на <a href="/album/<?=$model->id?>-<?=$model->slug?>" target="_blank" rel="nofollow"><b>скачивание фотографий тут</b></a>.</p>
 <p>Остальным ссылка <a href="/album/<?=$model->slug?>" target="_blank" rel="nofollow"><b>без скачивания фотографий тут</b></a>.</p>
 
-<span>Репосты в соцсетях: </span>
+<span>Репосты в соцсети (если картинка не подгружается, то открыть повторно): </span>
 
 <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 <script src="https://yastatic.net/share2/share.js"></script>
 <div class="ya-share2"
  data-services="facebook,twitter,vkontakte,odnoklassniki,viber,whatsapp,telegram,pinterest,collections,moimir,blogger,delicious,digg,reddit,evernote,linkedin,lj,pocket,qzone,renren,sinaWeibo,surfingbird,tencentWeibo,tumblr,skype" data-limit="7"
- data-title="<?=$album->h1?> ✈ <?=$category->h1?>"
- data-description="<?=$model->title?>"
+ data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+ data-description="<?=$model->title?> <?=$hashtags?>"
  data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$model->showImagesUrl()[0];?>"
  data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$model->slug;?>">
 </div><br>
@@ -37,6 +37,7 @@ $this->menu=array(
 		'id',
 		'title',
 		'seo_description',
+		'seo_keywords',
         'slug',
         'folder',
 		//'created_at',
@@ -55,8 +56,8 @@ $this->menu=array(
 				<div class="col-xs-12 col-sm-12 col-md-12" style="position:relative; padding-top:5px;">
 					<div class="ya-share2" style="position:absolute; top:10px; left:10px;"
 						data-services="pinterest,collections,vkontakte,odnoklassniki,facebook,twitter,viber,whatsapp,telegram,moimir,blogger,delicious,digg,reddit,evernote,linkedin,lj,pocket,qzone,renren,sinaWeibo,surfingbird,tencentWeibo,tumblr,skype" data-limit="4"
-						data-title="<?=$album->h1?> ✈ <?=$category->h1?>"
-						data-description="<?=$model->title?>"
+						data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+						data-description="<?=$model->title?> <?=$hashtags?>"
 						data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$url;?>"
 						data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$model->slug;?>">
 					</div>
