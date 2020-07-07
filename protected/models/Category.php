@@ -122,7 +122,7 @@ class Category extends ActiveRecord
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
-			'pagination'=>array('pageSize'=>25),
+			'pagination'=>array('pageSize'=>20),
 		));
 	}
 

@@ -147,7 +147,7 @@ $IMG = new ModelToolImage();
             <div class="cell-xs-12 bg-white">
                   <a href="/category/<?=$category->slug?>"><div class="button button-primary button-ujarak button-pink">Посмотреть больше <span class="icon mdi mdi-arrow-right"></span></div></a>
                   <br>
-                  <p class="icon-gray-7">*все серии фотографий целиком</p>
+                  <p class="icon-gray-7">*все альбомы фотографий</p>
             </div>
             <div class="cell-md-11 cell-lg-10">
                 <p><?=$category->text1?></p>
