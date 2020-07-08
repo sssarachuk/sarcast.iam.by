@@ -24,7 +24,7 @@ $this->menu=array(
 <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 <script src="https://yastatic.net/share2/share.js"></script>
 <div class="ya-share2"
- data-services="facebook,twitter,vkontakte,odnoklassniki,viber,whatsapp,telegram,pinterest,collections,moimir,blogger,delicious,digg,reddit,evernote,linkedin,lj,pocket,qzone,renren,sinaWeibo,surfingbird,tencentWeibo,tumblr,skype" data-limit="7"
+ data-services="facebook,twitter,vkontakte,odnoklassniki,whatsapp,viber,telegram,pinterest,collections,moimir,blogger,delicious,digg,reddit,evernote,linkedin,lj,pocket,qzone,renren,sinaWeibo,surfingbird,tencentWeibo,tumblr,skype" data-limit="7"
  data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
  data-description="<?=$model->title?> <?=$hashtags?>"
  data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$model->showImagesUrl()[0];?>"
@@ -55,7 +55,7 @@ $this->menu=array(
 				<?php //if ($counter != 0) { ?>
 				<div class="col-xs-12 col-sm-12 col-md-12" style="position:relative; padding-top:5px;">
 					<div class="ya-share2" style="position:absolute; top:10px; left:10px;"
-						data-services="pinterest,collections,vkontakte,odnoklassniki,facebook,twitter,viber,whatsapp,telegram,moimir,blogger,delicious,digg,reddit,evernote,linkedin,lj,pocket,qzone,renren,sinaWeibo,surfingbird,tencentWeibo,tumblr,skype" data-limit="4"
+						data-services="pinterest,collections,vkontakte,odnoklassniki,facebook,twitter,whatsapp,viber,telegram,moimir,blogger,delicious,digg,reddit,evernote,linkedin,lj,pocket,qzone,renren,sinaWeibo,surfingbird,tencentWeibo,tumblr,skype" data-limit="4"
 						data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
 						data-description="<?=$model->title?> <?=$hashtags?>"
 						data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$url;?>"

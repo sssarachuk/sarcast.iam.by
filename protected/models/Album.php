@@ -127,7 +127,8 @@ class Album extends ActiveRecord
 		$criteria->compare('id',$this->id);
         $criteria->compare('category_id',$this->category_id);
 		$criteria->compare('title',$this->title,true);
-        $criteria->compare('title_eng',$this->title_eng,true);
+		$criteria->compare('title_eng',$this->title_eng,true);
+		$criteria->compare('h1',$this->h1,true);
 		$criteria->compare('slug',$this->slug,true);
 		$criteria->compare('folder',$this->folder,true);
 		$criteria->compare('photos',$this->photos,true);

@@ -47,7 +47,7 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'title',
+		'h1',
         'folder',
         'category_id',
         'sort',

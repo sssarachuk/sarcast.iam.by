@@ -67,6 +67,22 @@ $IMG = new ModelToolImage();
       </div>
 </section>
 
+<?php if(!empty($album->review_after)) { ?>
+  <section class="section section-md bg-white oh text-center">
+    <div class="shell">
+    <div class="col-xs-12 col-sm-12">
+      <h2>Отзыв:</h2>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      </div>
+    <div class="col-xs-12 col-sm-8">
+      <p><?=$album->review_after?></p>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+    </div>
+    </div>
+  </section>
+<?php } ?>
 
 <section class="section section-md bg-white oh text-center">
   <div class="shell">
