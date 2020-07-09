@@ -123,6 +123,7 @@ class Category extends ActiveRecord
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 			'pagination'=>array('pageSize'=>20),
+			'sort'=> ['defaultOrder' => ['id' => SORT_DESC]]
 		));
 	}
 
