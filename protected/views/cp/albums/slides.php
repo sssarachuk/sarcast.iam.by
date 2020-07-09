@@ -44,7 +44,7 @@ $this->menu=array(
     <div class="col-xs-12">
        <img src="<?=$url;?>" width="1000">
        <br>
-       Размер файла: <?php echo $this->getFilesize($_SERVER['DOCUMENT_ROOT'].$url); ?>
+       Размер файла: <?php echo $model->getFilesize($_SERVER['DOCUMENT_ROOT'].$url); ?>
        <br><br>
        <div><b><?=$url;?></b><br><br>
 

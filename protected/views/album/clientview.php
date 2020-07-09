@@ -27,10 +27,10 @@ $IMG = new ModelToolImage();
                 <?php if(!empty($album->review_before) && empty($album->review_after)) { ?>
                   <br><br>
                   <?php if(!empty($album->gallery1_link)) { ?>
-                    <a href="<?=$album->gallery1_link?>" rel="nofollow" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+                    <a href="<?=$album->gallery1_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
                   <?php } ?>
                   <?php if(!empty($album->gallery2_link)) { ?>
-                    <a href="<?=$album->gallery2_link?>" rel="nofollow" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+                    <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
                   <?php } ?>
                 <?php } ?>
                 </div>
@@ -145,13 +145,13 @@ $IMG = new ModelToolImage();
       <?php if(!empty($album->gallery1_link)) { ?>
         <div>
           <br>
-          <a href="<?=$album->gallery1_link?>" rel="nofollow" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+          <a href="<?=$album->gallery1_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
         </div>
       <?php } ?>
       <?php if(!empty($album->gallery2_link)) { ?>
         <div>
           <br>
-          <a href="<?=$album->gallery2_link?>" rel="nofollow" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+          <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
         </div>
       <?php } ?>
     </div>

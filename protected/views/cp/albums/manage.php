@@ -53,7 +53,7 @@ $('.search-form form').submit(function(){
         'sort',
 		array(
 			'class'=>'CButtonColumn',
-            'template'=>'{slides}{view}{update}{delete}',
+            'template'=>'{view}{update}{delete}{slides}',
             'buttons' => array(
                 'slides' => array(
                     'label' => 'Слайды',

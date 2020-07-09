@@ -100,9 +100,9 @@
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-element">
                     <ul class="list-icons list-inline-sm">
-                      <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera" href="https://api.whatsapp.com/send?phone=375296039949" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                      <li><a class="icon icon-sm fa fa-phone-square icon-style-camera" href="viber://chat?number=375296039949" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                      <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="https://m.vk.com/write6783151" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                      <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera" href="https://api.whatsapp.com/send?phone=375296039949" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                      <li><a class="icon icon-sm fa fa-phone-square icon-style-camera" href="viber://chat?number=375296039949" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                      <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="https://m.vk.com/write6783151" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
                     </ul>
                   </div>
                   <!-- RD Navbar Nav-->
@@ -156,14 +156,14 @@
                   </form>
               <!-- RD Mailform-->
               <ul class="list-icons list-inline-sm">
-                <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera" href="https://api.whatsapp.com/send?phone=375296039949" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-phone-square icon-style-camera" href="viber://chat?number=375296039949" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="https://www.instagram.com/sarachuk.sergey/" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="https://m.vk.com/write6783151" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="https://www.facebook.com/sarachuk" rel="nofollow" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera" href="https://api.whatsapp.com/send?phone=375296039949" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-phone-square icon-style-camera" href="viber://chat?number=375296039949" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="https://www.instagram.com/sarachuk.sergey/" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="https://m.vk.com/write6783151" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="https://www.facebook.com/sarachuk" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
               </ul>
               <!-- Rights-->
-              <p class="rights"><a href="tel:+375296039949" rel="nofollow" target="_blank">+375(29)6039949</a></p>
+              <p class="rights"><a href="tel:+375296039949" rel="nofollow noopener" target="_blank">+375(29)6039949</a></p>
               <p class="rights"><span>Сергей Сарачук</span><span>&nbsp&nbsp|&nbsp&nbsp&copy&nbsp2015-</span><span class="copyright-year"></span><br class="veil-xs">
                 <!-- {%FOOTER_LINK}-->
               </p>
