@@ -14,7 +14,7 @@ $IMG = new ModelToolImage();
           <div class="section-single__main">
             <div class="shell">
               <div class="range range-md-center">
-                <div class="cell-md-12 cell-lg-11" style="margin-bottom: 130px;">
+                <div class="cell-md-12 cell-lg-11" style="margin-bottom: 30px;">
                   <h1 class="text-bold"><?=$album->h1;?></h1>
                   <div class="divider-small divider-primary"> </div>
                   <ul class="breadcrumbs-custom__path">
@@ -23,7 +23,25 @@ $IMG = new ModelToolImage();
                     <li class="active"><?=$album->h1;?></li>
                   </ul>
                   <br><br>
+
+                  <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+                  <script src="https://yastatic.net/share2/share.js"></script>
+
+                  <?php if(!empty($album->review_before)) { ?>
+                  <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
+                  <div><span>Сделайте репост <?=count($album->showImagesUrl())-1;?> фото для друзей: </span>
+                    <div class="ya-share2"
+                    data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
+                    data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+                    data-description="<?=$album->title?> <?=$hashtags?>"
+                    data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
+                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
+                    </div>
+                  </div><br>
+                  </div>
+                <?php } else {?>
                   <a href="#photo-1"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-down"></span>Смотреть фотографии</div></a>
+                <?php } ?>
                 <?php if(!empty($album->review_before) && empty($album->review_after)) { ?>
                   <br><br>
                   <?php if(!empty($album->gallery1_link)) { ?>
@@ -81,7 +99,7 @@ $IMG = new ModelToolImage();
     <div class="col-xs-12 col-sm-12">
     <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
       <h3>Заполните форму чтобы скачать фотографии</h3>
-      <p class="icon-gray-7">*несколько вопросов о вашем впечатлении при работе со мной</p>
+      <p class="icon-gray-7">*опишите ваше впечатление при работе со мной в день съемки</p>
     <?php } else if(!empty($album->gallery1_link) || !empty($album->gallery2_link)) { ?>
       <!--<h3>Ссылки на фотографии</h3>-->
     <?php } ?>
@@ -105,23 +123,23 @@ $IMG = new ModelToolImage();
           </div>
           <!--Вопросы-->
           <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-1-<?=$album->id?>">Несколько слов о съемке *</label>
+            <label class="form-label icon-gray-7" for="contact-question-1-<?=$album->id?>"><?=ВОПРОС_1_НА_ЭМЕЙЛ?> *</label>
             <textarea class="form-input required f-1" id="contact-question-1-<?=$album->id?>" name="contact-question-1"></textarea>
           </div>
           <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-2-<?=$album->id?>">Несколько слов обо мне *</label>
+            <label class="form-label icon-gray-7" for="contact-question-2-<?=$album->id?>"><?=ВОПРОС_2_НА_ЭМЕЙЛ?> *</label>
             <textarea class="form-input required f-1" id="contact-question-2-<?=$album->id?>" name="contact-question-2"></textarea>
           </div>
           <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-3-<?=$album->id?>">Что вам понравилось? *</label>
+            <label class="form-label icon-gray-7" for="contact-question-3-<?=$album->id?>"><?=ВОПРОС_3_НА_ЭМЕЙЛ?> *</label>
             <textarea class="form-input required f-1" id="contact-question-3-<?=$album->id?>" name="contact-question-3"></textarea>
           </div>
           <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-4-<?=$album->id?>">Что мне стоит улучшить? *</label>
+            <label class="form-label icon-gray-7" for="contact-question-4-<?=$album->id?>"><?=ВОПРОС_4_НА_ЭМЕЙЛ?> *</label>
             <textarea class="form-input required f-1" id="contact-question-4-<?=$album->id?>" name="contact-question-4"></textarea>
           </div>
           <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>">Кто еще работал на съемке? (ссылки на их странички) *</label>
+            <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>"><?=ВОПРОС_5_НА_ЭМЕЙЛ?> *</label>
             <textarea class="form-input required f-1" id="contact-question-5-<?=$album->id?>" name="contact-question-5"></textarea>
           </div>
           <!--Текст и кнопка-->
@@ -142,27 +160,20 @@ $IMG = new ModelToolImage();
 
     <div id="client-gallery-<?=$album->id?>" style="display: none !important;">
     <br>
-      <?php if(!empty($album->gallery1_link)) { ?>
+      <?php if(!empty($album->gallery1_link) && empty($album->review_after)) { ?>
         <div>
           <br>
           <a href="<?=$album->gallery1_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
         </div>
       <?php } ?>
-      <?php if(!empty($album->gallery2_link)) { ?>
+      <?php if(!empty($album->gallery2_link) && empty($album->review_after)) { ?>
         <div>
           <br>
           <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
         </div>
       <?php } ?>
-    </div>
-
-  </div>
-    <div class="col-xs-12 col-sm-3">
-    </div>
-    <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
-      <div><span>Поделитесь с друзьями (<?=count($album->showImagesUrl())-1;?> фото, лучшие): </span>
-        <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-        <script src="https://yastatic.net/share2/share.js"></script>
+      <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
+      <div><span>Сделайте репост <?=count($album->showImagesUrl())-1;?> фото для друзей: </span>
         <div class="ya-share2"
         data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
         data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
@@ -171,6 +182,11 @@ $IMG = new ModelToolImage();
         data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
         </div>
       </div>
+      </div>
+    </div>
+
+  </div>
+    <div class="col-xs-12 col-sm-3">
     </div>
 
     </div>
