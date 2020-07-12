@@ -48,7 +48,7 @@ $this->menu=array(
 <section id="photo-1" class="section section-md bg-white oh text-center">
 	<div class="shell">
 		<div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
-			<div class="row">
+			<div class="row" style="padding-bottom:5px;">
 				<?php $images_url = $album->showImagesUrl(); ?>
 				<? $counter = 0; ?>
 				<?php foreach($images_url as $url): ?>
@@ -61,7 +61,7 @@ $this->menu=array(
 						data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$url;?>"
 						data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$model->slug;?>">
 					</div>
-					<img src="<?=$url;?>" alt="<?=$album->title;?> фото <?=$counter;?>" width="600">
+					<img src="<?=$url;?>" alt="<?=$album->title;?> фото <?=$counter;?>" width="720">
 				</div>
 				<? //} ?>
 				<? $counter++; ?>

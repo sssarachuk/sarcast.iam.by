@@ -65,7 +65,7 @@ class Category extends ActiveRecord
 			'SlugBehavior' => array(
 				'class' => 'application.models.behaviors.SlugBehavior',
 				'slug_colAttribute' => 'slug',
-				'title_colAttribute' => 'title_eng',
+				'title_colAttribute' => 'title',
 				//'max_slug_chars' => 125,
 				'overwriteAttribute' => FALSE
 			),

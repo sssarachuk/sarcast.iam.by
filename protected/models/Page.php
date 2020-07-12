@@ -64,9 +64,9 @@ class Page extends ActiveRecord
 			'id' => 'ID',
 			'name' => 'Имя страницы',
 			'text' => 'Текст',
-                        'meta_title' => 'Meta Title',
-                        'meta_keywords' => 'Meta Keywords',
-                        'meta_description' => 'Meta Description',
+			'meta_title' => 'Meta Title',
+			'meta_keywords' => 'Meta Keywords',
+			'meta_description' => 'Meta Description',
 		);
 	}
 
