@@ -78,8 +78,6 @@ class AlbumController extends Controller {
 		$album = Album::model()->find('slug=?', array($slug));
 		if (!$album) { throw new CHttpException(404, 'Запрашиваемый вами альбом не найден'); }
 
-		if (!empty($album->review_after)) return $this->actionView($slug);
-
 		$category = Category::model()->findByPk($album->category_id);
 
 		$albums = Album::model()->findAll('category_id='.$category->id.' AND sort>=0 ORDER BY sort');

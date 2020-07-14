@@ -258,8 +258,10 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
 						$content2 .= 'Ссылка на фото (галерея 2): '.$album->gallery2_link.'<br><br>';
 					$content .= '<br>'.$content2;
 					//сохранение в БД
-					$album->review_before = $content;
-					$album->save();
+					if (empty($album->review_before)) {
+						$album->review_before = $content;
+						$album->save();
+					}
 				}
 				else
 				{

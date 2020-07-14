@@ -17,19 +17,19 @@ $IMG = new ModelToolImage();
                 <div class="cell-md-12 cell-lg-11" style="margin-bottom: 30px;">
                   <h1 class="text-bold"><?=$album->h1;?></h1>
                   <div class="divider-small divider-primary"> </div>
-                  <ul class="breadcrumbs-custom__path">
+                  <!--<ul class="breadcrumbs-custom__path">
                     <li><a href="/">Главная</a></li>
                     <li><a href="/category/<?=$category->slug;?>"><?=$category->h1;?></a></li>
                     <li class="active"><?=$album->h1;?></li>
-                  </ul>
+                  </ul>-->
                   <br><br>
 
                   <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
                   <script src="https://yastatic.net/share2/share.js"></script>
 
-                  <?php if(!empty($album->review_before)) { ?>
                   <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
-                  <div><span>Сделайте репост <?=count($album->showImagesUrl())-1;?> фото для друзей: </span>
+                  <div><span>
+                    Лучший способ поделиться с друзьями -<br>отправьте в соцсети или сразу в лс: </span>
                     <div class="ya-share2"
                     data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
                     data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
@@ -39,18 +39,6 @@ $IMG = new ModelToolImage();
                     </div>
                   </div><br>
                   </div>
-                <?php } else {?>
-                  <a href="#photo-1"><div class="button button-icon button-icon-left button-default-outline button-ujarak"><span class="icon mdi mdi-arrow-down"></span>Смотреть фотографии</div></a>
-                <?php } ?>
-                <?php if(!empty($album->review_before) && empty($album->review_after)) { ?>
-                  <br><br>
-                  <?php if(!empty($album->gallery1_link)) { ?>
-                    <a href="<?=$album->gallery1_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
-                  <?php } ?>
-                  <?php if(!empty($album->gallery2_link)) { ?>
-                    <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
-                  <?php } ?>
-                <?php } ?>
                 </div>
               </div>
             </div>
@@ -78,7 +66,12 @@ $IMG = new ModelToolImage();
                 <?php foreach($images_url as $url): ?>
                 <?php if ($counter != 0) { ?>
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <?php $resized_image = $IMG->resize($url, 0, 800);
+                    <?php if(getimagesize($_SERVER['DOCUMENT_ROOT'].$url)[0] > getimagesize($_SERVER['DOCUMENT_ROOT'].$url)[1]) {
+                      $resized_image = $IMG->resize($url, 1080, 0);
+                    }
+                    else {
+                      $resized_image = $IMG->resize($url, 0, 800);
+                    }
                         $size = getimagesize($_SERVER['DOCUMENT_ROOT'].$resized_image);
                     ?>
                     <img class="lazy nosave" data-src="<?=$resized_image;?>" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" alt="<?=$album->title;?> фото <?=$counter;?>" <?php echo $size[3];?>>
@@ -96,93 +89,92 @@ $IMG = new ModelToolImage();
 
 <section id="form-1" class="section section-md bg-white oh text-center">
     <div class="shell">
-    <div class="col-xs-12 col-sm-12">
-    <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
-      <h3>Заполните форму чтобы скачать фотографии</h3>
-      <p class="icon-gray-7">*опишите ваше впечатление при работе со мной в день съемки</p>
-    <?php } else if(!empty($album->gallery1_link) || !empty($album->gallery2_link)) { ?>
-      <!--<h3>Ссылки на фотографии</h3>-->
-    <?php } ?>
-      <br>
+    <?php if(!empty($album->gallery1_link) || !empty($album->gallery2_link)) { ?>
+      <div class="col-xs-12 col-sm-12">
+        <h3>Скачивание фотографий доступно после заполнения формы</h3>
+        <br>
       </div>
+    <?php } ?>
     <div class="col-xs-12 col-sm-3">
       </div>
     <div class="col-xs-12 col-sm-6">
-    <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
+    <?php if(!empty($album->gallery1_link) || !empty($album->gallery2_link)) { ?>
       <!-- RD Mailform-->
       <form class="callback" id="callback-<?=$album->id?>" method="post" action="">
-          <!--Ваш контактный Email-->
+          <!--Ваше имя-->
           <div class="form-wrap">
-            <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
-            <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш контактный e-mail *</label>
+            <input class="form-input required f-1" id="contact-name-<?=$album->id?>" type="name" name="name">
+            <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>"><?=((empty($album->review_before)) ? 'Ваше имя / Ваши имена' : 'Ваша страничка в соцсетях') . ' *'; ?></label>
           </div>
           <!--Ваш контактный телефон-->
           <div class="form-wrap">
             <input class="form-input phone f-1 required" id="contact-phone-<?=$album->id?>" type="text" name="phone">
             <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш контактный телефон *</label>
           </div>
-          <!--Вопросы-->
-          <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-1-<?=$album->id?>"><?=ВОПРОС_1_НА_ЭМЕЙЛ?> *</label>
-            <textarea class="form-input required f-1" id="contact-question-1-<?=$album->id?>" name="contact-question-1"></textarea>
-          </div>
-          <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-2-<?=$album->id?>"><?=ВОПРОС_2_НА_ЭМЕЙЛ?> *</label>
-            <textarea class="form-input required f-1" id="contact-question-2-<?=$album->id?>" name="contact-question-2"></textarea>
-          </div>
-          <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-3-<?=$album->id?>"><?=ВОПРОС_3_НА_ЭМЕЙЛ?> *</label>
-            <textarea class="form-input required f-1" id="contact-question-3-<?=$album->id?>" name="contact-question-3"></textarea>
-          </div>
-          <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-4-<?=$album->id?>"><?=ВОПРОС_4_НА_ЭМЕЙЛ?> *</label>
-            <textarea class="form-input required f-1" id="contact-question-4-<?=$album->id?>" name="contact-question-4"></textarea>
-          </div>
-          <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>"><?=ВОПРОС_5_НА_ЭМЕЙЛ?> *</label>
-            <textarea class="form-input required f-1" id="contact-question-5-<?=$album->id?>" name="contact-question-5"></textarea>
-          </div>
+
+          <?php if(empty($album->review_before)) { ?>
+            <!--Ваш контактный Email-->
+            <div class="form-wrap">
+              <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
+              <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш контактный e-mail *</label>
+            </div>
+          <?php } ?>
+
+            <!--Вопросы-->
+            <div class="form-wrap">
+              <label class="form-label icon-gray-7" for="contact-question-1-<?=$album->id?>"><?=ВОПРОС_1_НА_ЭМЕЙЛ?> *</label>
+              <textarea class="form-input required f-1" id="contact-question-1-<?=$album->id?>" name="contact-question-1"></textarea>
+            </div>
+          <?php if(empty($album->review_before)) { ?>
+            <div class="form-wrap">
+              <label class="form-label icon-gray-7" for="contact-question-2-<?=$album->id?>"><?=ВОПРОС_2_НА_ЭМЕЙЛ?> *</label>
+              <textarea class="form-input required f-1" id="contact-question-2-<?=$album->id?>" name="contact-question-2"></textarea>
+            </div>
+            <div class="form-wrap">
+              <label class="form-label icon-gray-7" for="contact-question-3-<?=$album->id?>"><?=ВОПРОС_3_НА_ЭМЕЙЛ?> *</label>
+              <textarea class="form-input required f-1" id="contact-question-3-<?=$album->id?>" name="contact-question-3"></textarea>
+            </div>
+            <div class="form-wrap">
+              <label class="form-label icon-gray-7" for="contact-question-4-<?=$album->id?>"><?=ВОПРОС_4_НА_ЭМЕЙЛ?> *</label>
+              <textarea class="form-input required f-1" id="contact-question-4-<?=$album->id?>" name="contact-question-4"></textarea>
+            </div>
+            <div class="form-wrap">
+              <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>"><?=ВОПРОС_5_НА_ЭМЕЙЛ?> *</label>
+              <textarea class="form-input required f-1" id="contact-question-5-<?=$album->id?>" name="contact-question-5"></textarea>
+            </div>
+          <?php } ?>
+
           <!--Текст и кнопка-->
           <span id="text-success-<?=$album->id?>"></span>
           <div id="client-button-<?=$album->id?>" class="form-wrap form-button offset-1">
             <br>
-            <button class="button button-primary button-ujarak button-pink" type="submit">Отправить&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
-            <!--<p class="icon-gray-7">*после отправки перезагрузите страницу</p>-->
+            <button class="button button-primary button-ujarak button-pink" type="submit">Хочу скачать&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
           </div>
           <!--Скрытое поле-->
           <textarea class="form-input f-1" id="contact-message-<?=$album->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>, Path: <?=$album->folder?></textarea>
           <!--Скрытое поле-->
           <textarea class="form-input f-1" id="is-clientview-<?=$album->id?>" name="is-clientview" style="display: none !important;"><?=$album->id?></textarea>
       </form>
-<?php } else { ?>
+    <?php } ?>
 
-  <?php } ?>
-
-    <div id="client-gallery-<?=$album->id?>" style="display: none !important;">
-    <br>
-      <?php if(!empty($album->gallery1_link) && empty($album->review_after)) { ?>
-        <div>
-          <br>
+  <div id="client-gallery-<?=$album->id?>" style="display: none !important;" >
+      <br>
+      <div><span>Покажите эти <?=count($album->showImagesUrl())-1;?> фото друзьям: </span>
+          <div class="ya-share2"
+          data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
+          data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+          data-description="<?=$album->title?> <?=$hashtags?>"
+          data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
+          data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
+          </div>
+      </div>
+      <div class="col-xs-12 col-sm-12" style="margin-top: 30px;"></div>
+      <?php if(!empty($album->gallery1_link)) { ?>
           <a href="<?=$album->gallery1_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
-        </div>
       <?php } ?>
-      <?php if(!empty($album->gallery2_link) && empty($album->review_after)) { ?>
-        <div>
-          <br>
+      <?php if(!empty($album->gallery2_link)) { ?>
           <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
-        </div>
       <?php } ?>
-      <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
-      <div><span>Сделайте репост <?=count($album->showImagesUrl())-1;?> фото для друзей: </span>
-        <div class="ya-share2"
-        data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
-        data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
-        data-description="<?=$album->title?> <?=$hashtags?>"
-        data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-        data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
-        </div>
-      </div>
-      </div>
     </div>
 
   </div>

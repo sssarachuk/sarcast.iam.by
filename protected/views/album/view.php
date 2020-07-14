@@ -51,7 +51,12 @@ $IMG = new ModelToolImage();
                 <?php foreach($images_url as $url): ?>
                 <?php if ($counter != 0) { ?>
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <?php $resized_image = $IMG->resize($url, 0, 800);
+                    <?php if(getimagesize($_SERVER['DOCUMENT_ROOT'].$url)[0] > getimagesize($_SERVER['DOCUMENT_ROOT'].$url)[1]) {
+                      $resized_image = $IMG->resize($url, 1080, 0);
+                    }
+                    else {
+                      $resized_image = $IMG->resize($url, 0, 800);
+                    }
                         $size = getimagesize($_SERVER['DOCUMENT_ROOT'].$resized_image);
                     ?>
                     <img class="lazy nosave" data-src="<?=$resized_image;?>" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" alt="<?=$album->title;?> фото <?=$counter;?>" <?php echo $size[3];?>>
