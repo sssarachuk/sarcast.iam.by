@@ -61,7 +61,7 @@ $IMG = new ModelToolImage();
                     ?>
                     <img class="lazy nosave" data-src="<?=$resized_image;?>" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" alt="<?=$album->title;?> фото <?=$counter;?>" <?php echo $size[3];?>>
                     <noscript><img class="nosave" src="<?=$resized_image;?>" data-src="" alt="<?=$album->title;?>" ></noscript>
-                    </div>
+                </div>
                 <? } ?>
                 <? $counter++; ?>
                 <?php endforeach; ?>

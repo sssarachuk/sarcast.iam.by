@@ -214,13 +214,37 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
         public function actionAbout(){
 			$page = Page::model()->find('name=:name', array(':name'=>'about'));
 
+			$this->metaTags = array(
+				'title'			=> $page->meta_title,
+				'description'	=> $page->meta_description,
+				'keywords'		=> $page->meta_keywords
+			);
+
             $this->render('about',array('page' => $page));
         }
 
         public function actionContacts(){
 			$page = Page::model()->find('name=:name', array(':name'=>'contacts'));
 
+			$this->metaTags = array(
+				'title'			=> $page->meta_title,
+				'description'	=> $page->meta_description,
+				'keywords'		=> $page->meta_keywords
+			);
+
             $this->render('contacts',array('page' => $page));
+		}
+
+		public function actionPolicy(){
+			$page = Page::model()->find('name=:name', array(':name'=>'policy'));
+
+			$this->metaTags = array(
+				'title'			=> $page->meta_title,
+				'description'	=> $page->meta_description,
+				'keywords'		=> $page->meta_keywords
+			);
+
+            $this->render('policy',array('page' => $page));
         }
 
         public function actionSend(){

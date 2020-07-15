@@ -120,7 +120,7 @@
                     </li>
                     <li><a href="/review/">ОТЗЫВЫ<span></span><span></span><span></span><span></span></a></li>
                     <li><a href="/service/">ЦЕНЫ<span></span><span></span><span></span><span></span></a></li>
-                    <li><a href="/site/contacts/">КОНТАКТЫ<span></span><span></span><span></span><span></span></a></li>
+                    <li><a href="/site/about/">ОБО МНЕ<span></span><span></span><span></span><span></span></a></li>
                   </ul>
                 </div>
               </div>
@@ -164,7 +164,7 @@
               </ul>
               <!-- Rights-->
               <p class="rights"><a href="tel:+375296039949" rel="nofollow noopener" target="_blank">+375(29)6039949</a></p>
-              <p class="rights"><span>Сергей Сарачук</span><span>&nbsp&nbsp|&nbsp&nbsp&copy&nbsp2015-</span><span class="copyright-year"></span><br class="veil-xs">
+              <p class="rights"><span>&copy&nbsp2015-</span><span class="copyright-year"></span>&nbsp&nbsp<a href="/site/about" rel="nofollow noopener" target="_blank">Сергей Сарачук</a>&nbsp&nbsp|&nbsp&nbsp<a href="/site/policy" rel="nofollow noopener" target="_blank">Политика конфиденциальности</a><br class="veil-xs">
                 <!-- {%FOOTER_LINK}-->
               </p>
             </div>
