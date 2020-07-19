@@ -114,6 +114,7 @@
 			)
 		));?>
 		<?php echo $form->error($model,'text1'); ?>
+		<small>(любой текст, но лучше ссылки на участников проекта)</small>
 	</div>
     <br>
     <div class="row">
@@ -131,6 +132,7 @@
 			)
 		));?>
 		<?php echo $form->error($model,'text1_eng'); ?>
+		<small>(любой текст, но лучше ссылки на участников проекта)</small>
 	</div>
     <br>
     <div class="row">

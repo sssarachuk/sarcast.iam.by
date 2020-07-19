@@ -11,7 +11,6 @@ $IMG = new ModelToolImage();
             <div class="cell-md-11 cell-lg-10">
               <!-- Single post-->
               <div class="owl-carousel-wrap owl-carousel_style-1">
-              <div class="owl-carousel-wrap owl-carousel_style-1">
                 <div class="owl-carousel" data-autoplay="true" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav" >
 
                 <? $counter = 1; ?>
@@ -27,7 +26,7 @@ $IMG = new ModelToolImage();
                                     $size = getimagesize($_SERVER['DOCUMENT_ROOT'].$resized_image); ?>
                               <img class="owl-lazy" data-src="<?=$resized_image;?>"
                                src="<? if ($counter == 1) echo $IMG->resize($images_url, 96, 0); ?>"
-                               alt="<?=К_ЗАГОЛОВОК_ГЛАВНОЙ_СТРАНИЦЫ?> - Фото <?=$counter ?>" <? echo $size[3]; ?> >
+                               alt="<?=К_ЗАГОЛОВОК_ГЛАВНОЙ_СТРАНИЦЫ?> - Фото <?=$counter;?>" <? echo $size[3]; ?> >
                               <? $counter++; ?>
                             </div>
                           </div>
@@ -50,7 +49,7 @@ $IMG = new ModelToolImage();
                     </svg>
                   </button>
                   </div>
-              </div></div>
+              </div>
               <!-- Single post-->
             </div>
           </div>
@@ -62,7 +61,7 @@ $IMG = new ModelToolImage();
 <div class="shell">
     <div>
         <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                   <div class="cell-sm-6 cell-md-7">
                     <div class="col-xs-12 col-sm-2">
                     </div>
@@ -109,22 +108,21 @@ $IMG = new ModelToolImage();
             <!-- Slider-->
             <div class="cell-md-11 cell-lg-10">
 			  <div class="owl-carousel-wrap owl-carousel_style-1">
-          <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav-<?=$category->slug?>" >
-
-                            <?php foreach($images_url as $url) : ?>
-                               <div class="owl-stage-outer">
-                                  <div class="owl-stage">
-                                    <div class="owl-item">
-                                      <div class="item">
-                                        <?php $resized_image = $IMG->resize($url, 968, 0); ?>
-                                        <?php $size = getimagesize($_SERVER['DOCUMENT_ROOT'].$resized_image); ?>
-                                        <img class="owl-lazy" data-src="<?=$resized_image;?>" alt="<?=$category->h1;?> - Фото <?=$counter ?>" <?php echo $size[3];?>>
-                                        <? $counter++; ?>
-                                      </div>
-                                    </div>
-                                  </div>
-                               </div>
-                            <?php endforeach; ?>
+          <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav-<?=$category->slug;?>" >
+              <?php foreach($images_url as $url) : ?>
+                  <div class="owl-stage-outer">
+                    <div class="owl-stage">
+                      <div class="owl-item">
+                        <div class="item">
+                          <?php $resized_image = $IMG->resize($url, 968, 0); ?>
+                          <?php $size = getimagesize($_SERVER['DOCUMENT_ROOT'].$resized_image); ?>
+                          <img class="owl-lazy" data-src="<?=$resized_image;?>" alt="<?=$category->h1;?> - Фото <?=$counter;?>" <?php echo $size[3];?>>
+                          <? $counter++; ?>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <?php endforeach; ?>
 					</div>
 					<div class="owl-outer-navigation" id="owl-carousel-nav-<?=$category->slug?>">
 						<button class="owl-arrow owl-arrow-prev">
@@ -229,9 +227,9 @@ $IMG = new ModelToolImage();
 <!--Ключевые преимущества-->
 <section class="section section-md bg-gray-lighter oh text-center" style="padding-top: 5px;">
 <div class="shell">
-    <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
+    <div style="position: relative; height: 918px;">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">
+            <div class="col-xs-12 col-sm-12 col-md-12">
                  <br>
                  <h2>Почему, 5 лет подряд, клиенты доверяют мне?</h2>
                  <br>
@@ -417,7 +415,7 @@ $IMG = new ModelToolImage();
       </div></div>
 	  <div>
         <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                   <div class="cell-sm-6 cell-md-7">
               <div class="box-width-3 box-centered">
                 <div class="group-3-columns" data-lightgallery="group">

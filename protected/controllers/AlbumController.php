@@ -40,11 +40,20 @@ class AlbumController extends Controller {
 			//ищем адрес формата "id-slug"
 			$id2 = strstr($slug, '-', true);
 			$slug2 = substr(strstr($slug, '-'), 1);
-
 			$album = Album::model()->find('id='.$id2.' AND slug=?', array($slug2));
 
-			if (!$album)
-				throw new CHttpException(404, 'Запрашиваемый вами альбом не найден');
+			if (!$album) {
+				//ищем адрес формата "id-id-slug"
+				$slug = $slug2;
+				$id2 = strstr($slug, '-', true);
+				$slug2 = substr(strstr($slug, '-'), 1);
+				$album = Album::model()->find('id='.$id2.' AND slug=?', array($slug2));
+
+				if (!$album)
+					throw new CHttpException(404, 'Запрашиваемый вами альбом не найден');
+				else
+					return $this->actionColleagueView($slug2);//альбом с кнопкой Скачать
+				}
 			else
 				return $this->actionClientView($slug2);//альбом с кнопкой Скачать
 		}
@@ -70,7 +79,7 @@ class AlbumController extends Controller {
 	}
 
 	/**
-	 * Альбом с кнопкой Скачать
+	 * Альбом с кнопкой Скачать для Клиентов
 	 * @param slug путь url
 	 */
 	public function actionClientView($slug){
@@ -92,6 +101,36 @@ class AlbumController extends Controller {
 		);
 
         $this->render('clientview',array(
+                'album' => $album,
+                'category' => $category,
+				'albums' => $albums,
+				'hashtags' => $hashtags,
+        ));
+	}
+
+	/**
+	 * Альбом с кнопкой Скачать для Специалистов-коллег
+	 * @param slug путь url
+	 */
+	public function actionColleagueView($slug){
+
+		$album = Album::model()->find('slug=?', array($slug));
+		if (!$album) { throw new CHttpException(404, 'Запрашиваемый вами альбом не найден'); }
+
+		$category = Category::model()->findByPk($album->category_id);
+
+		$albums = Album::model()->findAll('category_id='.$category->id.' AND sort>=0 ORDER BY sort');
+        if (!$albums) { throw new CHttpException(404, 'Запрашиваемые вами альбомы не найдены'); }
+
+		$hashtags = $this->getHashTags($album->seo_keywords);
+		$this->actionOpenGraphMetaTags($album, $category);
+		$this->metaTags = array(
+            'title'			=> К_ДОМЕН_САЙТА.' - '.$album->title,
+            'description'	=> К_ДОМЕН_САЙТА.' - '.$album->seo_description,
+            'keywords'		=> $album->seo_keywords
+		);
+
+        $this->render('colleagueview',array(
                 'album' => $album,
                 'category' => $category,
 				'albums' => $albums,

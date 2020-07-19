@@ -17,6 +17,7 @@ $this->menu=array(
 <h1>Просмотр альбома &laquo;<?=$model->h1?>&raquo; (<?=count($model->showImagesUrl())-1;?> фото)</h1>
 
 <p>Клиенту <b><a href="/album/<?=$model->id?>-<?=$model->slug?>" target="_blank" rel="nofollow noopener">ссылка для скачивания фото</a></b>.</p>
+<p>Коллегам-специалистам <b><a href="/album/<?=$model->id?>-<?=$model->id?>-<?=$model->slug?>" target="_blank" rel="nofollow noopener">ссылка для скачивания фото</a></b>.</p>
 <p>Остальным <b><a href="/album/<?=$model->slug?>" target="_blank" rel="nofollow noopener">ссылка для просмотра фото</a></b>.</p>
 
 <span>Репосты в соцсети (если картинка не подгружается, то открыть повторно): </span>

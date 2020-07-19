@@ -290,6 +290,17 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
 				else
 				{
 					$content2 = 'Подарки: '.К_ПОДАРКИ_НА_ЭМЕЙЛ;
+					if(isset($_POST['is-colleagueview']) && $_POST['is-colleagueview'])
+					{
+						//страница colleagueview
+						$album = Album::model()->find('id='.$_POST['is-colleagueview']);
+						$content2 = '';
+						if(isset($album->gallery1_link) && $album->gallery1_link)
+							$content2 .= 'Ссылка на фото (галерея 1): '.$album->gallery1_link.'<br><br>';
+						if(isset($album->gallery2_link) && $album->gallery2_link)
+							$content2 .= 'Ссылка на фото (галерея 2): '.$album->gallery2_link.'<br><br>';
+						$content .= '<br>'.$content2;
+					}
 				}
 				//отправка
 				if(isset($_POST['email']) && $_POST['email'])
