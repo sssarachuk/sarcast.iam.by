@@ -111,6 +111,11 @@ $IMG = new ModelToolImage();
             <input class="form-input phone f-1 required" id="contact-phone-<?=$album->id?>" type="text" name="phone">
             <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш контактный телефон *</label>
           </div>
+          <!--Ваш контактный Email-->
+          <div class="form-wrap">
+              <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
+              <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш контактный e-mail *</label>
+          </div>
 
           <div class="form-wrap" style="padding: 10px 0;">
             <br><b>ПРЕДСТАВЬТЕ СЕБЯ КЛИЕНТОМ<br>(что бы вы ответили на эти вопросы?):</b><br>
