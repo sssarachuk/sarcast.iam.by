@@ -89,7 +89,7 @@ $IMG = new ModelToolImage();
 
 <section id="form-1" class="section section-md bg-white oh text-center">
     <div class="shell">
-    <?php if(!empty($album->gallery1_link) || !empty($album->gallery2_link)) { ?>
+    <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
       <div class="col-xs-12 col-sm-12">
         <h3>Скачивание фотографий доступно после заполнения формы</h3>
         <br>
@@ -98,7 +98,7 @@ $IMG = new ModelToolImage();
     <div class="col-xs-12 col-sm-3">
       </div>
     <div class="col-xs-12 col-sm-6">
-    <?php if(!empty($album->gallery1_link) || !empty($album->gallery2_link)) { ?>
+    <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
       <!-- RD Mailform-->
       <form class="callback" id="callback-<?=$album->id?>" method="post" action="">
           <!--Ваше имя-->
@@ -106,43 +106,35 @@ $IMG = new ModelToolImage();
             <input class="form-input required f-1" id="contact-name-<?=$album->id?>" type="name" name="name">
             <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>"><?=((empty($album->review_before)) ? 'Ваше имя / Ваши имена' : 'Ваша страничка в соцсетях') . ' *'; ?></label>
           </div>
-          <!--Ваш контактный телефон-->
+          <div class="form-wrap">
+            <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
+            <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш e-mail (для получения ссылки, проверяйте Спам) *</label>
+          </div>
           <div class="form-wrap">
             <input class="form-input phone f-1 required" id="contact-phone-<?=$album->id?>" type="text" name="phone">
             <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш контактный телефон *</label>
           </div>
-
-          <?php if(empty($album->review_before)) { ?>
-            <!--Ваш контактный Email-->
-            <div class="form-wrap">
-              <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
-              <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш контактный e-mail *</label>
-            </div>
-          <?php } ?>
-
             <!--Вопросы-->
-            <div class="form-wrap">
-              <label class="form-label icon-gray-7" for="contact-question-1-<?=$album->id?>"><?=ВОПРОС_1_НА_ЭМЕЙЛ?> *</label>
-              <textarea class="form-input required f-1" id="contact-question-1-<?=$album->id?>" name="contact-question-1"></textarea>
-            </div>
-          <?php if(empty($album->review_before)) { ?>
-            <div class="form-wrap">
-              <label class="form-label icon-gray-7" for="contact-question-2-<?=$album->id?>"><?=ВОПРОС_2_НА_ЭМЕЙЛ?> *</label>
-              <textarea class="form-input required f-1" id="contact-question-2-<?=$album->id?>" name="contact-question-2"></textarea>
-            </div>
-            <div class="form-wrap">
-              <label class="form-label icon-gray-7" for="contact-question-3-<?=$album->id?>"><?=ВОПРОС_3_НА_ЭМЕЙЛ?> *</label>
-              <textarea class="form-input required f-1" id="contact-question-3-<?=$album->id?>" name="contact-question-3"></textarea>
-            </div>
-            <div class="form-wrap">
-              <label class="form-label icon-gray-7" for="contact-question-4-<?=$album->id?>"><?=ВОПРОС_4_НА_ЭМЕЙЛ?> *</label>
-              <textarea class="form-input required f-1" id="contact-question-4-<?=$album->id?>" name="contact-question-4"></textarea>
-            </div>
-            <div class="form-wrap">
-              <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>"><?=ВОПРОС_5_НА_ЭМЕЙЛ?> *</label>
-              <textarea class="form-input required f-1" id="contact-question-5-<?=$album->id?>" name="contact-question-5"></textarea>
-            </div>
-          <?php } ?>
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-1-<?=$album->id?>"><?=ВОПРОС_1_НА_ЭМЕЙЛ?> *</label>
+            <textarea class="form-input required f-1" id="contact-question-1-<?=$album->id?>" name="contact-question-1"></textarea>
+          </div>
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-2-<?=$album->id?>"><?=ВОПРОС_2_НА_ЭМЕЙЛ?> *</label>
+            <textarea class="form-input required f-1" id="contact-question-2-<?=$album->id?>" name="contact-question-2"></textarea>
+          </div>
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-3-<?=$album->id?>"><?=ВОПРОС_3_НА_ЭМЕЙЛ?> *</label>
+            <textarea class="form-input required f-1" id="contact-question-3-<?=$album->id?>" name="contact-question-3"></textarea>
+          </div>
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-4-<?=$album->id?>"><?=ВОПРОС_4_НА_ЭМЕЙЛ?> *</label>
+            <textarea class="form-input required f-1" id="contact-question-4-<?=$album->id?>" name="contact-question-4"></textarea>
+          </div>
+          <div class="form-wrap">
+            <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>"><?=ВОПРОС_5_НА_ЭМЕЙЛ?> *</label>
+            <textarea class="form-input required f-1" id="contact-question-5-<?=$album->id?>" name="contact-question-5"></textarea>
+          </div>
 
           <!--Текст и кнопка-->
           <span id="text-success-<?=$album->id?>"></span>
@@ -157,9 +149,9 @@ $IMG = new ModelToolImage();
       </form>
     <?php } ?>
 
-  <div id="client-gallery-<?=$album->id?>" style="display: none !important;" >
+  <div id="client-gallery-<?=$album->id?>" style="display: <?=((empty($album->review_before)) ? 'none' : 'block'); ?> !important;" >
       <br>
-      <div><span>Покажите эти <?=count($album->showImagesUrl())-1;?> фото друзьям: </span>
+      <div><span>Отправить в соцсети друзьям <?=count($album->showImagesUrl())-1;?> фото: </span>
           <div class="ya-share2"
           data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
           data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"

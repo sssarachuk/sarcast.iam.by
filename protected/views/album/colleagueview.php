@@ -59,7 +59,7 @@ $IMG = new ModelToolImage();
 <section id="photo-1" class="section section-md bg-white oh text-center">
         <div class="shell">
         <h2>Мои партнеры:</h2>
-        <p class="icon-gray-7">* если вы заметили ошибку или хотите что-то добавить, то сообщите мне об этом</p>
+        <p class="icon-gray-7">* если вы заметили ошибку или хотите быть здесь указаны, то сообщите мне об этом</p>
         <p><?=$album->text1;?></p>
     <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
             <div class="row">
@@ -93,8 +93,9 @@ $IMG = new ModelToolImage();
 <section id="form-1" class="section section-md bg-white oh text-center">
     <div class="shell">
       <div class="col-xs-12 col-sm-12">
-        <h3>Скачивание фотографий доступно после заполнения формы</h3>
-        <br>
+        <h3>Форма для скачивания фото</h3>
+        <b style="color: green;"><br>Пожалуйста, отнеситесь к этому с пониманием, заполните поля ответственно.<br>Разрешается заполнять только 1 раз, поэтому потерпите и возвращайтесь только когда вы свободны от других дел.</b>
+        <br><br>
       </div>
     <div class="col-xs-12 col-sm-3">
       </div>
@@ -104,21 +105,21 @@ $IMG = new ModelToolImage();
           <!--Ваше имя-->
           <div class="form-wrap">
             <input class="form-input required f-1" id="contact-name-<?=$album->id?>" type="name" name="name">
-            <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>">Ваши соцсети/сайт (для рекламы на моем сайте) *</label>
+            <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>">Ваша страничка/сайт (для рекламы на этом сайте) *</label>
           </div>
           <!--Ваш контактный телефон-->
           <div class="form-wrap">
             <input class="form-input phone f-1 required" id="contact-phone-<?=$album->id?>" type="text" name="phone">
-            <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш контактный телефон *</label>
+            <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш телефон (для приема заказов по моей рекомендации) *</label>
           </div>
           <!--Ваш контактный Email-->
           <div class="form-wrap">
               <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
-              <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш контактный e-mail *</label>
+              <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш e-mail (для получения ссылки, проверяйте Спам) *</label>
           </div>
 
           <div class="form-wrap" style="padding: 10px 0;">
-            <br><b>ПРЕДСТАВЬТЕ СЕБЯ КЛИЕНТОМ<br>(что бы вы ответили на эти вопросы?):</b><br>
+            <br><b>а теперь ПРЕДСТАВЬТЕ СЕБЯ КЛИЕНТОМ<br>(что бы вы ответили на эти вопросы?):</b><br>
           </div>
 
             <!--Вопросы-->
@@ -173,6 +174,7 @@ $IMG = new ModelToolImage();
       <?php if(!empty($album->gallery2_link)) { ?>
           <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
       <?php } ?>
+      <div class="col-xs-12 col-sm-12" style="margin-top: 10px; color:green;"><p>Эти ссылки отправлены на ваш E-mail (возможно попало в Спам)</p></div>
       <div class="col-xs-12 col-sm-12" style="margin-top: 30px;"><p class="icon-gray-7">Хотите себе такой сайт? Это тоже <a href="https://sarachuk.com/site/about" rel="nofollow noopener" target="_blank">ко мне</a></p></div>
     </div>
   </div>

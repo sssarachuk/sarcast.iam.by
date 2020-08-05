@@ -20,7 +20,7 @@ $this->menu=array(
 <p>Коллегам-специалистам <b><a href="/album/<?=$model->id?>-<?=$model->id?>-<?=$model->slug?>" target="_blank" rel="nofollow noopener">ссылка для скачивания фото</a></b>.</p>
 <p>Остальным <b><a href="/album/<?=$model->slug?>" target="_blank" rel="nofollow noopener">ссылка для просмотра фото</a></b>.</p>
 
-<span>Репосты в соцсети (если картинка не подгружается, то открыть повторно): </span>
+<span>Репосты в соцсети (если фото не подгружается, то повторите, или с другого браузера): </span>
 
 <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 <script src="https://yastatic.net/share2/share.js"></script>

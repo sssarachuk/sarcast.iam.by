@@ -97,7 +97,8 @@ class AlbumController extends Controller {
 		$this->metaTags = array(
             'title'			=> $album->title.' - '.К_ДОМЕН_САЙТА,
             'description'	=> $album->seo_description.' - '.К_ДОМЕН_САЙТА,
-            'keywords'		=> $album->seo_keywords
+			'keywords'		=> $album->seo_keywords,
+			'robots'		=> 'noindex'
 		);
 
         $this->render('clientview',array(
@@ -127,7 +128,8 @@ class AlbumController extends Controller {
 		$this->metaTags = array(
             'title'			=> К_ДОМЕН_САЙТА.' - '.$album->title,
             'description'	=> К_ДОМЕН_САЙТА.' - '.$album->seo_description,
-            'keywords'		=> $album->seo_keywords
+			'keywords'		=> $album->seo_keywords,
+			'robots'		=> 'noindex'
 		);
 
         $this->render('colleagueview',array(

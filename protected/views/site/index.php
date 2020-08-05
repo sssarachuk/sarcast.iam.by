@@ -225,9 +225,9 @@ $IMG = new ModelToolImage();
 <?php endforeach; ?>
 <!--Категории Альбомов-->
 <!--Ключевые преимущества-->
-<section class="section section-md bg-gray-lighter oh text-center" style="padding-top: 5px;">
+<section class="section section-md bg-white oh text-center" style="padding-top: 5px;">
 <div class="shell">
-    <div style="position: relative; height: 918px;">
+    <div style="position: relative;">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                  <br>

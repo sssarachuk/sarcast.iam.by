@@ -13,6 +13,12 @@
 
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'category_id'); ?>
+		<?=$form->dropDownList($model, 'category_id', CHtml::listData(Category::model()->findAll(), 'id', 'h1'), array('empty' => 'Выберите категорию')); ?>
+		<?php echo $form->error($model,'category_id'); ?>
+	</div>
+	<br>
+	<div class="row">
 		<?php echo $form->labelEx($model,'title'); ?>
 		<?php echo $form->textField($model,'title'); ?>
 		<?php echo $form->error($model,'title'); ?>
@@ -57,17 +63,11 @@
 	</div>
 	<br>
 	<div class="row">
-		<?php echo $form->labelEx($model,'category_id'); ?>
-		<?=$form->dropDownList($model, 'category_id', CHtml::listData(Category::model()->findAll(), 'id', 'h1'), array('empty' => 'Выберите категорию')); ?>
-		<?php echo $form->error($model,'category_id'); ?>
-	</div>
-	<br>
-	<div class="row">
 		<?php echo $form->labelEx($model,'photos'); ?>
 		<?php echo $form->textArea($model,'photos',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'photos'); ?>
 		<small>(одно имя файла (без пробелов) на строку, закачка по 1 фото за раз, поэтому проще через FTP залить, а имена скопировать)</small><br>
-		<small>(1я строка для заглавной (желательно горизонтальной) фото, а серия фотографий начнется со 2й строки)</small>
+		<small>(1я строка для заглавной (лучше горизонтальной) фото, а серия фотографий начнется со 2й строки)</small>
 	</div>
 	<br>
 	<div class="row">
