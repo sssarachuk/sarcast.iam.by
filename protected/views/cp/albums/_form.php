@@ -31,7 +31,7 @@
 		<?php echo $form->labelEx($model,'title_eng'); ?>
 		<?php echo $form->textField($model,'title_eng'); ?>
 		<?php echo $form->error($model,'title_eng'); ?>
-		<small>(перевод на английский язык, используется для slug)</small>
+		<small>(перевод на английский язык)</small>
 	</div>
 	<br>
 	<div class="row">

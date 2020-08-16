@@ -252,10 +252,10 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
                 $_POST['name'] = 'Noname';
 
            if(isset($_POST['name']) && $_POST['name']){
-                $headers = "MIME-Version: 1.0\r\n";
-                $headers .= "Content-type: text/html; charset='UTF-8' \r\n";
-                $headers .= "From: " . Yii::app()->params['adminEmail'] . "\r\n";
-                $headers .= "X-mailer: Furniture Mailer\r\n";
+				$headers = "MIME-Version: 1.0\r\n";
+				$headers.= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+				$headers.= "Content-Transfer-Encoding: 8bit\r\n";
+				$headers.= "From: =?UTF-8?B?".base64_encode(strtolower(К_ДОМЕН_САЙТА))."?= <".Yii::app()->params['adminEmail'].">\r\n";
 
                 $content = 'Имя: '.$_POST['name'].'<br>';
                 $content .= 'Телефон: '.$_POST['phone'].'<br>';
@@ -305,10 +305,24 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
 				//отправка
 				if(isset($_POST['email']) && $_POST['email'])
 				{
-					mail(Yii::app()->params['shopManagerEmail'], 'Копия письма клиенту от '.К_ДОМЕН_САЙТА, $content2, $headers);
-					mail($_POST['email'], 'Обратная связь от '.К_ДОМЕН_САЙТА, $content2, $headers);
+					mail(Yii::app()->params['shopManagerEmail'], 'Обратная связь от '.strtolower(К_ДОМЕН_САЙТА).' (копия письма клиенту)', $content2, $headers);
+					mail($_POST['email'], 'Обратная связь от '.strtolower(К_ДОМЕН_САЙТА), $content2, $headers);
 				}
-                mail(Yii::app()->params['adminEmail'], 'Обратная связь от '.К_ДОМЕН_САЙТА, $content, $headers);
+				if(isset($_POST['is-clientview']) && $_POST['is-clientview'])
+				{//страница clientview
+					mail(Yii::app()->params['adminEmail'], 'Отзыв на Album-id = '.$_POST['is-clientview'].' от '.strtolower(К_ДОМЕН_САЙТА), $content, $headers);
+				}
+				else
+				{
+					if(isset($_POST['is-colleagueview']) && $_POST['is-colleagueview'])
+					{//страница colleagueview
+						mail(Yii::app()->params['adminEmail'], 'Отзыв на Album-id = '.$_POST['is-colleagueview'].' от '.strtolower(К_ДОМЕН_САЙТА), $content, $headers);
+					}
+					else
+					{//остальные страницы
+						mail(Yii::app()->params['adminEmail'], 'Заявка с сайта '.strtolower(К_ДОМЕН_САЙТА), $content, $headers);
+					}
+				}
 				echo '1';
            }
         }

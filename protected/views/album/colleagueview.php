@@ -29,7 +29,7 @@ $IMG = new ModelToolImage();
 
                   <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
                   <div><span>
-                    В качестве благодарности за мою работу<br>жду от вас репоста друзьям: </span>
+                    В качестве благодарности за мою работу<br>поделитесь в соцсетях: </span>
                     <div class="ya-share2"
                     data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
                     data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
@@ -58,8 +58,8 @@ $IMG = new ModelToolImage();
 
 <section id="photo-1" class="section section-md bg-white oh text-center">
         <div class="shell">
-        <h2>Мои партнеры:</h2>
-        <p class="icon-gray-7">* если вы заметили ошибку или хотите быть здесь указаны, то сообщите мне об этом</p>
+        <h2>Кто работал на съемке:</h2>
+        <p class="icon-gray-7">* если вы хотите быть здесь указаны или заметили ошибку, то сообщите мне об этом</p>
         <p><?=$album->text1;?></p>
     <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
             <div class="row">
@@ -93,9 +93,12 @@ $IMG = new ModelToolImage();
 <section id="form-1" class="section section-md bg-white oh text-center">
     <div class="shell">
       <div class="col-xs-12 col-sm-12">
-        <h3>Форма для скачивания фото</h3>
-        <b style="color: green;"><br>Пожалуйста, отнеситесь к этому с пониманием, заполните поля ответственно.<br>Разрешается заполнять только 1 раз, поэтому потерпите и возвращайтесь только когда вы свободны от других дел.</b>
-        <br><br>
+        <h3 style="background:#ffff00;">Скачать фотографии можно ниже</h3>
+        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+        <b style="color:#008000;">(ссылку получите после заполнения формы)</b>
+        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+        <b style="color:#008000; background:#ffff00;">Пожалуйста, проявите ответственность, так вы поможете всем нам лучше работать в команде.<br><br>Уделите немного больше времени в благодарность за фото.<br>Спасибо за понимание!</b>
+        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
       </div>
     <div class="col-xs-12 col-sm-3">
       </div>
@@ -105,7 +108,7 @@ $IMG = new ModelToolImage();
           <!--Ваше имя-->
           <div class="form-wrap">
             <input class="form-input required f-1" id="contact-name-<?=$album->id?>" type="name" name="name">
-            <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>">Ваша страничка/сайт (для рекламы на этом сайте) *</label>
+            <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>">Ваша страничка в интернете (укажу здесь для вашей рекламы) *</label>
           </div>
           <!--Ваш контактный телефон-->
           <div class="form-wrap">
@@ -115,7 +118,7 @@ $IMG = new ModelToolImage();
           <!--Ваш контактный Email-->
           <div class="form-wrap">
               <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
-              <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш e-mail (для получения ссылки, проверяйте Спам) *</label>
+              <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш e-mail (придет ссылка на скачку фото (проверяйте спам)) *</label>
           </div>
 
           <div class="form-wrap" style="padding: 10px 0;">
@@ -149,6 +152,7 @@ $IMG = new ModelToolImage();
           <div id="client-button-<?=$album->id?>" class="form-wrap form-button offset-1">
             <br>
             <button class="button button-primary button-ujarak button-pink" type="submit">Хочу скачать&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+            <b style="color:#008000;">* после нажатия ссылки придут на ваш e-mail (проверяйте спам)</b>
           </div>
           <!--Скрытое поле-->
           <textarea class="form-input f-1" id="contact-message-<?=$album->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>, Path: <?=$album->folder?></textarea>
@@ -158,7 +162,7 @@ $IMG = new ModelToolImage();
 
   <div id="client-gallery-<?=$album->id?>" style="display: none !important;" >
       <br>
-      <div><span>В качестве благодарности за мою работу<br>жду от вас репоста друзьям: </span>
+      <div><span>В качестве благодарности за мою работу<br>поделитесь в соцсетях: </span>
           <div class="ya-share2"
           data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
           data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
@@ -174,8 +178,8 @@ $IMG = new ModelToolImage();
       <?php if(!empty($album->gallery2_link)) { ?>
           <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
       <?php } ?>
-      <div class="col-xs-12 col-sm-12" style="margin-top: 10px; color:green;"><p>Эти ссылки отправлены на ваш E-mail (возможно попало в Спам)</p></div>
-      <div class="col-xs-12 col-sm-12" style="margin-top: 30px;"><p class="icon-gray-7">Хотите себе такой сайт? Это тоже <a href="https://sarachuk.com/site/about" rel="nofollow noopener" target="_blank">ко мне</a></p></div>
+      <div class="col-xs-12 col-sm-12" style="margin-top:10px; color:#008000; background:#ffff00;"><p>Ссылка на скачку уже отправлена на ваш E-mail (проверьте почту, и папку Спам).<br><b>Повторно заполнять не нужно!</b></p></div>
+      <div class="col-xs-12 col-sm-12" style="margin-top: 30px;"><p class="icon-gray-7" style="color:#008000; background:#ffff00;">Хотите себе такой сайт? <a style="text-decoration:underline;" href="mailto:sssarachuk@yandex.ru" rel="nofollow noopener" target="_blank"><b>Напишите сюда</b></a></p></div>
     </div>
   </div>
     <div class="col-xs-12 col-sm-3">

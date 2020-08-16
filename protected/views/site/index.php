@@ -108,7 +108,7 @@ $IMG = new ModelToolImage();
             <!-- Slider-->
             <div class="cell-md-11 cell-lg-10">
 			  <div class="owl-carousel-wrap owl-carousel_style-1">
-          <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav-<?=$category->slug;?>" >
+          <div class="owl-carousel" data-autoplay="false" data-autoplay-timeout="5000" data-speed="0" data-loop="true" data-stage-padding="0" data-margin="15" data-nav="false" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav-<?=$category->id;?>" >
               <?php foreach($images_url as $url) : ?>
                   <div class="owl-stage-outer">
                     <div class="owl-stage">
@@ -124,7 +124,7 @@ $IMG = new ModelToolImage();
                   </div>
               <?php endforeach; ?>
 					</div>
-					<div class="owl-outer-navigation" id="owl-carousel-nav-<?=$category->slug?>">
+					<div class="owl-outer-navigation" id="owl-carousel-nav-<?=$category->id?>">
 						<button class="owl-arrow owl-arrow-prev">
 						  <svg x="0px" y="0px" viewBox="0 0 28.5 16" width="26" height="14">
 							<line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.5" y1="8" x2="1" y2="8" ></line>

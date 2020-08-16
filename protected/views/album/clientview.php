@@ -28,8 +28,7 @@ $IMG = new ModelToolImage();
                   <script src="https://yastatic.net/share2/share.js"></script>
 
                   <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
-                  <div><span>
-                    Лучший способ поделиться с друзьями -<br>отправьте в соцсети или сразу в лс: </span>
+                  <div><span>Поделитесь с друзьями в соцсетях: </span>
                     <div class="ya-share2"
                     data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
                     data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
@@ -91,8 +90,12 @@ $IMG = new ModelToolImage();
     <div class="shell">
     <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
       <div class="col-xs-12 col-sm-12">
-        <h3>Скачивание фотографий доступно после заполнения формы</h3>
-        <br>
+        <h3 style="background:#ffff00;">Скачать фотографии можно ниже</h3>
+        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+        <b style="color:#008000;">(ссылку получите после заполнения формы)</b>
+        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+        <b style="color:#008000; background:#ffff00;">Пожалуйста, проявите ответственность, так вы поможете всем нам лучше работать в команде.<br><br>Уделите немного больше времени в благодарность за фото.<br>Спасибо за понимание!</b>
+        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
       </div>
     <?php } ?>
     <div class="col-xs-12 col-sm-3">
@@ -104,15 +107,15 @@ $IMG = new ModelToolImage();
           <!--Ваше имя-->
           <div class="form-wrap">
             <input class="form-input required f-1" id="contact-name-<?=$album->id?>" type="name" name="name">
-            <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>"><?=((empty($album->review_before)) ? 'Ваше имя / Ваши имена' : 'Ваша страничка в соцсетях') . ' *'; ?></label>
+            <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>"><?=((empty($album->review_before)) ? 'Ваше имя (если индивидульно) или имена (если пара)' : 'Ваша страничка в соцсетях (добавлю в друзья)') . ' *'; ?></label>
           </div>
           <div class="form-wrap">
             <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
-            <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш e-mail (для получения ссылки, проверяйте Спам) *</label>
+            <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш e-mail (придет ссылка на скачку фото (проверяйте спам)) *</label>
           </div>
           <div class="form-wrap">
             <input class="form-input phone f-1 required" id="contact-phone-<?=$album->id?>" type="text" name="phone">
-            <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш контактный телефон *</label>
+            <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш контактный телефон (для скидки на будущие заказы) *</label>
           </div>
             <!--Вопросы-->
           <div class="form-wrap">
@@ -151,7 +154,7 @@ $IMG = new ModelToolImage();
 
   <div id="client-gallery-<?=$album->id?>" style="display: <?=((empty($album->review_before)) ? 'none' : 'block'); ?> !important;" >
       <br>
-      <div><span>Отправить в соцсети друзьям <?=count($album->showImagesUrl())-1;?> фото: </span>
+      <div><span>Поделиться в соцсетях (<?=count($album->showImagesUrl())-1;?> фото как на сайте): </span>
           <div class="ya-share2"
           data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
           data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
