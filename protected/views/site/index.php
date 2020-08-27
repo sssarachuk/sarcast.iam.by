@@ -160,7 +160,7 @@ $IMG = new ModelToolImage();
                     <? $counter = 1; ?>
                     <?php foreach($services as $service): ?>
                         <? if ($service->category_id == $category->id) { ?>
-                           <? if ($counter == 2) { ?>
+                           <? if ($counter == 3) { ?>
                                <li class="active"><a href="#tabs-<?=$category->slug?>-<?=$counter?>" data-toggle="tab"><?=$service->title?></a></li>
                            <? } else {?>
                                 <li><a href="#tabs-<?=$category->slug?>-<?=$counter?>" data-toggle="tab"><?=$service->title?></a></li>
@@ -174,7 +174,7 @@ $IMG = new ModelToolImage();
                    <?php foreach($services as $service): ?>
                         <? if ($service->category_id == $category->id) { ?>
 
-                                <div class="tab-pane fade<? if ($counter == 2) { echo " in active"; } ?>" id="tabs-<?=$category->slug?>-<?=$counter?>">
+                                <div class="tab-pane fade<? if ($counter == 3) { echo " in active"; } ?>" id="tabs-<?=$category->slug?>-<?=$counter?>">
 
                                 <div class="col-xs-12 col-sm-3">
                                   </div>
@@ -190,7 +190,7 @@ $IMG = new ModelToolImage();
                                     </div>
                                   </div>
                                   <span id="text-success-<?=$service->id?>"></span>
-                                  <textarea class="form-input f-1" id="contact-message-<?=$service->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?><br><br>Service: price <?=$service->price?><br><?=$category->title?><br><?=$service->description?><br></textarea>
+                                  <textarea class="form-input f-1" id="contact-message-<?=$service->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?><br><br>Заявка: <?=$service->title?> | <?=$category->h1?><br><br><?=$service->description?><br><br>Price: <?=$service->price?><br></textarea>
                                 </form>
                                   </div>
                                   <div class="col-xs-12 col-sm-3">

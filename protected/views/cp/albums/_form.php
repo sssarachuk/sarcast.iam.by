@@ -98,6 +98,37 @@
 		<?php echo $form->error($model,'gallery2_link'); ?>
 		<small>(готовые отобранные и обработанные фотографии - ссылка на скачивание)</small>
 	</div>
+	<br>
+    <div class="row">
+		<?php echo $form->labelEx($model,'seo_description'); ?>
+		<?php echo $form->textArea($model,'seo_description',array('rows'=>3, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'seo_description'); ?>
+		<small>(meta-тег description для seo, на русском)</small><br>
+		<small>(уникальный, до <b>120-135 символов</b> (с пробелами), с содержанием осн. или доп.запроса)</small><br>
+		<small>(рекомендуются скобки, цифры, значки, символы, чтобы поднять CTR, и призыв переходить на сайт в конце)</small><br>
+		<small>(есть генераторы для помощи составления, например Saney.ru для кириллицы и Spotibo.com лат.)</small>
+	</div>
+    <br>
+    <div class="row">
+		<?php echo $form->labelEx($model,'seo_description_eng'); ?>
+		<?php echo $form->textArea($model,'seo_description_eng',array('rows'=>3, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'seo_description_eng'); ?>
+		<small>(meta-тег description для seo, на английском)</small>
+	</div>
+    <br>
+    <div class="row">
+		<?php echo $form->labelEx($model,'seo_keywords'); ?>
+		<?php echo $form->textField($model,'seo_keywords'); ?>
+		<?php echo $form->error($model,'seo_keywords'); ?>
+		<small>(ключевые фразы seo <b>для русскоязычной аудитории</b>, разделять запятыми, без доп.символов и значков, в начале самые важные фразы т.к. они преобразуются в хэштеги для репоста в соцсети)</small>
+	</div>
+    <br>
+    <div class="row">
+		<?php echo $form->labelEx($model,'seo_keywords_eng'); ?>
+		<?php echo $form->textField($model,'seo_keywords_eng'); ?>
+		<?php echo $form->error($model,'seo_keywords_eng'); ?>
+		<small>(ключевые фразы seo <b>для англоязычной аудитории</b>, разделять запятыми, без доп.символов и значков, в начале самые важные фразы т.к. они преобразуются в хэштеги для репоста в соцсети)</small>
+	</div>
     <br>
     <div class="row">
 		<?php echo $form->labelEx($model,'text1'); ?>
@@ -114,7 +145,7 @@
 			)
 		));?>
 		<?php echo $form->error($model,'text1'); ?>
-		<small>(любой текст, но лучше ссылки на участников проекта)</small>
+		<small>(любой текст, но лучше ссылки на участников проекта, в ссылках добавлять <b>rel="nofollow noopener"</b>)</small>
 	</div>
     <br>
     <div class="row">
@@ -183,7 +214,7 @@
 				"language" => "ru"
 			)
 		));?>
-		<?php echo $form->error($model,'review_after'); ?>
+		<?php echo $form->error($model,'review_before'); ?>
 	</div>
 	<br>
     <div class="row">
@@ -202,36 +233,22 @@
 		));?>
 		<?php echo $form->error($model,'review_after'); ?>
 	</div>
-    <br>
+	<br>
     <div class="row">
-		<?php echo $form->labelEx($model,'seo_description'); ?>
-		<?php echo $form->textArea($model,'seo_description',array('rows'=>3, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'seo_description'); ?>
-		<small>(meta-тег description для seo, на русском)</small><br>
-		<small>(уникальный, до <b>120-135 символов</b> (с пробелами), с содержанием осн. или доп.запроса)</small><br>
-		<small>(рекомендуются скобки, цифры, значки, символы, чтобы поднять CTR, и призыв переходить на сайт в конце)</small><br>
-		<small>(есть генераторы для помощи составления, например Saney.ru для кириллицы и Spotibo.com лат.)</small>
-	</div>
-    <br>
-    <div class="row">
-		<?php echo $form->labelEx($model,'seo_description_eng'); ?>
-		<?php echo $form->textArea($model,'seo_description_eng',array('rows'=>3, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'seo_description_eng'); ?>
-		<small>(meta-тег description для seo, на английском)</small>
-	</div>
-    <br>
-    <div class="row">
-		<?php echo $form->labelEx($model,'seo_keywords'); ?>
-		<?php echo $form->textField($model,'seo_keywords'); ?>
-		<?php echo $form->error($model,'seo_keywords'); ?>
-		<small>(ключевые фразы seo <b>для русскоязычной аудитории</b>, разделять запятыми, без доп.символов и значков, в начале самые важные фразы т.к. они преобразуются в хэштеги для репоста в соцсети)</small>
-	</div>
-    <br>
-    <div class="row">
-		<?php echo $form->labelEx($model,'seo_keywords_eng'); ?>
-		<?php echo $form->textField($model,'seo_keywords_eng'); ?>
-		<?php echo $form->error($model,'seo_keywords_eng'); ?>
-		<small>(ключевые фразы seo <b>для англоязычной аудитории</b>, разделять запятыми, без доп.символов и значков, в начале самые важные фразы т.к. они преобразуются в хэштеги для репоста в соцсети)</small>
+		<?php echo $form->labelEx($model,'comments'); ?>
+		<?php $this->widget('ext.ckeditor.CKEditorWidget', array(
+			"model" => $model,
+			"attribute" => 'comments',
+			"defaultValue" => $model->comments,
+			//Additional Parameter (Check http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html)
+			"config" => array(
+				"height" => "300px",
+				"width" => "100%",
+				"toolbar" => "Full",
+				"language" => "ru"
+			)
+		));?>
+		<?php echo $form->error($model,'comments'); ?>
 	</div>
 	<br>
 	<div class="row buttons">

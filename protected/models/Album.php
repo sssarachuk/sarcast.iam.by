@@ -43,12 +43,12 @@ class Album extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, title_eng, h1, h1_eng, folder, category_id', 'required'),
+			array('title, h1, folder, category_id', 'required'),
             array('folder, title, title_eng, seo_description, seo_description_eng', 'unique'),
 			array('created_at, updated_at, category_id', 'numerical', 'integerOnly'=>true),
 			array('sort', 'numerical'),
 			array('title, title_eng, h1, h1_eng, slug, folder, gallery1_link, gallery2_link, seo_description, seo_description_eng, seo_keywords, seo_keywords_eng', 'length', 'max'=>255),
-            array('text1, text1_eng, text2, text2_eng, review_before, review_after', 'length', 'min'=>0),
+            array('text1, text1_eng, text2, text2_eng, review_before, review_after, comments', 'length', 'min'=>0),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, title_eng, slug, folder, photos, created_at, updated_at, category_id', 'safe', 'on'=>'search'),
@@ -88,10 +88,10 @@ class Album extends ActiveRecord
 		return array(
 			'id' => 'ID',
             'category_id' => 'Категория',
-			'title' => 'Заголовок Title RUS',
-            'title_eng' => 'Заголовок Title ENG',
-            'h1' => 'Заголовок H1 RUS',
-            'h1_eng' => 'Заголовок H1 ENG',
+			'title' => 'Длинный заголовок Title RUS',
+            'title_eng' => 'Длинный заголовок Title ENG',
+            'h1' => 'Короткий заголовок H1 RUS',
+            'h1_eng' => 'Короткий заголовок H1 ENG',
 			'slug' => 'Slug',
 			'folder' => 'Папка сохранения',
 			'photos' => 'Фотографии',
@@ -106,6 +106,7 @@ class Album extends ActiveRecord
 			'text2_eng'	=> 'Текстовое описание в конце альбома (перевод на ENG)',
 			'review_before' => 'Отзыв клиента (исходный)',
 			'review_after' => 'Отзыв клиента (измененный для публикации)',
+			'comments' => 'Отзывы коллег (исходные)',
             'seo_description'	=> 'SEO Описание (RUS)',
             'seo_description_eng'	=> 'SEO Description (ENG)',
             'seo_keywords'	=> 'SEO Ключевые слова (RUS)',

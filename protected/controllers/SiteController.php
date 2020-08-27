@@ -261,10 +261,9 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
                 $content .= 'Телефон: '.$_POST['phone'].'<br>';
                 if(isset($_POST['email']) && $_POST['email']) $content .= 'Email: '.$_POST['email'].'<br>';
                 if(isset($_POST['date']) && $_POST['date']) $content .= 'Дата: '.$_POST['date'].'<br>';
-				if(isset($_POST['message']) && $_POST['message']) $content .= '<br>Сообщение: '.$_POST['message'].'<br><br>';
-				if(isset($_POST['message-footer']) && $_POST['message-footer']) $content .= '<br>Сообщение: '.$_POST['message-footer'].'<br><br>';
-                $content .= 'Подарки: '.К_ПОДАРКИ_НА_ЭМЕЙЛ.'<br><br>';
-
+				if(isset($_POST['message']) && $_POST['message']) $content .= 'Сообщение: '.$_POST['message'].'<br>';
+				if(isset($_POST['message-footer']) && $_POST['message-footer']) $content .= 'Сообщение: '.$_POST['message-footer'].'<br>';
+				//$content .= 'Подарки: '.К_ПОДАРКИ_НА_ЭМЕЙЛ.'<br><br>';
 				if(isset($_POST['contact-question-1']) && $_POST['contact-question-1']) $content .= '1) '.ВОПРОС_1_НА_ЭМЕЙЛ.': '.$_POST['contact-question-1'].'<br>';
 				if(isset($_POST['contact-question-2']) && $_POST['contact-question-2']) $content .= '2) '.ВОПРОС_2_НА_ЭМЕЙЛ.': '.$_POST['contact-question-2'].'<br>';
 				if(isset($_POST['contact-question-3']) && $_POST['contact-question-3']) $content .= '3) '.ВОПРОС_3_НА_ЭМЕЙЛ.': '.$_POST['contact-question-3'].'<br>';
@@ -280,7 +279,7 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
 						$content2 .= 'Ссылка на фото (галерея 1): '.$album->gallery1_link.'<br><br>';
 					if(isset($album->gallery2_link) && $album->gallery2_link)
 						$content2 .= 'Ссылка на фото (галерея 2): '.$album->gallery2_link.'<br><br>';
-					$content .= '<br>'.$content2;
+					//$content .= '<br>'.$content2;
 					//сохранение в БД
 					if (empty($album->review_before)) {
 						$album->review_before = $content;
@@ -294,12 +293,18 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
 					{
 						//страница colleagueview
 						$album = Album::model()->find('id='.$_POST['is-colleagueview']);
+						$content .= '-----------------<br>';
 						$content2 = '';
 						if(isset($album->gallery1_link) && $album->gallery1_link)
 							$content2 .= 'Ссылка на фото (галерея 1): '.$album->gallery1_link.'<br><br>';
 						if(isset($album->gallery2_link) && $album->gallery2_link)
 							$content2 .= 'Ссылка на фото (галерея 2): '.$album->gallery2_link.'<br><br>';
-						$content .= '<br>'.$content2;
+						//$content .= '<br>'.$content2;
+						//сохранение в БД
+						$review = $album->comments;
+						$review .= $content;
+						$album->comments = $review;
+						$album->save();
 					}
 				}
 				//отправка
