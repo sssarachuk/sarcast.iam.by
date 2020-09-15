@@ -102,7 +102,7 @@ $IMG = new ModelToolImage();
       <div class="col-xs-12 col-sm-12">
         <h3 style="background:#ffff00;">Скачать фотографии можно ниже</h3>
         <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
-        <b style="color:#008000;">(ссылку получите после заполнения формы)</b>
+        <b style="color:#008000;">(ссылку получите после заполнения формы отзыва)</b>
         <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
         <b style="color:#008000; background:#ffff00;">Пожалуйста, проявите ответственность, так вы поможете всем нам лучше работать в команде.<br><br>Уделите немного больше времени в благодарность за фото.<br>Спасибо за понимание!</b>
         <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
