@@ -8,7 +8,7 @@
             </sction>
         </div>
         <footer class="quiz quiz-footer">
-            <button class="button button-primary button-ujarak button-grey">
+            <button class="button button-primary button-ujarak button-grey" disabled>
                 <span class="icon mdi mdi-arrow-left"></span>
                 Предыдущий
             </button>
