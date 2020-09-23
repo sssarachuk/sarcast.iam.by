@@ -33670,9 +33670,29 @@ form[id^="callback"] .form-wrap {
     box-shadow: 3px 3px 7px 0 rgba(0,0,0,.25);
 }
 
+.button-grey {
+  border-radius: 90px;
+  box-shadow: 3px 3px 7px 0 rgba(0,0,0,.25);
+  background-color: lightgrey;
+}
+
+.button-inline {
+  margin-top: 0px;
+  margin-left: 10px;
+}
+
 input.input-pink {
     background:#fff;
     padding:5px;
     border: 1px solid #828282 !important;
     border-radius:5px;
+}
+
+.quiz .quiz-body {
+  padding: 20px 0 20px 0;
+}
+
+.quiz .quiz-footer {
+    padding: 20px 0 0 0;
+    border-top: solid 1px #f3f3f3;
 }
