@@ -148,11 +148,7 @@ $IMG = new ModelToolImage();
             <div class="form-wrap">
               <label class="form-label icon-gray-7" for="contact-question-4-<?=$album->id?>"><?=ВОПРОС_4_НА_ЭМЕЙЛ?> *</label>
               <textarea class="form-input required f-1" id="contact-question-4-<?=$album->id?>" name="contact-question-4"></textarea>
-            </div>
-            <div class="form-wrap">
-              <label class="form-label icon-gray-7" for="contact-question-5-<?=$album->id?>"><?=ВОПРОС_5_НА_ЭМЕЙЛ?> *</label>
-              <textarea class="form-input required f-1" id="contact-question-5-<?=$album->id?>" name="contact-question-5"></textarea>
-            </div>
+            </div>            
 
           <!--Текст и кнопка-->
           <span id="text-success-<?=$album->id?>"></span>
