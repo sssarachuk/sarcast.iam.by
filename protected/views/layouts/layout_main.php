@@ -107,19 +107,35 @@
                   </div>
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
-                    <li><a href="/">ГЛАВНАЯ<span></span><span></span><span></span><span></span></a>
+                    <li><a href="javascript:void(0)">ГЛАВНАЯ<span></span><span></span><span></span><span></span></a>
+                      <!-- RD Navbar Dropdown-->
+                      <ul class="rd-navbar-dropdown">
+                        <li><a href="/#start">В НАЧАЛО</a></li>
+                          <?php $categories = Category::model()->findAll('sort >=0 ORDER BY id'); ?>
+                          <?php foreach($categories as $category): ?>
+                        <li><a href="/#<?=$category->slug;?>"><?=$category->h1_nav;?></a></li>
+                        <?php endforeach; ?>
+                      </ul>
                     </li>
                     <li><a href="javascript:void(0)">&nbsp&nbspФОТО&nbsp<span></span><span></span><span></span><span></span></a>
                       <!-- RD Navbar Dropdown-->
                       <ul class="rd-navbar-dropdown">
-                          <?php $categories = Category::model()->findAll(); ?>
+                          <?php $categories = Category::model()->findAll('sort !=-100500 ORDER BY id'); ?>
                           <?php foreach($categories as $category): ?>
                         <li><a href="/category/<?=$category->slug;?>"><?=$category->h1_nav;?></a></li>
                         <?php endforeach; ?>
                       </ul>
+                    </li>                    
+                    <li><a href="javascript:void(0)">ЦЕНЫ<span></span><span></span><span></span><span></span></a>
+                      <!-- RD Navbar Dropdown-->
+                      <ul class="rd-navbar-dropdown">                        
+                          <?php $categories = Category::model()->findAll(); ?>
+                          <?php foreach($categories as $category): ?>
+                        <li><a href="/service/#price-<?=$category->slug;?>"><?=$category->h1_nav;?></a></li>
+                        <?php endforeach; ?>
+                      </ul>
                     </li>
                     <li><a href="/review/">ОТЗЫВЫ<span></span><span></span><span></span><span></span></a></li>
-                    <li><a href="/service/">ЦЕНЫ<span></span><span></span><span></span><span></span></a></li>
                     <li><a href="/site/about/">ОБО МНЕ<span></span><span></span><span></span><span></span></a></li>
                   </ul>
                 </div>

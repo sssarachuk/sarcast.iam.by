@@ -66,7 +66,7 @@
 		<?php echo $form->labelEx($model,'sort'); ?>
 		<?php echo $form->textField($model,'sort'); ?>
 		<?php echo $form->error($model,'sort'); ?>
-		<small>(сортировка по возрастанию, цифры меньше 0 скрывают с Главной страницы)</small>
+		<small>(сортировка по возрастанию, цифры меньше 0 скрывают с Главной страницы, цифра -100500 не показывает даже в меню)</small>
 	</div>
     <br>
     <div class="row">

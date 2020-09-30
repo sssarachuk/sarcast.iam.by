@@ -4,7 +4,7 @@ $IMG = new ModelToolImage();
 ?>
 
 <!--Слайдер-->
-<section class="section section-variant-1 bg-white text-center" style="padding:0 0 15px 0;">
+<section id="start" class="section section-variant-1 bg-white text-center" style="padding:0 0 15px 0;">
         <div class="shell">
           <div class="range range-30 range-md-center">
            <h1><?= К_ЗАГОЛОВОК2_ГЛАВНОЙ_СТРАНИЦЫ ?></h1>

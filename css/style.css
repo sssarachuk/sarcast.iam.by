@@ -14674,7 +14674,7 @@ html.lt-ie-10 .range > .cell-lg-12 {
 }
 
 .rd-navbar-static .rd-navbar-nav > li + li {
-  margin-left: 15px;
+  margin-left: 10px;/*15px;*/
 }
 
 .rd-navbar-static .rd-navbar-nav > li.rd-navbar-submenu > a {
