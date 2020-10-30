@@ -29,7 +29,7 @@ $this->menu=array(
  data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
  data-description="<?=$model->title?> <?=$hashtags?>"
  data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$model->showImagesUrl()[0];?>"
- data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$model->slug;?>">
+ data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$model->id.'-'.$model->created_at;?>">
 </div><br>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
@@ -38,9 +38,10 @@ $this->menu=array(
 		'id',
 		'title',
 		'seo_description',
-		'seo_keywords',
-        'slug',
-        'folder',
+		'seo_keywords',        
+		'folder',
+		'gallery1_link',
+		'gallery2_link',
 		//'created_at',
 	),
 )); ?>
@@ -60,7 +61,7 @@ $this->menu=array(
 						data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
 						data-description="<?=$model->title?> <?=$hashtags?>"
 						data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$url;?>"
-						data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$model->slug;?>">
+						data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$model->id.'-'.$model->created_at;?>">
 					</div>
 					<img src="<?=$url;?>" alt="<?=$album->title;?> фото <?=$counter;?>" width="720">
 				</div>

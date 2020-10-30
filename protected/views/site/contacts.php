@@ -21,33 +21,33 @@
                     <p class="heading-5">Пишите</p>
                     <div class="divider-modern"></div>
                     <div class="unit unit-horizontal unit-spacing-xxs">
-                      <div class="unit__left"><a class="icon icon-md icon-gray-7 fa fa-whatsapp" href="https://api.whatsapp.com/send?phone=375296039949"></a></span></div>
-                      <div class="unit__body"><a class="contacts-underline" href="https://api.whatsapp.com/send?phone=375296039949" target="_blank">WhatsApp</a></div>
+                      <div class="unit__left"><a class="icon icon-md icon-gray-7 fa fa-whatsapp" href="<?=WHATSAPP_АККАУНТ?>"></a></span></div>
+                      <div class="unit__body"><a class="contacts-underline" href="<?=WHATSAPP_АККАУНТ?>" target="_blank">WhatsApp</a></div>
                     </div>
                     <div class="unit unit-horizontal unit-spacing-xxs">
-                      <div class="unit__left"><a class="icon icon-md icon-gray-7 fa fa-phone-square" href="viber://chat?number=375296039949"></a></span></div>
-                      <div class="unit__body"><a class="contacts-underline" href="viber://chat?number=375296039949" target="_blank">Viber</a></div>
+                      <div class="unit__left"><a class="icon icon-md icon-gray-7 fa fa-phone-square" href="<?=VIBER_АККАУНТ?>"></a></span></div>
+                      <div class="unit__body"><a class="contacts-underline" href="<?=VIBER_АККАУНТ?>" target="_blank">Viber</a></div>
                     </div>
                     <div class="unit unit-horizontal unit-spacing-xxs">
-                      <div class="unit__left"><a class="icon icon-md icon-gray-7 fa fa-telegram" href="https://t.me/sarachuk"></a></span></div>
-                      <div class="unit__body"><a class="contacts-underline" href="https://t.me/sarachuk" target="_blank">Telegram</a></div>
+                      <div class="unit__left"><a class="icon icon-md icon-gray-7 fa fa-telegram" href="<?=TELEGRAM_АККАУНТ?>"></a></span></div>
+                      <div class="unit__body"><a class="contacts-underline" href="<?=TELEGRAM_АККАУНТ?>" target="_blank">Telegram</a></div>
                     </div>
                   </div>
                   <div class="layout-columns__aside-item">
                     <p class="heading-5">Звоните</p>
                     <div class="divider-modern"></div>
                     <div class="unit unit-horizontal unit-spacing-xxs">
-                      <div class="unit__left"><a class="icon icon-md icon-gray-7 fa fa-phone" href="tel:+375296039949" target="_blank"></a></span></div>
-                      <div class="unit__body"><a class="contacts-underline" href="tel:+375296039949" target="_blank">+375 (29) 603-99-49</a></div>
+                      <div class="unit__left"><a class="icon icon-md icon-gray-7 fa fa-phone" href="<?=PHONE_LINK?>" target="_blank"></a></span></div>
+                      <div class="unit__body"><a class="contacts-underline" href="<?=PHONE_LINK?>" target="_blank"><?=PHONE_TEXT?></a></div>
                     </div>
                   </div>
                   <div class="layout-columns__aside-item">
                     <p class="heading-5">Подписывайтесь</p>
                     <div class="divider-modern"></div>
                     <ul class="list-inline-xs">
-                      <li><a class="icon icon-md icon-gray-7 fa fa-instagram" href="https://www.instagram.com/sarachuk.sergey" target="_blank"></a></li>
-                      <li><a class="icon icon-md icon-gray-7 fa fa-facebook" href="https://www.facebook.com/sarachuk" target="_blank"></a></li>
-                      <li><a class="icon icon-md icon-gray-7 fa fa-vk" href="https://m.vk.com/sarachuk.sergey" target="_blank"></a></li>
+                      <li><a class="icon icon-md icon-gray-7 fa fa-instagram" href="<?=INSTAGRAM_АККАУНТ?>" target="_blank"></a></li>
+                      <li><a class="icon icon-md icon-gray-7 fa fa-facebook" href="<?=FACEBOOK_АККАУНТ?>" target="_blank"></a></li>
+                      <li><a class="icon icon-md icon-gray-7 fa fa-vk" href="<?=VKONTAKTE_АККАУНТ?>" target="_blank"></a></li>
                     </ul>
                   </div>
                   <!--<div class="layout-columns__aside-item">

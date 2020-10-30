@@ -260,15 +260,13 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
                 $content = 'Имя: '.$_POST['name'].'<br>';
                 $content .= 'Телефон: '.$_POST['phone'].'<br>';
                 if(isset($_POST['email']) && $_POST['email']) $content .= 'Email: '.$_POST['email'].'<br>';
-                if(isset($_POST['date']) && $_POST['date']) $content .= 'Дата: '.$_POST['date'].'<br>';
+				if(isset($_POST['date']) && $_POST['date']) {$content .= 'Дата: '.$_POST['date'].'<br>';} else {$content .= 'Дата заполнения: '.date("d-m-Y H:i").'<br>';}
 				if(isset($_POST['message']) && $_POST['message']) $content .= 'Сообщение: '.$_POST['message'].'<br>';
 				if(isset($_POST['message-footer']) && $_POST['message-footer']) $content .= 'Сообщение: '.$_POST['message-footer'].'<br>';
 				//$content .= 'Подарки: '.К_ПОДАРКИ_НА_ЭМЕЙЛ.'<br><br>';
 				if(isset($_POST['contact-question-1']) && $_POST['contact-question-1']) $content .= '1) '.ВОПРОС_1_НА_ЭМЕЙЛ.': '.$_POST['contact-question-1'].'<br>';
 				if(isset($_POST['contact-question-2']) && $_POST['contact-question-2']) $content .= '2) '.ВОПРОС_2_НА_ЭМЕЙЛ.': '.$_POST['contact-question-2'].'<br>';
-				if(isset($_POST['contact-question-3']) && $_POST['contact-question-3']) $content .= '3) '.ВОПРОС_3_НА_ЭМЕЙЛ.': '.$_POST['contact-question-3'].'<br>';
-				if(isset($_POST['contact-question-4']) && $_POST['contact-question-4']) $content .= '4) '.ВОПРОС_4_НА_ЭМЕЙЛ.': '.$_POST['contact-question-4'].'<br>';
-				if(isset($_POST['contact-question-5']) && $_POST['contact-question-5']) $content .= '5) '.ВОПРОС_5_НА_ЭМЕЙЛ.': '.$_POST['contact-question-5'].'<br>';
+				if(isset($_POST['contact-question-3']) && $_POST['contact-question-3']) $content .= '3) '.ВОПРОС_3_НА_ЭМЕЙЛ.': '.$_POST['contact-question-3'].'<br>';				
 
 				if(isset($_POST['is-clientview']) && $_POST['is-clientview'])
 				{

@@ -28,7 +28,7 @@ $IMG = new ModelToolImage();
                   </p>
                 </div>
 
-                <div class="col-xs-12 col-sm-11"><br><h2>Когда у вас свадьба / съемка?</h2></div>
+                <div class="col-xs-12 col-sm-11"><br><h2>Связаться со мной просто!</h2></div>
                 <div class="col-xs-12 col-sm-3"></div>
                 <div class="col-xs-12 col-sm-6">
                     <form class="callback" id="callback" method="post" action="">

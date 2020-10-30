@@ -100,17 +100,17 @@
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-element">
                     <ul class="list-icons list-inline-sm">
-                      <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera" href="https://api.whatsapp.com/send?phone=375296039949" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                      <li><a class="icon icon-sm fa fa-phone-square icon-style-camera" href="viber://chat?number=375296039949" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                      <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="https://m.vk.com/write6783151" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                      <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera" href="<?=WHATSAPP_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                      <li><a class="icon icon-sm fa fa-phone-square icon-style-camera" href="<?=VIBER_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                      <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="<?=VKONTAKTE_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
                     </ul>
                   </div>
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
-                    <li><a href="javascript:void(0)">ГЛАВНАЯ<span></span><span></span><span></span><span></span></a>
+                    <li><a href="javascript:void(0)">УСЛУГИ<span></span><span></span><span></span><span></span></a>
                       <!-- RD Navbar Dropdown-->
                       <ul class="rd-navbar-dropdown">
-                        <li><a href="/#start">В НАЧАЛО</a></li>
+                        <li><a href="/#start">НА ГЛАВНУЮ</a></li>
                           <?php $categories = Category::model()->findAll('sort >=0 ORDER BY id'); ?>
                           <?php foreach($categories as $category): ?>
                         <li><a href="/#<?=$category->slug;?>"><?=$category->h1_nav;?></a></li>
@@ -172,15 +172,15 @@
                   </form>
               <!-- RD Mailform-->
               <ul class="list-icons list-inline-sm">
-                <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera" href="https://api.whatsapp.com/send?phone=375296039949" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera" href="<?=WHATSAPP_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
                 <li><a class="icon icon-sm fa fa-phone-square icon-style-camera" href="viber://chat?number=375296039949" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="https://www.instagram.com/sarachuk.sergey/" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="https://m.vk.com/write6783151" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="https://www.facebook.com/sarachuk" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="<?=INSTAGRAM_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="<?=VKONTAKTE_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="<?=FACEBOOK_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
               </ul>
               <!-- Rights-->
-              <p class="rights"><a href="tel:+375296039949" rel="nofollow noopener" target="_blank">+375(29)6039949</a></p>
-              <p class="rights"><span>&copy&nbsp2015-</span><span class="copyright-year"></span>&nbsp&nbsp<a href="/site/about" rel="nofollow noopener" target="_blank">Сергей Сарачук</a>&nbsp&nbsp|&nbsp&nbsp<a href="/site/policy" rel="nofollow noopener" target="_blank">Политика конфиденциальности</a><br class="veil-xs">
+              <p class="rights"><a href="<?=PHONE_LINK?>" rel="nofollow noopener" target="_blank"><?=PHONE_TEXT?></a></p>
+              <p class="rights"><span>&copy&nbsp2015-</span><span class="copyright-year"></span>&nbsp&nbsp<a href="/site/about" rel="nofollow noopener" target="_blank"><?=АВТОРЫ_КОНТЕНТА?></a>&nbsp&nbsp|&nbsp&nbsp<a href="/site/policy" rel="nofollow noopener" target="_blank">Политика конфиденциальности</a><br class="veil-xs">
                 <!-- {%FOOTER_LINK}-->
               </p>
             </div>

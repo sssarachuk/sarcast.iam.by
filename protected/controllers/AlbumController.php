@@ -35,27 +35,38 @@ class AlbumController extends Controller {
 	 */
 	public function actionView($slug){
 
-        $album = Album::model()->find('slug=?', array($slug));
+		$repost = false;
+		$album = Album::model()->find('slug=?', array($slug));
+		
         if (!$album) {
-			//ищем адрес формата "id-slug"
+			//ищем адрес формата "id-created_at"
 			$id2 = strstr($slug, '-', true);
 			$slug2 = substr(strstr($slug, '-'), 1);
-			$album = Album::model()->find('id='.$id2.' AND slug=?', array($slug2));
-
+			$album = Album::model()->find('id='.$id2.' AND created_at=?', array($slug2));
+			
 			if (!$album) {
-				//ищем адрес формата "id-id-slug"
-				$slug = $slug2;
+				//ищем адрес формата "id-slug"
 				$id2 = strstr($slug, '-', true);
 				$slug2 = substr(strstr($slug, '-'), 1);
-				$album = Album::model()->find('id='.$id2.' AND slug=?', array($slug2));
+				$album = Album::model()->find('id='.$id2.' AND slug=?', array($slug2));			
 
-				if (!$album)
-					throw new CHttpException(404, 'Запрашиваемый вами альбом не найден');
+				if (!$album) {
+					//ищем адрес формата "id-id-slug"
+					$slug = $slug2;
+					$id2 = strstr($slug, '-', true);
+					$slug2 = substr(strstr($slug, '-'), 1);
+					$album = Album::model()->find('id='.$id2.' AND slug=?', array($slug2));
+
+					if (!$album)
+						throw new CHttpException(404, 'Запрашиваемый вами альбом не найден');
+					else
+						return $this->actionColleagueView($slug2);//альбом с кнопкой Скачать
+					}
 				else
-					return $this->actionColleagueView($slug2);//альбом с кнопкой Скачать
-				}
+					return $this->actionClientView($slug2);//альбом с кнопкой Скачать
+			}	
 			else
-				return $this->actionClientView($slug2);//альбом с кнопкой Скачать
+				$repost = true;//зашли с репоста			
 		}
 
         $category = Category::model()->findByPk($album->category_id);
@@ -64,11 +75,22 @@ class AlbumController extends Controller {
 
 		$hashtags = $this->getHashTags($album->seo_keywords);
 		$this->actionOpenGraphMetaTags($album, $category);
-        $this->metaTags = array(
-            'title'			=> $album->title,
-            'description'	=> $album->seo_description,
-            'keywords'		=> $album->seo_keywords
-		);
+
+		if($repost) {
+			$this->metaTags = array(
+				'title'			=> $album->title,
+				'description'	=> $album->seo_description,
+				'keywords'		=> $album->seo_keywords,
+				'robots'		=> 'noindex'
+			);
+		}
+		else {
+			$this->metaTags = array(
+				'title'			=> $album->title,
+				'description'	=> $album->seo_description,
+				'keywords'		=> $album->seo_keywords
+			);
+		}        
 
         $this->render('view',array(
                 'album' => $album,

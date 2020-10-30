@@ -89,14 +89,14 @@
 		<?php echo $form->labelEx($model,'gallery1_link'); ?>
 		<?php echo $form->textField($model,'gallery1_link'); ?>
 		<?php echo $form->error($model,'gallery1_link'); ?>
-		<small>(весь отснятый НЕобработанный материал - ссылка на скачивание)</small>
+		<small>(весь отснятый НЕобработанный материал - ссылка на скачивание с облака)</small>
 	</div>
     <br>
     <div class="row">
 		<?php echo $form->labelEx($model,'gallery2_link'); ?>
 		<?php echo $form->textField($model,'gallery2_link'); ?>
 		<?php echo $form->error($model,'gallery2_link'); ?>
-		<small>(готовые отобранные и обработанные фотографии - ссылка на скачивание)</small>
+		<small>(готовые Обработанные фотографии - ссылка на скачивание с облака)</small>
 	</div>
 	<br>
     <div class="row">

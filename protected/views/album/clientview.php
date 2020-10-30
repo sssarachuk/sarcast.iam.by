@@ -28,13 +28,13 @@ $IMG = new ModelToolImage();
                   <script src="https://yastatic.net/share2/share.js"></script>
 
                   <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
-                  <div><span>Поделитесь с друзьями в соцсетях: </span>
+                  <div><span>Сделайте репост друзьям и близким</span>
                     <div class="ya-share2"
                     data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
                     data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
                     data-description="<?=$album->title?> <?=$hashtags?>"
                     data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
+                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
                     </div>
                   </div><br>
                   </div>
@@ -56,8 +56,7 @@ $IMG = new ModelToolImage();
     </div>
 
 <section id="photo-1" class="section section-md bg-white oh text-center">
-        <div class="shell">
-        <p><?=$album->text1;?></p>
+        <div class="shell">        
     <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
             <div class="row">
                 <?php $images_url = $album->showImagesUrl(); ?>
@@ -90,32 +89,37 @@ $IMG = new ModelToolImage();
     <div class="shell">
     <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
       <div class="col-xs-12 col-sm-12">
-        <h3 style="background:#ffff00;">Скачать фотографии можно ниже</h3>
+        <h3 style="background:#ffff00;">Скачать остальные фотографии можно ниже</h3>
+        <b style="color:#008000;">(заполните форму для скачивания)</b>
         <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
-        <b style="color:#008000;">(ссылку получите после заполнения формы отзыва)</b>
-        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+        <!--<div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
         <b style="color:#008000; background:#ffff00;">Пожалуйста, проявите ответственность, так вы поможете всем нам лучше работать в команде.<br><br>Уделите немного больше времени в благодарность за фото.<br>Спасибо за понимание!</b>
-        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>-->
       </div>
     <?php } ?>
     <div class="col-xs-12 col-sm-3">
       </div>
     <div class="col-xs-12 col-sm-6">
     <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
+      
+      <!--<a href="javascript:void(0)" onclick="javascript:$('#callback-<?=$album->id?>').css('display','block');" rel="nofollow noopener"><span class="button button-primary button-ujarak button-pink">Скачать все фотографии&nbsp;<span class="icon mdi mdi-download"></span></span></a>-->
+
       <!-- RD Mailform-->
       <form class="callback" id="callback-<?=$album->id?>" method="post" action="">
-          <!--Ваше имя-->
+          <!--Ваше имя-->          
           <div class="form-wrap">
             <input class="form-input required f-1" id="contact-name-<?=$album->id?>" type="name" name="name">
-            <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>"><?=((empty($album->review_before)) ? 'Ваше имя (если индивидульно) или имена (если пара)' : 'Ваша страничка в соцсетях (добавлю в друзья)') . ' *'; ?></label>
+            <label class="form-label icon-gray-7" for="contact-name-<?=$album->id?>">Ваше имя *</label>
           </div>
-          <div class="form-wrap">
-            <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
-            <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш e-mail (придет ссылка на скачку фото (проверяйте спам)) *</label>
-          </div>
+          <!--Ваш контактный телефон-->
           <div class="form-wrap">
             <input class="form-input phone f-1 required" id="contact-phone-<?=$album->id?>" type="text" name="phone">
-            <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш контактный телефон (для скидки на будущие заказы) *</label>
+            <label class="form-label icon-gray-7" for="contact-phone-<?=$album->id?>">Ваш телефон *</label>
+          </div>
+          <!--Ваш контактный Email-->
+          <div class="form-wrap">
+            <input class="form-input required f-1" id="contact-email-<?=$album->id?>" type="email" name="email">
+            <label class="form-label icon-gray-7" for="contact-email-<?=$album->id?>">Ваш e-mail *</label>
           </div>
             <!--Вопросы-->
           <div class="form-wrap">
@@ -130,41 +134,59 @@ $IMG = new ModelToolImage();
             <label class="form-label icon-gray-7" for="contact-question-3-<?=$album->id?>"><?=ВОПРОС_3_НА_ЭМЕЙЛ?> *</label>
             <textarea class="form-input required f-1" id="contact-question-3-<?=$album->id?>" name="contact-question-3"></textarea>
           </div>
-          <div class="form-wrap">
-            <label class="form-label icon-gray-7" for="contact-question-4-<?=$album->id?>"><?=ВОПРОС_4_НА_ЭМЕЙЛ?> *</label>
-            <textarea class="form-input required f-1" id="contact-question-4-<?=$album->id?>" name="contact-question-4"></textarea>
-          </div>          
 
           <!--Текст и кнопка-->
           <span id="text-success-<?=$album->id?>"></span>
           <div id="client-button-<?=$album->id?>" class="form-wrap form-button offset-1">
             <br>
-            <button class="button button-primary button-ujarak button-pink" type="submit">Хочу скачать&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+            <button class="button button-primary button-ujarak button-pink" type="submit">Скачать все фотографии&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
           </div>
           <!--Скрытое поле-->
-          <textarea class="form-input f-1" id="contact-message-<?=$album->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>, Path: <?=$album->folder?></textarea>
+          <textarea class="form-input f-1" id="contact-message-<?=$album->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?><br>Folder: <?=$album->folder?></textarea>
           <!--Скрытое поле-->
           <textarea class="form-input f-1" id="is-clientview-<?=$album->id?>" name="is-clientview" style="display: none !important;"><?=$album->id?></textarea>
       </form>
     <?php } ?>
 
   <div id="client-gallery-<?=$album->id?>" style="display: <?=((empty($album->review_before)) ? 'none' : 'block'); ?> !important;" >
-      <br>
-      <div><span>Поделиться в соцсетях (<?=count($album->showImagesUrl())-1;?> фото как на сайте): </span>
-          <div class="ya-share2"
-          data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
-          data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
-          data-description="<?=$album->title?> <?=$hashtags?>"
-          data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-          data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->slug;?>">
-          </div>
-      </div>
+      <br>      
       <div class="col-xs-12 col-sm-12" style="margin-top: 30px;"></div>
-      <?php if(!empty($album->gallery1_link)) { ?>
-          <a href="<?=$album->gallery1_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 1 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
-      <?php } ?>
       <?php if(!empty($album->gallery2_link)) { ?>
-          <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Галерея 2 - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+          <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Обработанные фото - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+      <?php } ?>
+      <?php if(!empty($album->gallery1_link)) { ?>
+          <br><br>
+          <h3 style="background:#ffff00;">А еще есть НЕОБРАБОТАННЫЕ фотографии :)</h3>          
+          <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+          <b style="color:#008000;">1. Сделайте репост на своей странице</b>
+          <div><span></span>
+            <div class="ya-share2"
+            data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
+            data-limit="3"
+            data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+            data-description="<?=$album->title?> <?=$hashtags?>"
+            data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
+            data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+            </div>
+          </div>
+          <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+          <b style="color:#008000;">2. Посмотрите обработанные фотографии</b>
+          <div>
+            <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-default-outline button-ujarak">Обработанные фото&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+          </div>
+          <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+          <b style="color:#008000;">3. И оставьте в лс развернутый отзыв о моей работе</b>
+          <div>
+          <ul class="list-icons list-inline-sm">            
+            <li><a class="icon icon-sm fa fa-instagram icon-style-camera text-primary" href="<?=INSTAGRAM_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+            <li><a class="icon icon-sm fa fa-pinterest icon-style-camera text-primary" href="<?=VKONTAKTE_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+            <li><a class="icon icon-sm fa fa-facebook icon-style-camera text-primary" href="<?=FACEBOOK_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+            <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera text-primary" href="<?=WHATSAPP_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+            <li><a class="icon icon-sm fa fa-phone-square icon-style-camera text-primary" href="<?=VIBER_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+          </ul>
+          </div>
+          <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+          <b style="color:#008000;">4. Получите ссылку на весь необработанный материал в ответ!</b>
       <?php } ?>
     </div>
 
@@ -174,54 +196,3 @@ $IMG = new ModelToolImage();
 
     </div>
   </section>
-
-  <?php if(!empty($album->review_before)) { ?>
-    <section class="section section-md bg-white oh text-center">
-        <div class="shell">
-    <div class="isotope isotope--loaded" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group" style="position: relative; height: 918px;">
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 isotope-item">
-                 <br>
-                  <h2>Смотрите также:</h2>
-                  <br>
-              </div>
-
-              <? $counter = 0; ?><!--показать только 6 альбомов, в приоритете следующие за текущим-->
-              <?php foreach($albums as $alb): ?>
-              <?php $images_url = $alb->showImagesUrl(); ?>
-              <?php if ($alb->id == $album->id) {
-                    $counter = 1;//нашли текущий альбом, начинаем показывать следующие
-                } elseif (($counter >= 1) && ($counter <= 6)) { ?>
-                    <div class="col-xs-12 col-sm-6 col-md-4 isotope-item">
-                      <a href="/album/<?=$alb->slug;?>" >
-                          <img class="lazy" data-src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" src="<?=$IMG->resize($images_url[0], 37, 37, true);?>" alt="<?=$alb->title;?>" width="370" height="370">
-                          <noscript><img src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" data-src="" alt="<?=$alb->title;?>" ></noscript>
-                          </a>
-                      <div class="row"><a href="/album/<?=$alb->slug;?>"><div class="col-sm-12 heading-4" style="min-height: 60px;"><?=$alb->h1;?> (<?=count($images_url)-1;?> фото)</div></a></div>
-                   </div>
-                   <? $counter++; ?>
-                <? } ?>
-              <?php endforeach; ?>
-              <?php if ($counter == 0) $counter = 1; ?> <!--если текущий альбом был скрыт-->
-              <?php if ($counter < 6) ?><!--если недобрали 6шт, то заполнить с начала-->
-                  <?php foreach($albums as $alb): ?>
-                    <?php $images_url = $alb->showImagesUrl(); ?>
-                    <?php if ($alb->id == $album->id) {
-                          break;//нашли текущий альбом, закончили
-                      } elseif ($counter <= 6) { ?>
-                          <div class="col-xs-12 col-sm-6 col-md-4 isotope-item">
-                            <a href="/album/<?=$alb->slug;?>" >
-                                <img class="lazy" data-src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" src="<?=$IMG->resize($images_url[0], 37, 37, true);?>" alt="<?=$alb->title;?>" width="370" height="370">
-                                <noscript><img src="<?=$IMG->resize($images_url[0], 370, 370, true);?>" data-src="" alt="<?=$alb->title;?>" ></noscript>
-                                </a>
-                            <div class="row"><a href="/album/<?=$alb->slug;?>"><div class="col-sm-12 heading-4" style="min-height: 60px;"><?=$alb->h1;?> (<?=count($images_url)-1;?> фото)</div></a></div>
-                          </div>
-                          <? $counter++; ?>
-                      <? } ?>
-                    <?php endforeach; ?>
-
-            </div>
-          </div>
-      </div>
-      </section>
-  <?php } ?>

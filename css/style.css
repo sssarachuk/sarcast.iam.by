@@ -14666,7 +14666,7 @@ html.lt-ie-10 .range > .cell-lg-12 {
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-  padding: 10px 35px;
+  padding: 10px /*35*/25px;
   margin-bottom: 0;
   font-size: 0;
   line-height: 0;

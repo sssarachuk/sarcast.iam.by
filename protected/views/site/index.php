@@ -66,7 +66,7 @@ $IMG = new ModelToolImage();
                     <div class="col-xs-12 col-sm-2">
                     </div>
                    <div class="col-xs-12 col-sm-6">
-                     <p class="h3" style="margin:0;">Оставьте заявку чтобы получить <span style="display: inline-block;"><b>3 подарка</b></span> и консультацию</p>
+                     <p class="h3" style="margin:0;">Я вам перезвоню и подберу<br><b>выгодное предложение</b> по съемке</p>
                      <form id="callback" class="callback rd-mailform form_inline" method="post" action="">
                           <div class="form__inner">
                             <div class="form-wrap">
@@ -96,7 +96,8 @@ $IMG = new ModelToolImage();
 <!--кнопка Узнать подробнее-->
 <!--Категории Альбомов-->
 <?php foreach($categories as $category): ?>
-<section id="<?=$category->slug?>" class="section section-variant-1 bg-white text-center">
+<span id="<?=$category->slug?>"></span>
+<section class="section section-variant-1 bg-white text-center">
         <div class="shell">
           <div class="range range-30 range-md-center">
              <div class="cell-md-11 cell-lg-10">
@@ -154,13 +155,13 @@ $IMG = new ModelToolImage();
             <? if (isset($services) && !empty($services)) { ?>
             <span id="price-<?=$category->slug?>"></span>
             <div class="cell-xs-12 bg-gray-lighter" style="padding: 15px;">
-            <h3>Цена - <?=$category->h1_nav?></h3>
+            <h3>Стоимость - <?=$category->h1_nav?></h3>
             <div class="tabs-custom tabs-horizontal tabs-corporate" id="tabs-<?=$category->slug?>" >
                 <ul class="nav nav-tabs">
                     <? $counter = 1; ?>
                     <?php foreach($services as $service): ?>
                         <? if ($service->category_id == $category->id) { ?>
-                           <? if ($counter == 3) { ?>
+                           <? if ($counter == 2) { ?>
                                <li class="active"><a href="#tabs-<?=$category->slug?>-<?=$counter?>" data-toggle="tab"><?=$service->title?></a></li>
                            <? } else {?>
                                 <li><a href="#tabs-<?=$category->slug?>-<?=$counter?>" data-toggle="tab"><?=$service->title?></a></li>
@@ -174,7 +175,7 @@ $IMG = new ModelToolImage();
                    <?php foreach($services as $service): ?>
                         <? if ($service->category_id == $category->id) { ?>
 
-                                <div class="tab-pane fade<? if ($counter == 3) { echo " in active"; } ?>" id="tabs-<?=$category->slug?>-<?=$counter?>">
+                                <div class="tab-pane fade<? if ($counter == 2) { echo " in active"; } ?>" id="tabs-<?=$category->slug?>-<?=$counter?>">
 
                                 <div class="col-xs-12 col-sm-3">
                                   </div>
@@ -206,7 +207,7 @@ $IMG = new ModelToolImage();
                                 </div>
                                 <div class="col-xs-12 col-sm-6">
                                   <?php $images_url = $service->showImagesUrl(); ?>
-                                  <img class="lazy nosave" data-src="<?=$IMG->resize(is_array($images_url) ? $images_url[0] : $images_url, 0, 400);?>" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" alt="Цена <?=$category->h1?> - <?=$service->title;?> фото <?=$service->id;?>" height="400">
+                                  <img class="lazy nosave" data-src="<?=$IMG->resize(is_array($images_url) ? $images_url[0] : $images_url, 0, 400);?>" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" alt="Стоимость <?=$category->h1?> - <?=$service->title;?> фото <?=$service->id;?>" height="400">
                                 </div>
 
                               </div>
@@ -231,7 +232,7 @@ $IMG = new ModelToolImage();
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                  <br>
-                 <h2>Почему, 5 лет подряд, клиенты доверяют мне?</h2>
+                 <h2>Почему 5 лет подряд клиенты доверяют мне?</h2>
                  <br>
                   <div class="range range-30">
                 <div class="cell-xs-10 cell-sm-6 cell-md-4">
@@ -239,7 +240,7 @@ $IMG = new ModelToolImage();
                     <div class="box-minimal__icon fa fa-thumbs-o-up"></div>
                     <h3 class="box-minimal__title">Профессионализм</h3>
                     <div class="box-minimal__divider"></div>
-                    <div class="box-minimal__text">Съемка с двумя камерами топового уровня. Есть своя фотостудия, вспышки, и 5 премиум объективов. Фотографии со всех камер дублируются на 2 флешки. Гарантия сохранности материала 5 лет</div>
+                    <div class="box-minimal__text">Съемка с двумя камерами топового уровня. Есть своя фотостудия, вспышки, и 5 премиум объективов. Фотографии со всех камер дублируются на 2 флешки. Гарантия сохранности материала 1 год</div>
                   </article>
                 </div>
                 <div class="cell-xs-10 cell-sm-6 cell-md-4">
