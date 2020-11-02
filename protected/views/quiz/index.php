@@ -1,9 +1,12 @@
 <main class="quiz">
+    <?php if ($isStarted == false): ?>
+        <?php $this->widget('QuizTitleWidget', array('model'=>$quiz->title)); ?>
+    <?php else: ?>
     <article class="section section-variant-1 bg-white text-center">
         <h1><?=$quiz->name;?></h1>
         <div class="quiz quiz-body">
             <?php foreach($quiz->questions as $question): ?>
-                <?php $this->widget('QuizQuestionWidget', array('questionModel'=>$question)); ?>
+                <?php $this->widget('QuizQuestionWidget', array('model'=>$question)); ?>
             <?php endforeach; ?>
         </div>
         <footer class="quiz quiz-footer">
@@ -17,4 +20,5 @@
             </button>
         </footer>
     </article>
+    <?php endif ?>
 </main>

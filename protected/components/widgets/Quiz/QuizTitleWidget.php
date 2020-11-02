@@ -5,6 +5,6 @@ class QuizTitleWidget extends CWidget {
     public $model;
 
     public function run() {
-        return $this->render('question', array('question'=>$this->questionModel));
+        return $this->render('quiz-title', array('model'=>$this->model));
     }
 }

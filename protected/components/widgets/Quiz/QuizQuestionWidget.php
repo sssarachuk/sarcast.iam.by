@@ -2,10 +2,10 @@
 
 class QuizQuestionWidget extends CWidget {
 
-    public $questionModel;
+    public $model;
 
     public function run() {
-        return $this->render('quiz-question', array('question'=>$this->questionModel));
+        return $this->render('quiz-question', array('model'=>$this->model));
     }
 
 }
