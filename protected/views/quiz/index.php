@@ -1,15 +1,9 @@
-<?php
-echo $quiz->name;
-?>
 <main class="quiz">
     <article class="section section-variant-1 bg-white text-center">
         <h1><?=$quiz->name;?></h1>
         <div class="quiz quiz-body">
             <?php foreach($quiz->questions as $question): ?>
-                <sction>
-                    <h2><?=$question->text;?></h2>
-                    <div>Варианты ответов</div>
-                </sction>
+                <?php $this->widget('QuizQuestionWidget', array('questionModel'=>$question)); ?>
             <?php endforeach; ?>
         </div>
         <footer class="quiz quiz-footer">

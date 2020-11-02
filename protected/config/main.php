@@ -25,6 +25,7 @@ return array(
 		'application.components.widgets.SpecialOffer.*',
 		'application.components.widgets.SeeAlso.*',
 		'application.components.widgets.NewsBlock.*',
+        'application.components.widgets.Quiz.*',
 		//'application.extensions.phpexcel.PHPExcel'
 	),
 
