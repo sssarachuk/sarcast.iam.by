@@ -5,28 +5,60 @@ include dirname(__DIR__)."/viewmodels/quiz/QuizTitleModel.php";
 
 class QuizController extends Controller {
 
-        public $isStarted = false;
+        private $isStarted = false;
+        private $currentIndex = 0;
+        private $quizModel;
 
-        public function actionIndex(){
+    public function actionIndex(){
 
-            $quiz = new QuizViewModel();
-            $quiz->name = "Рассчитайте стоимость вашей свадьбы";
+            $this->isStarted = isset($_GET['index']);
+            $this->quizModel = $this->getQuizViewModel();
 
-            $question1 = new QuizQuestionModel();
-            $question1->text = "Какая съемка вас интересует?";
+            if($this->isStarted){
+                $this->currentIndex = (int)$_GET['index'];
+            }
 
-            $question2 = new QuizQuestionModel();
-            $question2->text = "Вы больше хотите живые фото (репортажные), постановочные, или микс?";
+            //onClick='location.href="?index=<?=$previousIndex;"'
 
-            $question3 = new QuizQuestionModel();
-            $question3->text = "Какие этапы сьемки вас интересуют?";
+//            Yii::app()->session['quizModel'] = $this->quizModel;
+//            $this->previousIndex = $this->currentIndex - 1 < 0
+//                ? 0
+//                : $this->currentIndex - 1;
+//
+//            $this->nextIndex = $this->currentIndex + 1 > $questionCount
+//                ? $questionCount
+//                : $this->currentIndex + 1;
+            //$this->currentQuestion = $this->quizModel->questions[$this->currentIndex];
 
-            $quiz->questions = array($question1, $question2, $question3);
+            $this->render('index', array(
+                'quizName' => $this->quizModel->name,
+                'quizTitle' => $this->quizModel->title,
+                'currentQuestion' => $this->quizModel->questions[$this->currentIndex],
+                'isStarted' => $this->isStarted,
+            ));
 
-            $quiz->title = $this->getQuizTitleModel(count($quiz->questions));
+    }
 
-            $this->render('index', array('quiz' => $quiz, 'isStarted' => $this->isStarted));
+    private function getQuizViewModel(){
+        $quizModel = new QuizViewModel();
+        $quizModel->name = "Рассчитайте стоимость вашей свадьбы";
+        $quizModel->questions = $this->getQuizQuestions();
+        $quizModel->title = $this->getQuizTitleModel(count($quizModel->questions));
 
+        return $quizModel;
+    }
+
+    private function getQuizQuestions(){
+        $question1 = new QuizQuestionModel();
+        $question1->text = "Какая съемка вас интересует?";
+
+        $question2 = new QuizQuestionModel();
+        $question2->text = "Вы больше хотите живые фото (репортажные), постановочные, или микс?";
+
+        $question3 = new QuizQuestionModel();
+        $question3->text = "Какие этапы сьемки вас интересуют?";
+
+        return array($question1, $question2, $question3);
     }
 
     private function getQuizTitleModel($questionNumber) {

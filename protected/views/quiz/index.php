@@ -1,13 +1,11 @@
 <main class="quiz">
     <?php if ($isStarted == false): ?>
-        <?php $this->widget('QuizTitleWidget', array('model'=>$quiz->title)); ?>
+        <?php $this->widget('QuizTitleWidget', array('model'=>$quizTitle)); ?>
     <?php else: ?>
     <article class="section section-variant-1 bg-white text-center">
-        <h1><?=$quiz->name;?></h1>
+        <h1><?=$quizName;?></h1>
         <div class="quiz quiz-body">
-            <?php foreach($quiz->questions as $question): ?>
-                <?php $this->widget('QuizQuestionWidget', array('model'=>$question)); ?>
-            <?php endforeach; ?>
+            <?php $this->widget('QuizQuestionWidget', array('model'=>$currentQuestion)); ?>
         </div>
         <footer class="quiz quiz-footer">
             <button class="button button-primary button-ujarak button-grey" disabled>

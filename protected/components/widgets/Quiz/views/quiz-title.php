@@ -7,7 +7,7 @@
             <div class="col-xs-12 col-sm-6 col-md-6">
                 <h3><?=$model->title;?></h3>
                 <div><?=$model->description;?></div>
-                <button class="button button-primary button-ujarak button-pink">
+                <button onClick='location.href="?index=1"' class="button button-primary button-ujarak button-pink">
                     <span class="icon mdi mdi-checkbox-marked-circle-outline"></span>
                     <?=$model->startButtonTitle;?>
                 </button>
