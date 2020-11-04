@@ -33702,6 +33702,10 @@ input.input-pink {
     border-radius:5px;
 }
 
+.quiz {
+  padding: 0 0 15px 0;
+}
+
 .quiz .quiz-body {
   padding: 20px 0 20px 0;
 }
