@@ -6,44 +6,57 @@ include dirname(__DIR__)."/viewmodels/quiz/QuizTitleModel.php";
 class QuizController extends Controller {
 
         private $isStarted = false;
+        private $previousIndex = 0;
         private $currentIndex = 0;
+        private $nextIndex = 0;
         private $quizModel;
 
     public function actionIndex(){
 
             $this->isStarted = isset($_GET['index']);
             $this->quizModel = $this->getQuizViewModel();
+            $questionCount = count($this->quizModel->questions);
 
             if($this->isStarted){
+
                 $this->currentIndex = (int)$_GET['index'];
+
+                if($this->currentIndex >= $questionCount){
+                    $this->currentIndex = $questionCount - 1;
+                }
+
+                $this->previousIndex = $this->currentIndex - 1 < 0
+                    ? 0
+                    : $this->currentIndex - 1;
+
+                $this->nextIndex = $this->currentIndex + 1 >= $questionCount
+                    ? $questionCount
+                    : $this->currentIndex + 1;
             }
-
-            //onClick='location.href="?index=<?=$previousIndex;"'
-
-//            Yii::app()->session['quizModel'] = $this->quizModel;
-//            $this->previousIndex = $this->currentIndex - 1 < 0
-//                ? 0
-//                : $this->currentIndex - 1;
-//
-//            $this->nextIndex = $this->currentIndex + 1 > $questionCount
-//                ? $questionCount
-//                : $this->currentIndex + 1;
-            //$this->currentQuestion = $this->quizModel->questions[$this->currentIndex];
 
             $this->render('index', array(
                 'quizName' => $this->quizModel->name,
                 'quizTitle' => $this->quizModel->title,
                 'currentQuestion' => $this->quizModel->questions[$this->currentIndex],
+                'nextIndex' => $this->nextIndex,
+                'previousIndex' => $this->previousIndex,
                 'isStarted' => $this->isStarted,
+                'previousButtonDisabled' => $this->currentIndex == 0,
+                'nextButtonDisabled' => $this->currentIndex == $questionCount-1,
             ));
 
     }
 
     private function getQuizViewModel(){
-        $quizModel = new QuizViewModel();
-        $quizModel->name = "Рассчитайте стоимость вашей свадьбы";
-        $quizModel->questions = $this->getQuizQuestions();
-        $quizModel->title = $this->getQuizTitleModel(count($quizModel->questions));
+        $quizModel = Yii::app()->session['quizModel'];
+
+        if(is_null($quizModel)){
+            $quizModel = new QuizViewModel();
+            $quizModel->name = "Рассчитайте стоимость вашей свадьбы";
+            $quizModel->questions = $this->getQuizQuestions();
+            $quizModel->title = $this->getQuizTitleModel(count($quizModel->questions));
+            Yii::app()->session['quizModel'] = $quizModel;
+        }
 
         return $quizModel;
     }
