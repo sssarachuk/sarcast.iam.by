@@ -7,8 +7,17 @@
             </header>
             <div class="quiz-body__question">
                 <h3><?=$model->text;?></h3>
-                <div><?=$model->type;?></div>
-                <div><?=$model->answerOptions?></div>
+                <?php if ($model->type == 'SingleSelect'): ?>
+                    <?php $this->widget('QuizSingleSelectWidget'); ?>
+                <?elseif ($model->type == 'SingleSelectImage'): ?>
+                    <?php $this->widget('QuizSingleSelectImageWidget'); ?>
+                <?elseif ($model->type == 'MultiSelect'): ?>
+                    <?php $this->widget('QuizMultiSelectWidget'); ?>
+                <?elseif ($model->type == 'MultiSelectImage'): ?>
+                    <?php $this->widget('QuizMultiSelectImageWidget'); ?>
+                <?else:?>
+                    <?=$model->type?> не существует в системе
+                <?endif;?>
             </div>
             <footer class="quiz-body__footer">
                 <button onClick='location.href="?index=<?=$previousIndex;?>"'

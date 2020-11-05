@@ -63,15 +63,22 @@ class QuizController extends Controller {
 
     private function getQuizQuestions(){
         $question1 = new QuizQuestionModel();
-        $question1->text = "Какая съемка вас интересует?";
+        $question1->text = "Какой вид фотосессии вас интересует?";
+        $question1->type = "SingleSelectImage";
 
         $question2 = new QuizQuestionModel();
-        $question2->text = "Вы больше хотите живые фото (репортажные), постановочные, или микс?";
+        $question2->text = "Что вы хотите видеть на фотографиях";
+        $question2->type = "MultiSelect";
 
         $question3 = new QuizQuestionModel();
         $question3->text = "Какие этапы сьемки вас интересуют?";
+        $question3->type = "MultiSelectImage";
 
-        return array($question1, $question2, $question3);
+        $question4 = new QuizQuestionModel();
+        $question4->text = "Выберите тип фотосессии";
+        $question4->type = "SingleSelectImage";
+
+        return array($question1, $question2, $question3, $question4);
     }
 
     private function getQuizTitleModel($questionNumber) {
