@@ -2,6 +2,7 @@
 include dirname(__DIR__)."/viewmodels/quiz/QuizViewModel.php";
 include dirname(__DIR__)."/viewmodels/quiz/QuizQuestionModel.php";
 include dirname(__DIR__)."/viewmodels/quiz/QuizTitleModel.php";
+include dirname(__DIR__)."/viewmodels/quiz/QuizQuestionOption.php";
 
 class QuizController extends Controller {
 
@@ -65,6 +66,16 @@ class QuizController extends Controller {
         $question1 = new QuizQuestionModel();
         $question1->text = "Какой стиль съемки вам подходит больше всего?";
         $question1->type = "SingleSelect";
+        $question1Option1 = new QuizQuestionOption();
+        $question1Option1->text = "Репортажная";
+        $question1Option1->value = "Репортажная";
+        $question1Option2 = new QuizQuestionOption();
+        $question1Option2->text = "Постановочная";
+        $question1Option2->value = "Постановочная";
+        $question1Option3 = new QuizQuestionOption();
+        $question1Option3->text = "Микс";
+        $question1Option3->value = "Микс";
+        $question1->options = array($question1Option1, $question1Option2, $question1Option3);
 
         $question2 = new QuizQuestionModel();
         $question2->text = "Что вы хотите видеть на фотографиях";

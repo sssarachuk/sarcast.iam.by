@@ -2,12 +2,12 @@
 
 class QuizSingleSelectWidget extends CWidget {
 
-    public $model;
+    public $options;
 
     public function run() {
 
         return $this->render('quiz-single-select', array(
-            'model'=>$this->model,
+            'options'=>$this->options,
         ));
     }
 

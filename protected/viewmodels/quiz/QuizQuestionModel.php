@@ -2,6 +2,7 @@
 
 class QuizQuestionModel {
     public $text;
-    public $answerOptions;
+    public $options;
     public $type;
+    public $selectedOption;
 }

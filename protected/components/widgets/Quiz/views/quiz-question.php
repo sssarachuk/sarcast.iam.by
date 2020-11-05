@@ -8,7 +8,7 @@
             <div class="quiz-body__question">
                 <h3><?=$model->text;?></h3>
                 <?php if ($model->type == 'SingleSelect'): ?>
-                    <?php $this->widget('QuizSingleSelectWidget'); ?>
+                    <?php $this->widget('QuizSingleSelectWidget', array('options'=>$model->options)); ?>
                 <?elseif ($model->type == 'SingleSelectImage'): ?>
                     <?php $this->widget('QuizSingleSelectImageWidget'); ?>
                 <?elseif ($model->type == 'MultiSelect'): ?>
