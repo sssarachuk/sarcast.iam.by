@@ -33713,6 +33713,7 @@ input.input-pink {
 .quiz .quiz-body .quiz-body__footer {
     padding: 20px 0 0 0;
     border-top: solid 1px #f3f3f3;
+    text-align: right;
 }
 
 .quiz .quiz-title .quiz-title__divider {
