@@ -1,5 +1,5 @@
 <section class="quiz-body container">
-    <div class="row">
+    <div class="row row-flex">
         <section class="col-xs-12 col-sm-8 col-md-8">
             <header class="quiz-body__header">
                 <span class="mdi mdi-clipboard-text"></span>

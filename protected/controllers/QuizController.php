@@ -48,23 +48,23 @@ class QuizController extends Controller {
     }
 
     private function getQuizViewModel(){
-        $quizModel = Yii::app()->session['quizModel'];
+        //$quizModel = Yii::app()->session['quizModel'];
 
-        if(is_null($quizModel)){
+        //if(is_null($quizModel)){
             $quizModel = new QuizViewModel();
             $quizModel->name = "Рассчитайте стоимость вашей свадьбы";
             $quizModel->questions = $this->getQuizQuestions();
             $quizModel->title = $this->getQuizTitleModel(count($quizModel->questions));
-            Yii::app()->session['quizModel'] = $quizModel;
-        }
+            //Yii::app()->session['quizModel'] = $quizModel;
+        //}
 
         return $quizModel;
     }
 
     private function getQuizQuestions(){
         $question1 = new QuizQuestionModel();
-        $question1->text = "Какой вид фотосессии вас интересует?";
-        $question1->type = "SingleSelectImage";
+        $question1->text = "Какой стиль съемки вам подходит больше всего?";
+        $question1->type = "SingleSelect";
 
         $question2 = new QuizQuestionModel();
         $question2->text = "Что вы хотите видеть на фотографиях";

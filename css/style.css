@@ -33746,6 +33746,9 @@ input.input-pink {
 .quiz .quiz-body .quiz-body__question{
   padding: 10px;
 }
+.quiz .quiz-body .quiz-body__question h3 {
+  padding-left: 15px;
+}
 
 .quiz .quiz-title .quiz-title__bonus-group .quiz-title__bonus-item,
 .quiz .quiz-body .quiz-body__aside .quiz-body__aside__bonus-group .quiz-body__aside__bonus-item
@@ -33804,5 +33807,32 @@ input.input-pink {
     background-color: #f7f7f7;
 }
 
+.quiz-single-select .quiz-single-select__section{
+    padding: 10px 30px 10px 30px;
+}
+
+.quiz-single-select .quiz-single-select__section .quiz-single-select__item {
+  display: block;
+  border: 1px solid #eeeeee;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 0 5px 0;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.quiz-single-select .quiz-single-select__section .quiz-single-select__item input[type="radio"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* временное решение для высоты столбца вопроса */
+.row-flex{
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
 
 
