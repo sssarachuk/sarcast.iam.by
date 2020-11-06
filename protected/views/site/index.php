@@ -202,7 +202,7 @@ $IMG = new ModelToolImage();
 
                                 <div class="col-xs-12 col-sm-6">
                                   <p><?=$service->description?></p>
-                                  <div class="box-info"><span class="box-info__title"><?=$service->price?></span></div>
+                                  <div class="box-info"><span class="box-info__icon icon mdi mdi-emoticon-happy"></span><span class="box-info__title"><?=$service->price?></span></div>
                                   <br><br>
                                 </div>
                                 <div class="col-xs-12 col-sm-6">
