@@ -17,7 +17,7 @@ class QuizQuestionWidget extends CWidget {
             'previousIndex'=>$this->previousIndex,
             'previousButtonDisabled'=>$this->previousButtonDisabled,
             'nextIndex'=>$this->nextIndex,
-            'nextButtonDisabled'=>$this->nextButtonDisabled
+            'nextButtonDisabled'=>$this->nextButtonDisabled,
         ));
     }
 

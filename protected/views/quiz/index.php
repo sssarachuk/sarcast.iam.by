@@ -8,7 +8,7 @@
                 'previousIndex'=>$previousIndex,
                 'previousButtonDisabled'=>$previousButtonDisabled,
                 'nextIndex'=>$nextIndex,
-                'nextButtonDisabled'=>$nextButtonDisabled
+                'nextButtonDisabled'=>$nextButtonDisabled,
         )); ?>
     <?php endif ?>
 </main>

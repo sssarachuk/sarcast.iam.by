@@ -35,6 +35,13 @@ class QuizController extends Controller {
                     : $this->currentIndex + 1;
             }
 
+            if(isset($_POST['selectedOption'])){
+                $selectedOption = new QuizQuestionOption();
+                $selectedOption->value = $_POST['selectedOption'];
+                $this->quizModel->questions[$this->currentIndex]->selectedOptions = array($selectedOption);
+                Yii::app()->session['quizModel'] = $this->quizModel;
+            }
+
             $this->render('index', array(
                 'quizName' => $this->quizModel->name,
                 'quizTitle' => $this->quizModel->title,
@@ -49,15 +56,15 @@ class QuizController extends Controller {
     }
 
     private function getQuizViewModel(){
-        //$quizModel = Yii::app()->session['quizModel'];
+        $quizModel = Yii::app()->session['quizModel'];
 
-        //if(is_null($quizModel)){
+        if(is_null($quizModel)){
             $quizModel = new QuizViewModel();
             $quizModel->name = "Рассчитайте стоимость вашей свадьбы";
             $quizModel->questions = $this->getQuizQuestions();
             $quizModel->title = $this->getQuizTitleModel(count($quizModel->questions));
-            //Yii::app()->session['quizModel'] = $quizModel;
-        //}
+            Yii::app()->session['quizModel'] = $quizModel;
+        }
 
         return $quizModel;
     }
@@ -78,11 +85,27 @@ class QuizController extends Controller {
         $question1->options = array($question1Option1, $question1Option2, $question1Option3);
 
         $question2 = new QuizQuestionModel();
-        $question2->text = "Что вы хотите видеть на фотографиях";
-        $question2->type = "MultiSelect";
+        $question2->text = "Что вы хотите видеть на фотографиях?";
+        $question2->type = "SingleSelect";
+        $question2Option1 = new QuizQuestionOption();
+        $question2Option1->text = "Сборы жениха и невесты";
+        $question2Option1->value = "Сборы жениха и невесты";
+        $question2Option2 = new QuizQuestionOption();
+        $question2Option2->text = "Церемония бракосочетания";
+        $question2Option2->value = "Церемония бракосочетания";
+        $question2Option3 = new QuizQuestionOption();
+        $question2Option3->text = "Прогулка";
+        $question2Option3->value = "Прогулка";
+        $question2Option4 = new QuizQuestionOption();
+        $question2Option4->text = "Банкет до первого танца";
+        $question2Option4->value = "Банкет до первого танца";
+        $question2Option5 = new QuizQuestionOption();
+        $question2Option5->text = "Банкет полностью";
+        $question2Option5->value = "Банкет полностью";
+        $question2->options = array($question2Option1, $question2Option2, $question2Option3, $question2Option4, $question2Option5);
 
         $question3 = new QuizQuestionModel();
-        $question3->text = "Какие этапы сьемки вас интересуют?";
+        $question3->text = "Какой вид фотосессии вас интересует?";
         $question3->type = "MultiSelectImage";
 
         $question4 = new QuizQuestionModel();
