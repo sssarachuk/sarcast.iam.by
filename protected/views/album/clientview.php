@@ -91,18 +91,13 @@ $IMG = new ModelToolImage();
       <div class="col-xs-12 col-sm-12">
         <h3 style="background:#ffff00;">Скачать остальные фотографии можно ниже</h3>
         <b style="color:#008000;">(заполните анкету для скачивания)</b>
-        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
-        <!--<div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
-        <b style="color:#008000; background:#ffff00;">Пожалуйста, проявите ответственность, так вы поможете всем нам лучше работать в команде.<br><br>Уделите немного больше времени в благодарность за фото.<br>Спасибо за понимание!</b>
-        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>-->
+        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>        
       </div>
     <?php } ?>
     <div class="col-xs-12 col-sm-3">
       </div>
     <div class="col-xs-12 col-sm-6">
-    <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>
-      
-      <!--<a href="javascript:void(0)" onclick="javascript:$('#callback-<?=$album->id?>').css('display','block');" rel="nofollow noopener"><span class="button button-primary button-ujarak button-pink">Скачать все фотографии&nbsp;<span class="icon mdi mdi-download"></span></span></a>-->
+    <?php if(empty($album->review_before) && (!empty($album->gallery1_link) || !empty($album->gallery2_link))) { ?>      
 
       <!-- RD Mailform-->
       <form class="callback" id="callback-<?=$album->id?>" method="post" action="">
@@ -156,38 +151,56 @@ $IMG = new ModelToolImage();
       <?php } ?>
       <?php if(!empty($album->gallery1_link)) { ?>
           <br><br>
-          <h3 style="background:#ffff00;">А еще есть НЕОБРАБОТАННЫЕ фотографии :)</h3>          
-          <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
-          <b style="color:#008000;">1. Сделайте репост на своей странице</b>
-          <div><span></span>
-            <div class="ya-share2"
-            data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
-            data-limit="3"
-            data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
-            data-description="<?=$album->title?> <?=$hashtags?>"
-            data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-            data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+
+          <?php if(!empty($album->review_after)) { ?>
+            <a href="<?=$album->gallery1_link?>" rel="nofollow noopener" target="_blank"><span class="button button-primary button-ujarak button-pink">Необработанные фото - Скачать&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+            <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
+              <div><span>Сделайте репост друзьям и близким</span>
+                <div class="ya-share2"
+                data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
+                data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+                data-description="<?=$album->title?> <?=$hashtags?>"
+                data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
+                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                </div>
+              </div><br>
             </div>
-          </div>
-          <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
-          <b style="color:#008000;">2. Посмотрите обработанные фотографии</b>
-          <div>
-            <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-default-outline button-ujarak">Обработанные фото&nbsp;<span class="icon mdi mdi-download"></span></span></a>
-          </div>
-          <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
-          <b style="color:#008000;">3. И оставьте в лс развернутый отзыв о моей работе</b>
-          <div>
-          <ul class="list-icons list-inline-sm">            
-            <li><a class="icon icon-sm fa fa-instagram icon-style-camera text-primary" href="<?=INSTAGRAM_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-            <li><a class="icon icon-sm fa fa-pinterest icon-style-camera text-primary" href="<?=VKONTAKTE_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-            <li><a class="icon icon-sm fa fa-facebook icon-style-camera text-primary" href="<?=FACEBOOK_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-            <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera text-primary" href="<?=WHATSAPP_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-            <li><a class="icon icon-sm fa fa-phone-square icon-style-camera text-primary" href="<?=VIBER_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
-          </ul>
-          </div>
-          <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
-          <b style="color:#008000;">4. Получите ссылку на весь необработанный материал в ответ!</b>
-      <?php } ?>
+            <?php } else { ?>
+
+              <h3 style="background:#ffff00;">А еще есть НЕОБРАБОТАННЫЕ фотографии :)</h3>          
+              <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+              <b style="color:#008000;">1. Сделайте репост на своей странице</b>
+              <div><span></span>
+                <div class="ya-share2"
+                data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
+                data-limit="3"
+                data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+                data-description="<?=$album->title?> <?=$hashtags?>"
+                data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
+                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                </div>
+              </div>
+              <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+              <b style="color:#008000;">2. Посмотрите обработанные фотографии</b>
+              <div>
+                <a href="<?=$album->gallery2_link?>" rel="nofollow noopener" target="_blank"><span class="button button-default-outline button-ujarak">Обработанные фото&nbsp;<span class="icon mdi mdi-download"></span></span></a>
+              </div>
+              <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+              <b style="color:#008000;">3. И оставьте в лс развернутый отзыв о моей работе</b>
+              <div>
+              <ul class="list-icons list-inline-sm">            
+                <li><a class="icon icon-sm fa fa-instagram icon-style-camera text-primary" href="<?=INSTAGRAM_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-pinterest icon-style-camera text-primary" href="<?=VKONTAKTE_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-facebook icon-style-camera text-primary" href="<?=FACEBOOK_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-whatsapp icon-style-camera text-primary" href="<?=WHATSAPP_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-phone-square icon-style-camera text-primary" href="<?=VIBER_АККАУНТ?>" rel="nofollow noopener" target="_blank"><span></span><span></span><span></span><span></span></a></li>
+              </ul>
+              </div>
+              <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
+              <b style="color:#008000;">4. Получите ссылку на весь необработанный материал в ответ!</b>
+              
+            <?php } ?>
+        <?php } ?>
     </div>
 
   </div>

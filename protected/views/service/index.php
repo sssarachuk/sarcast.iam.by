@@ -27,7 +27,7 @@ $IMG = new ModelToolImage();
                 <div class="box-triangle__main">
                   <p class="heading-1"><span><?=$service->title;?></span></p>
                   <p><?=$service->description;?></p>
-                  <div class="box-info"><span class="box-info__icon icon mdi mdi-currency-usd"></span><span class="box-info__title"><?=$service['price'];?></span></div>
+                  <div class="box-info"><span class="box-info__icon icon mdi mdi-emoticon-happy"></span><span class="box-info__title"><?=$service['price'];?></span></div>
                 </div>
               </article>
               <? } ?>  
