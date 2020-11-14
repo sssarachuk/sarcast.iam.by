@@ -34,7 +34,7 @@ $IMG = new ModelToolImage();
                     data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
                     data-description="<?=$album->title?> <?=$hashtags?>"
                     data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?repost='.date('Ymd_His');?>">
                     </div>
                   </div><br>
                   </div>
@@ -161,7 +161,7 @@ $IMG = new ModelToolImage();
                 data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
                 data-description="<?=$album->title?> <?=$hashtags?>"
                 data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?repost='.date('Ymd_His');?>">
                 </div>
               </div><br>
             </div>
@@ -177,7 +177,7 @@ $IMG = new ModelToolImage();
                 data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
                 data-description="<?=$album->title?> <?=$hashtags?>"
                 data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?repost='.date('Ymd_His');?>">
                 </div>
               </div>
               <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
