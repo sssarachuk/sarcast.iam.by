@@ -27,7 +27,23 @@ $IMG = new ModelToolImage();
                 <div class="box-triangle__main">
                   <p class="heading-1"><span><?=$service->title;?></span></p>
                   <p><?=$service->description;?></p>
-                  <div class="box-info"><span class="box-info__icon icon mdi mdi-emoticon-happy"></span><span class="box-info__title"><?=$service['price'];?></span></div>
+                  <div class="box-info"><span class="box-info__icon icon mdi mdi-emoticon-happy"></span><span class="box-info__title"><?=$service['price'];?></span></div>                  
+                  <br>
+                  <div class="col-xs-12 col-sm-12">
+                    <form id="callback-<?=$service->id?>" class="callback rd-mailform form_inline" method="post" action="">
+                    <div class="form__inner">
+                      <div class="form-wrap">
+                        <input class="form-input phone f-1 required input-pink" id="contact-phone-<?=$service->id?>" type="text" name="phone">
+                        <label class="form-label rd-input-label icon-gray-7" for="contact-phone-<?=$service->id?>" style="padding:5px;">Введите телефон</label>
+                      </div>
+                      <div class="form-button" style="padding-left:5px; padding-right:5px;">
+                        <button class="button button-primary button-ujarak button-pink" type="submit">Оставить заявку&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+                      </div>
+                    </div>
+                    <span id="text-success-<?=$service->id?>"></span>
+                    <textarea class="form-input f-1" id="contact-message-<?=$service->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?><br><br>Заявка: <?=$service->title?> | <?=$category->h1?><br><br><?=$service->description?><br><br>Price: <?=$service->price?><br></textarea>
+                    </form>
+                  </div>                  
                 </div>
               </article>
               <? } ?>  

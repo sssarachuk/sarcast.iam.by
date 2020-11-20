@@ -88,10 +88,10 @@ class Album extends ActiveRecord
 		return array(
 			'id' => 'ID',
             'category_id' => 'Категория',
-			'title' => 'Длинный заголовок Title RUS',
-            'title_eng' => 'Длинный заголовок Title ENG',
-            'h1' => 'Короткий заголовок H1 RUS',
-            'h1_eng' => 'Короткий заголовок H1 ENG',
+			'title' => 'Длинный заголовок Title rus',
+            'title_eng' => 'Длинный заголовок Title eng',
+            'h1' => 'Короткий заголовок H1 rus',
+            'h1_eng' => 'Короткий заголовок H1 eng',
 			'slug' => 'Slug',
 			'folder' => 'Папка сохранения',
 			'photos' => 'Фотографии',
@@ -100,17 +100,17 @@ class Album extends ActiveRecord
 			'sort'	=> 'Сортировка',
             'gallery1_link'	=> 'Ссылка на фото БЕЗ обработки',
             'gallery2_link'	=> 'Ссылка на фото С обработкой',
-            'text1'	=> 'Текстовое описание в начале альбома (RUS)',
-            'text1_eng'	=> 'Текстовое описание в начале альбома (перевод на ENG)',
-            'text2'	=> 'Текстовое описание в конце альбома (RUS)',
-			'text2_eng'	=> 'Текстовое описание в конце альбома (перевод на ENG)',
+            'text1'	=> 'Описание альбома в начале страницы (rus)',
+            'text1_eng'	=> 'Описание альбома в начале страницы (перевод на eng)',
+            'text2'	=> 'Описание альбома в конце страницы (rus)',
+			'text2_eng'	=> 'Описание альбома в конце страницы (перевод на eng)',
 			'review_before' => 'Отзыв клиента (исходный)',
-			'review_after' => 'Отзыв клиента (измененный для публикации)',
-			'comments' => 'Отзывы коллег (исходные)',
-            'seo_description'	=> 'SEO Описание (RUS)',
-            'seo_description_eng'	=> 'SEO Description (ENG)',
-            'seo_keywords'	=> 'SEO Ключевые слова (RUS)',
-            'seo_keywords_eng'	=> 'SEO Keywords (ENG)'
+			'review_after' => 'Отзыв клиента (публичный)',
+			'comments' => 'Комментарии коллег (исходные)',
+            'seo_description'	=> 'Описание - seo rus',
+            'seo_description_eng'	=> 'Description - seo eng',
+            'seo_keywords'	=> 'Ключевые слова - seo rus',
+            'seo_keywords_eng'	=> 'Keywords - seo eng'
 		);
 	}
 
