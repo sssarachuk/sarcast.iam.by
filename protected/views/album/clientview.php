@@ -31,10 +31,10 @@ $IMG = new ModelToolImage();
                   <div><span>Сделайте репост друзьям и близким</span>
                     <div class="ya-share2"
                     data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
-                    data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+                    data-title="Альбом «<?=$album->h1?>»"
                     data-description="<?=$album->title?> <?=$hashtags?>"
                     data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_source=clientpost&date='.date('Ymd_His');?>">
                     </div>
                   </div><br>
                   </div>
@@ -158,26 +158,26 @@ $IMG = new ModelToolImage();
               <div><span>Сделайте репост друзьям и близким</span>
                 <div class="ya-share2"
                 data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
-                data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+                data-title="Альбом «<?=$album->h1?>»"
                 data-description="<?=$album->title?> <?=$hashtags?>"
                 data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_source=clientpost&date='.date('Ymd_His');?>">
                 </div>
               </div><br>
             </div>
-            <?php } else { ?>
-
-              <h3 style="background:#ffff00;">А еще есть НЕОБРАБОТАННЫЕ фотографии :)</h3>          
+            <?php } else { ?>              
+              <br>
+              <a href="javascript:void(0)" onclick="alert('Отдаю за отзыв. Смотрите инструкцию ниже'); return false;"><span class="button button-primary button-ujarak button-pink">Все необработанные фото - Скачать&nbsp;<span class="icon mdi mdi-arrow-down"></span></span></a>
               <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
               <b style="color:#008000;">1. Сделайте репост на своей странице</b>
               <div><span></span>
                 <div class="ya-share2"
                 data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
                 data-limit="3"
-                data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+                data-title="Альбом «<?=$album->h1?>»"
                 data-description="<?=$album->title?> <?=$hashtags?>"
                 data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_source=clientpost&date='.date('Ymd_His');?>">
                 </div>
               </div>
               <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>

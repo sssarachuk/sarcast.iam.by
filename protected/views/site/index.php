@@ -192,10 +192,10 @@ $IMG = new ModelToolImage();
                                   </div>
                                   <span id="text-success-<?=$service->id?>"></span>
                                   <textarea class="form-input f-1" id="contact-message-<?=$service->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?><br><br>Заявка: <?=$service->title?> | <?=$category->h1?><br><br><?=$service->description?><br><br>Price: <?=$service->price?><br></textarea>
-                                </form>
-                                  </div>
-                                  <div class="col-xs-12 col-sm-3">
-                                  </div>
+                                  </form>
+                                </div>
+                                <div class="col-xs-12 col-sm-3">
+                                </div>
 
                                   <div class="col-xs-12 col-sm-12">
                                   </div>

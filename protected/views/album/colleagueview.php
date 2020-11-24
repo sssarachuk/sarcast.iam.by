@@ -32,10 +32,10 @@ $IMG = new ModelToolImage();
                     Сделайте репост на своей странице</span>
                     <div class="ya-share2"
                     data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
-                    data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+                    data-title="Альбом «<?=$album->h1?>»"
                     data-description="<?=$album->title?> <?=$hashtags?>"
                     data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_source=colleaguepost&date='.date('Ymd_His');?>">
                     </div>
                   </div><br>
                   </div>
@@ -70,10 +70,10 @@ $IMG = new ModelToolImage();
                 <div class="col-xs-12 col-sm-12 col-md-12" style="position:relative; padding-top:5px;">
                   <div class="ya-share2" style="position:absolute; top:10px; left:44%;"
                     data-services="vkontakte,odnoklassniki,facebook,pinterest,whatsapp,viber,telegram" data-limit="4"
-                    data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+                    data-title="Альбом «<?=$album->h1?>»"
                     data-description="<?=$album->title?> <?=$hashtags?>"
                     data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$url;?>"
-                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_source=colleaguepost&date='.date('Ymd_His');?>">
                   </div>
                   <?php if(getimagesize($_SERVER['DOCUMENT_ROOT'].$url)[0] > getimagesize($_SERVER['DOCUMENT_ROOT'].$url)[1]) {
                       $resized_image = $IMG->resize($url, 1080, 0);
@@ -106,9 +106,7 @@ $IMG = new ModelToolImage();
       <div class="col-xs-12 col-sm-12">
         <h3 style="background:#ffff00;">Скачать обработанные фотографии можно ниже</h3>        
         <b style="color:#008000;">(заполните анкету для скачивания)</b>
-        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
-        <!--<b style="color:#008000; background:#ffff00;">Пожалуйста, проявите ответственность, так вы поможете всем нам лучше работать в команде.<br><br>Уделите немного больше времени в благодарность за фото.<br>Спасибо за понимание!</b>
-        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>-->
+        <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>        
       </div>
     <div class="col-xs-12 col-sm-3">
       </div>
@@ -170,17 +168,17 @@ $IMG = new ModelToolImage();
     <div class="col-xs-12 col-sm-12">
     <?php if(!empty($album->gallery1_link)) { ?>
           <br><br>
-          <h3 style="background:#ffff00;">А еще есть НЕОБРАБОТАННЫЕ фотографии :)</h3>          
+          <a href="javascript:void(0)" onclick="alert('Отдаю за репост. Смотрите инструкцию ниже'); return false;"><span class="button button-primary button-ujarak button-pink">Все необработанные фото - Скачать&nbsp;<span class="icon mdi mdi-arrow-down"></span></span></a>
           <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>
           <b style="color:#008000;">1. Сделайте репост на своей странице</b>
           <div><span></span>
             <div class="ya-share2"
             data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
             data-limit="3"
-            data-title="Альбом «<?=$album->h1?>» ✈ <?=$category->h1?>"
+            data-title="Альбом «<?=$album->h1?>»"
             data-description="<?=$album->title?> <?=$hashtags?>"
             data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-            data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at;?>">
+            data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_source=colleaguepost&date='.date('Ymd_His');?>">
             </div>
           </div>
           <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>          
