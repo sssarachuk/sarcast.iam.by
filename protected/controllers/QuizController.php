@@ -131,52 +131,51 @@ class QuizController extends Controller {
     }
 
     private function getQuizQuestions(){
-        $question1 = new QuizQuestionModel();
-        $question1->text = "Какой стиль съемки вам подходит больше всего?";
-        $question1->type = "SingleSelectImage";
-        $question1Option1 = new QuizQuestionOption();
-        $question1Option1->text = "Репортажная";
-        $question1Option1->value = "Репортажная";
-        $question1Option1->imgUrl = Yii::app()->params['albumImagesWebDir']."1.jpg";
-        $question1Option2 = new QuizQuestionOption();
-        $question1Option2->text = "Постановочная";
-        $question1Option2->value = "Постановочная";
-        $question1Option2->imgUrl = Yii::app()->params['albumImagesWebDir']."2.jpg";
-        $question1Option3 = new QuizQuestionOption();
-        $question1Option3->text = "Микс";
-        $question1Option3->value = "Микс";
-        $question1Option3->imgUrl = Yii::app()->params['albumImagesWebDir']."3.jpg";;
-        $question1->options = array($question1Option1, $question1Option2, $question1Option3);
+        return array(
+            $this->generateQuestion(
+                "Какой вид фотосессии вас интересует?",
+                "SingleSelectImage",
+                array(
+                    $this->generateOption("Свадебная фотография", "Свадебная фотография", Yii::app()->params['albumImagesWebDir']."1.jpg"),
+                    $this->generateOption("Семейная фотография", "Семейная фотография", Yii::app()->params['albumImagesWebDir']."2.jpg"),
+                    $this->generateOption("Портретная фотография", "Портретная фотография", Yii::app()->params['albumImagesWebDir']."3.jpg"),
+                    $this->generateOption("Love Story фотография", "Love Story фотография", Yii::app()->params['albumImagesWebDir']."4.jpg"),
+                    $this->generateOption("Фотография мероприятий", "Фотография мероприятий", Yii::app()->params['albumImagesWebDir']."5.jpg"),
+                    $this->generateOption("Фотография путешествий", "Фотография путешествий", Yii::app()->params['albumImagesWebDir']."6.jpg")
+                )
+            ),
+            $this->generateQuestion(
+                "Что вы хотите видеть на фотографиях?",
+                "MultiSelect",
+                array(
+                    $this->generateOption("Сборы жениха и невесты", "Сборы жениха и невесты", null),
+                    $this->generateOption("Церемония бракосочетания", "Церемония бракосочетания", null),
+                    $this->generateOption("Прогулка", "Прогулка", null),
+                    $this->generateOption("Банкет до первого танца", "Банкет до первого танца", null),
+                    $this->generateOption("Банкет полностью", "Банкет полностью", null)
+                )
+            )
+        );
+    }
 
-        $question2 = new QuizQuestionModel();
-        $question2->text = "Что вы хотите видеть на фотографиях?";
-        $question2->type = "MultiSelect";
-        $question2Option1 = new QuizQuestionOption();
-        $question2Option1->text = "Сборы жениха и невесты";
-        $question2Option1->value = "Сборы жениха и невесты";
-        $question2Option2 = new QuizQuestionOption();
-        $question2Option2->text = "Церемония бракосочетания";
-        $question2Option2->value = "Церемония бракосочетания";
-        $question2Option3 = new QuizQuestionOption();
-        $question2Option3->text = "Прогулка";
-        $question2Option3->value = "Прогулка";
-        $question2Option4 = new QuizQuestionOption();
-        $question2Option4->text = "Банкет до первого танца";
-        $question2Option4->value = "Банкет до первого танца";
-        $question2Option5 = new QuizQuestionOption();
-        $question2Option5->text = "Банкет полностью";
-        $question2Option5->value = "Банкет полностью";
-        $question2->options = array($question2Option1, $question2Option2, $question2Option3, $question2Option4, $question2Option5);
+    private function generateQuestion($text, $type, $options){
+        $question = new QuizQuestionModel();
 
-        $question3 = new QuizQuestionModel();
-        $question3->text = "Какой вид фотосессии вас интересует?";
-        $question3->type = "MultiSelectImage";
+        $question->text = $text;
+        $question->type = $type;
+        $question->options = $options;
 
-        $question4 = new QuizQuestionModel();
-        $question4->text = "Выберите тип фотосессии";
-        $question4->type = "SingleSelectImage";
+        return $question;
+    }
 
-        return array($question1, $question2, $question3, $question4);
+    private function generateOption($text, $value, $imgUrl){
+        $option = new QuizQuestionOption();
+
+        $option->text = $text;
+        $option->value = $value;
+        $option->imgUrl = $imgUrl;
+
+        return $option;
     }
 
     private function getQuizTitleModel($questionNumber) {
