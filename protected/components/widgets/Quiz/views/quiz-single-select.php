@@ -3,7 +3,9 @@
         <div class="col-xs-12 col-sm-12 col-md-6 quiz-single-select__section">
             <?php foreach($options as $option): ?>
                 <label class="quiz-single-select__item">
-                    <input type="radio" name="quiz-single-select" value="<?=$option->value?>"/>
+                    <input type="radio" name="quiz-single-select"
+                           value="<?=$option->value?>"
+                           checked="<?=in_array($option, $selectedOptions)?>"/>
                     <?=$option->text?>
                 </label>
             <?php endforeach; ?>
