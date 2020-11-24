@@ -33837,6 +33837,45 @@ input.input-pink {
   font-size: smaller;
 }
 
+.quiz-single-select-image .quiz-single-select-image__section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+}
+
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item {
+  position: relative;
+  flex: 0 1 calc(100%/3 - 10px*2);
+  margin: 10px;
+  border: 1px solid #eeeeee;
+  border-radius: 5px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item.quiz-single-select-image__item--selected{
+  border-color: #0075ff;
+  color: #0075ff;
+}
+
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item input[type="radio"]{
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item-box{
+  width: 100%;
+}
+
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item-box img{
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item-box p{
+  margin: 5px 0 5px 10px;
+}
+
 /* временное решение для высоты столбца вопроса */
 .row-flex{
   display: flex;

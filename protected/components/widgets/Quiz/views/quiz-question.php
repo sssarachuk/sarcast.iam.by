@@ -13,7 +13,10 @@
                             'selectedOptions'=>$model->selectedOptions
                     )); ?>
                 <?elseif ($model->type == 'SingleSelectImage'): ?>
-                    <?php $this->widget('QuizSingleSelectImageWidget'); ?>
+                    <?php $this->widget('QuizSingleSelectImageWidget', array(
+                        'options'=>$model->options,
+                        'selectedOptions'=>$model->selectedOptions
+                    )); ?>
                 <?elseif ($model->type == 'MultiSelect'): ?>
                     <?php $this->widget('QuizMultiSelectWidget', array(
                             'options'=>$model->options,

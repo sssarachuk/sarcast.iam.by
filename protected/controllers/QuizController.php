@@ -48,6 +48,7 @@ class QuizController extends Controller {
 
         switch($this->quizModel->questions[$this->currentIndex]->type){
             case 'SingleSelect':
+            case 'SingleSelectImage':
                 $this->quizModel->questions[$this->currentIndex]->selectedOptions = array($selectedOption);
                 break;
             case 'MultiSelect':{
@@ -132,16 +133,19 @@ class QuizController extends Controller {
     private function getQuizQuestions(){
         $question1 = new QuizQuestionModel();
         $question1->text = "Какой стиль съемки вам подходит больше всего?";
-        $question1->type = "SingleSelect";
+        $question1->type = "SingleSelectImage";
         $question1Option1 = new QuizQuestionOption();
         $question1Option1->text = "Репортажная";
         $question1Option1->value = "Репортажная";
+        $question1Option1->imgUrl = Yii::app()->params['albumImagesWebDir']."1.jpg";
         $question1Option2 = new QuizQuestionOption();
         $question1Option2->text = "Постановочная";
         $question1Option2->value = "Постановочная";
+        $question1Option2->imgUrl = Yii::app()->params['albumImagesWebDir']."2.jpg";
         $question1Option3 = new QuizQuestionOption();
         $question1Option3->text = "Микс";
         $question1Option3->value = "Микс";
+        $question1Option3->imgUrl = Yii::app()->params['albumImagesWebDir']."3.jpg";;
         $question1->options = array($question1Option1, $question1Option2, $question1Option3);
 
         $question2 = new QuizQuestionModel();

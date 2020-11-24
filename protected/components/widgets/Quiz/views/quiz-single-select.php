@@ -5,7 +5,8 @@
                 <label class="quiz-single-select__item">
                     <input type="radio" name="quiz-single-select"
                            value="<?=$option->value?>"
-                           checked="<?=in_array($option, $selectedOptions)?>"/>
+                           <?=$this->optionIsSelected($option) ? 'checked' : ''?>
+                    />
                     <?=$option->text?>
                 </label>
             <?php endforeach; ?>

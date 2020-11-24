@@ -9,7 +9,8 @@
                 <label class="quiz-multi-select__item">
                     <input type="checkbox"
                            value="<?=$option->value?>"
-                            <?=$this->optionIsSelected($option) ? 'checked' : ''?>/>
+                            <?=$this->optionIsSelected($option) ? 'checked' : ''?>
+                    />
                     <?=$option->text?>
                 </label>
             <?php endforeach; ?>
