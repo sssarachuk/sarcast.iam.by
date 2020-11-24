@@ -3,6 +3,7 @@ include dirname(__DIR__)."/viewmodels/quiz/QuizViewModel.php";
 include dirname(__DIR__)."/viewmodels/quiz/QuizQuestionModel.php";
 include dirname(__DIR__)."/viewmodels/quiz/QuizTitleModel.php";
 include dirname(__DIR__)."/viewmodels/quiz/QuizQuestionOption.php";
+include dirname(__DIR__)."/viewmodels/quiz/QuizQuestionType.php";
 
 class QuizController extends Controller {
 
@@ -47,11 +48,11 @@ class QuizController extends Controller {
         $selectedOption->value = $_POST['selectedOption'];
 
         switch($this->quizModel->questions[$this->currentIndex]->type){
-            case 'SingleSelect':
-            case 'SingleSelectImage':
+            case QuizQuestionType::SingleSelect:
+            case QuizQuestionType::SingleSelectImage:
                 $this->quizModel->questions[$this->currentIndex]->selectedOptions = array($selectedOption);
                 break;
-            case 'MultiSelect':{
+            case QuizQuestionType::MultiSelect:{
                 if(isset($_POST['selectedOptionChecked'])){
                     $selectedOptionChecked = filter_var($_POST['selectedOptionChecked'], FILTER_VALIDATE_BOOLEAN);
 
@@ -134,7 +135,7 @@ class QuizController extends Controller {
         return array(
             $this->generateQuestion(
                 "Какой вид фотосессии вас интересует?",
-                "SingleSelectImage",
+                QuizQuestionType::SingleSelectImage,
                 array(
                     $this->generateOption("Свадебная фотография", "Свадебная фотография", Yii::app()->params['albumImagesWebDir']."1.jpg"),
                     $this->generateOption("Семейная фотография", "Семейная фотография", Yii::app()->params['albumImagesWebDir']."2.jpg"),
@@ -146,13 +147,94 @@ class QuizController extends Controller {
             ),
             $this->generateQuestion(
                 "Что вы хотите видеть на фотографиях?",
-                "MultiSelect",
+                QuizQuestionType::MultiSelect,
                 array(
                     $this->generateOption("Сборы жениха и невесты", "Сборы жениха и невесты", null),
                     $this->generateOption("Церемония бракосочетания", "Церемония бракосочетания", null),
                     $this->generateOption("Прогулка", "Прогулка", null),
                     $this->generateOption("Банкет до первого танца", "Банкет до первого танца", null),
                     $this->generateOption("Банкет полностью", "Банкет полностью", null)
+                )
+            ),
+            $this->generateQuestion(
+                "В какой бюджет на фотографа вы хотите уложиться?",
+                QuizQuestionType::RangeSelector,
+                array(
+                    $this->generateOption(150, 150, null),
+                    $this->generateOption(600, 600, null),
+                )
+            ),
+            $this->generateQuestion(
+                "В каком городе будет проходить свадьба?",
+                QuizQuestionType::SingleSelectDropDown,
+                array(
+                    $this->generateOption("Минск", "Минск", null),
+                    $this->generateOption("Брест", "Брест", null),
+                    $this->generateOption("Гомель", "Гомель", null),
+                    $this->generateOption("Могилев", "Могилев", null),
+                    $this->generateOption("Гродно", "Гродно", null),
+                    $this->generateOption("Краков", "Краков", null),
+                    $this->generateOption("Гданьск", "Гданьск", null),
+                )
+            ),
+            $this->generateQuestion(
+                "Предполагаемая дата свадьбы",
+                QuizQuestionType::Datepicker,
+                null
+            ),
+            $this->generateQuestion(
+                "Выберите тип фотосессии",
+                QuizQuestionType::SingleSelectImage,
+                array(
+                    $this->generateOption("Классическая семейная", "Классическая семейная", Yii::app()->params['albumImagesWebDir']."1.jpg"),
+                    $this->generateOption("Семейный праздник", "Семейный праздник", Yii::app()->params['albumImagesWebDir']."2.jpg"),
+                    $this->generateOption("Детская фотосессия", "Детская фотосессия", Yii::app()->params['albumImagesWebDir']."3.jpg"),
+                    $this->generateOption("Детский праздник", "Детский праздник", Yii::app()->params['albumImagesWebDir']."4.jpg"),
+                    $this->generateOption("Лайфстайл фотосессия", "Лайфстайл фотосессия", Yii::app()->params['albumImagesWebDir']."5.jpg"),
+                    $this->generateOption("Беременность", "Беременность", Yii::app()->params['albumImagesWebDir']."6.jpg"),
+
+                )
+            ),
+            $this->generateQuestion(
+                "Укажите место съемки",
+                QuizQuestionType::MultiSelectImage,
+                array(
+                    $this->generateOption("Фотостудия", "Фотостудия", Yii::app()->params['albumImagesWebDir']."1.jpg"),
+                    $this->generateOption("Парки, зелень", "Парки, зелень", Yii::app()->params['albumImagesWebDir']."2.jpg"),
+                    $this->generateOption("Помещение (дом, кафе)", "Помещение (дом, кафе)", Yii::app()->params['albumImagesWebDir']."3.jpg"),
+                    $this->generateOption("Город, архитектура", "Город, архитектура", Yii::app()->params['albumImagesWebDir']."4.jpg"),
+                    $this->generateOption("Пляжи, вода", "Пляжи, вода", Yii::app()->params['albumImagesWebDir']."5.jpg")
+                )
+            ),
+            $this->generateQuestion(
+                "Какой стиль съемки вам подходит больше всего?",
+                QuizQuestionType::SingleSelect,
+                array(
+                    $this->generateOption("Репортажная", "Репортажная", null),
+                    $this->generateOption("Постановочная", "Постановочная", null),
+                    $this->generateOption("Микс", "Микс", null),
+
+                )
+            ),
+            $this->generateQuestion(
+                "Сколько фотографий вы хотите получить?",
+                QuizQuestionType::SingleSelect,
+                array(
+                    $this->generateOption("10+ в обработке", "10+ в обработке", null),
+                    $this->generateOption("30+ в обработке", "30+ в обработке", null),
+                    $this->generateOption("50+ в обработке", "50+ в обработке", null),
+                    $this->generateOption("исходники + обработка лучших", "исходники + обработка лучших", null),
+                    $this->generateOption("только исходники", "только исходники", null),
+                )
+            ),
+            $this->generateQuestion(
+                "Сколько вам нужно времени на съемку?",
+                QuizQuestionType::SingleSelect,
+                array(
+                    $this->generateOption("1 час", "1 час", null),
+                    $this->generateOption("2 часа", "2 часа", null),
+                    $this->generateOption("3 часа", "3 часа", null),
+                    $this->generateOption("Целый день", "Целый день", null),
                 )
             )
         );

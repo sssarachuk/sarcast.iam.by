@@ -7,22 +7,22 @@
             </header>
             <div class="quiz-body__question">
                 <h3><?=$model->text;?></h3>
-                <?php if ($model->type == 'SingleSelect'): ?>
+                <?php if ($model->type == QuizQuestionType::SingleSelect): ?>
                     <?php $this->widget('QuizSingleSelectWidget', array(
                             'options'=>$model->options,
                             'selectedOptions'=>$model->selectedOptions
                     )); ?>
-                <?elseif ($model->type == 'SingleSelectImage'): ?>
+                <?elseif ($model->type == QuizQuestionType::SingleSelectImage): ?>
                     <?php $this->widget('QuizSingleSelectImageWidget', array(
                         'options'=>$model->options,
                         'selectedOptions'=>$model->selectedOptions
                     )); ?>
-                <?elseif ($model->type == 'MultiSelect'): ?>
+                <?elseif ($model->type == QuizQuestionType::MultiSelect): ?>
                     <?php $this->widget('QuizMultiSelectWidget', array(
                             'options'=>$model->options,
                             'selectedOptions'=>$model->selectedOptions
                     )); ?>
-                <?elseif ($model->type == 'MultiSelectImage'): ?>
+                <?elseif ($model->type == QuizQuestionType::MultiSelectImage): ?>
                     <?php $this->widget('QuizMultiSelectImageWidget'); ?>
                 <?else:?>
                     <?=$model->type?> не существует в системе
