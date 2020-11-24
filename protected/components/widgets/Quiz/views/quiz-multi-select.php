@@ -1,15 +1,17 @@
-<div class="quiz-single-select fluid-container">
+<div class="quiz-multi-select fluid-container">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 quiz-single-select__section">
+        <div class="col-xs-12 col-sm-12 col-md-6 quiz-multi-select__section">
             <?php foreach($options as $option): ?>
-                <label class="quiz-single-select__item">
-                    <input type="checkbox" name="quiz-single-select" value="<?=$option->value?>"/>
+                <label class="quiz-multi-select__item">
+                    <input type="checkbox"
+                           value="<?=$option->value?>"
+                            <?=$this->optionIsSelected($option) ? 'checked' : ''?>/>
                     <?=$option->text?>
                 </label>
             <?php endforeach; ?>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 quiz-single-select__section">
-            <img src="<?=Yii::app()->params['albumImagesWebDir']."4.jpg"?>"/>
+        <div class="col-xs-12 col-sm-12 col-md-6 quiz-multi-select__section">
+            <img src="<?=Yii::app()->params['albumImagesWebDir']."1.jpg"?>"/>
         </div>
     </div>
 </div>

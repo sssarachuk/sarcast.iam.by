@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
     $(".quiz-single-select").on('change', function(e){
         const targetElement = e.target;

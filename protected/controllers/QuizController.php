@@ -45,8 +45,51 @@ class QuizController extends Controller {
     private function updateQuizModelWithSelectedOption(){
         $selectedOption = new QuizQuestionOption();
         $selectedOption->value = $_POST['selectedOption'];
-        $this->quizModel->questions[$this->currentIndex]->selectedOptions = array($selectedOption);
+
+        switch($this->quizModel->questions[$this->currentIndex]->type){
+            case 'SingleSelect':
+                $this->quizModel->questions[$this->currentIndex]->selectedOptions = array($selectedOption);
+                break;
+            case 'MultiSelect':{
+                if(isset($_POST['selectedOptionChecked'])){
+                    $selectedOptionChecked = filter_var($_POST['selectedOptionChecked'], FILTER_VALIDATE_BOOLEAN);
+
+                    if($selectedOptionChecked){
+                        //find and push if not exists
+                        $selectedOptionIndex = $this->findSelectedIndex($selectedOption);
+                        if($selectedOptionIndex == -1){
+                            array_push($this->quizModel->questions[$this->currentIndex]->selectedOptions, $selectedOption);
+                        }
+                    }
+                    else{
+                        //find and delete if exists
+                        $selectedOptionIndex = $this->findSelectedIndex($selectedOption);
+                        if($selectedOptionIndex >= 0)
+                        {
+                            array_splice($this->quizModel->questions[$this->currentIndex]->selectedOptions, $selectedOptionIndex, 1);
+                        }
+                    }
+                }
+            }
+            break;
+        }
+
+
         $this->session->add('quizModel', $this->quizModel);
+    }
+
+    private function findSelectedIndex($option){
+        $index = -1;
+        $selectedOptions = $this->quizModel->questions[$this->currentIndex]->selectedOptions;
+        $selectedOptionsCount = count($selectedOptions);
+
+        for ($i = 0; $i < $selectedOptionsCount; $i++){
+            if($option->value == $selectedOptions[$i]->value){
+                $index = $i;
+                break;
+            }
+        }
+        return $index;
     }
 
     private function setIndexes(){
@@ -103,7 +146,7 @@ class QuizController extends Controller {
 
         $question2 = new QuizQuestionModel();
         $question2->text = "Что вы хотите видеть на фотографиях?";
-        $question2->type = "SingleSelect";
+        $question2->type = "MultiSelect";
         $question2Option1 = new QuizQuestionOption();
         $question2Option1->text = "Сборы жениха и невесты";
         $question2Option1->value = "Сборы жениха и невесты";

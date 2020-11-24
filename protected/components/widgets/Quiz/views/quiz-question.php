@@ -10,11 +10,15 @@
                 <?php if ($model->type == 'SingleSelect'): ?>
                     <?php $this->widget('QuizSingleSelectWidget', array(
                             'options'=>$model->options,
-                            'selectedOptions'=>$model->selectedOptions)); ?>
+                            'selectedOptions'=>$model->selectedOptions
+                    )); ?>
                 <?elseif ($model->type == 'SingleSelectImage'): ?>
                     <?php $this->widget('QuizSingleSelectImageWidget'); ?>
                 <?elseif ($model->type == 'MultiSelect'): ?>
-                    <?php $this->widget('QuizMultiSelectWidget'); ?>
+                    <?php $this->widget('QuizMultiSelectWidget', array(
+                            'options'=>$model->options,
+                            'selectedOptions'=>$model->selectedOptions
+                    )); ?>
                 <?elseif ($model->type == 'MultiSelectImage'): ?>
                     <?php $this->widget('QuizMultiSelectImageWidget'); ?>
                 <?else:?>

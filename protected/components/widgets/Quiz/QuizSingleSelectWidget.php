@@ -6,7 +6,7 @@ class QuizSingleSelectWidget extends CWidget {
     public $selectedOptions;
 
     public function init(){
-        Yii::app()->clientScript->registerScriptFile('js/quiz.js', CClientScript::POS_END);
+        Yii::app()->clientScript->registerScriptFile('js/quiz-single-select.js', CClientScript::POS_END);
     }
 
     public function run() {

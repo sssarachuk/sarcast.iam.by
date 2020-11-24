@@ -33808,11 +33808,13 @@ input.input-pink {
     background-color: #f7f7f7;
 }
 
-.quiz-single-select .quiz-single-select__section{
+.quiz-single-select .quiz-single-select__section,
+.quiz-multi-select .quiz-multi-select__section {
     padding: 10px 30px 10px 30px;
 }
 
-.quiz-single-select .quiz-single-select__section .quiz-single-select__item {
+.quiz-single-select .quiz-single-select__section .quiz-single-select__item,
+.quiz-multi-select .quiz-multi-select__section .quiz-multi-select__item {
   display: block;
   border: 1px solid #eeeeee;
   border-radius: 3px;
@@ -33822,7 +33824,8 @@ input.input-pink {
   font-weight: 400;
 }
 
-.quiz-single-select .quiz-single-select__section .quiz-single-select__item input[type="radio"] {
+.quiz-single-select .quiz-single-select__section .quiz-single-select__item input[type="radio"],
+.quiz-multi-select .quiz-multi-select__section .quiz-multi-select__item input[type="checkbox"]{
   margin-right: 10px;
   cursor: pointer;
 }
