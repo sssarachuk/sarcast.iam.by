@@ -33830,6 +33830,13 @@ input.input-pink {
   cursor: pointer;
 }
 
+.quiz-multi-select .alert {
+  padding: 5px 20px;
+  margin: 5px 0 0 15px;
+  width: 260px;
+  font-size: smaller;
+}
+
 /* временное решение для высоты столбца вопроса */
 .row-flex{
   display: flex;
