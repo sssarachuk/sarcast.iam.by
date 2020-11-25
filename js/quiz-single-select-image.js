@@ -6,7 +6,6 @@ $(document).ready(function(){
             const selectedOption = targetElement.value;
 
             $(targetElement.parentElement).siblings().removeClass('quiz-single-select-image__item--selected');
-
             $(targetElement.parentElement).addClass('quiz-single-select-image__item--selected');
 
             $.post($(location).href, {selectedOption});

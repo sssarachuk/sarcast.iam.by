@@ -33830,20 +33830,23 @@ input.input-pink {
   cursor: pointer;
 }
 
-.quiz-multi-select .alert {
+.quiz-multi-select .alert,
+.quiz-multi-select-image .alert{
   padding: 5px 20px;
   margin: 5px 0 0 15px;
   width: 260px;
   font-size: smaller;
 }
 
-.quiz-single-select-image .quiz-single-select-image__section {
+.quiz-single-select-image .quiz-single-select-image__section,
+.quiz-multi-select-image .quiz-multi-select-image__section {
   display: flex;
   flex-wrap: wrap;
   justify-content: right;
 }
 
-.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item {
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item,
+.quiz-multi-select-image .quiz-multi-select-image__section .quiz-multi-select-image__item {
   position: relative;
   flex: 0 1 calc(100%/3 - 10px*2);
   margin: 10px;
@@ -33853,26 +33856,31 @@ input.input-pink {
   cursor: pointer;
 }
 
-.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item.quiz-single-select-image__item--selected{
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item.quiz-single-select-image__item--selected,
+.quiz-multi-select-image .quiz-multi-select-image__section .quiz-multi-select-image__item.quiz-multi-select-image__item--selected{
   border-color: #0075ff;
   color: #0075ff;
 }
 
-.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item input[type="radio"]{
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item input[type="radio"],
+.quiz-multi-select-image .quiz-multi-select-image__section .quiz-multi-select-image__item input[type="checkbox"]{
   position: absolute;
   top: 10px;
   left: 15px;
 }
 
-.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item-box{
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item-box,
+.quiz-multi-select-image .quiz-multi-select-image__section .quiz-multi-select-image__item-box{
   width: 100%;
 }
 
-.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item-box img{
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item-box img,
+.quiz-multi-select-image .quiz-multi-select-image__section .quiz-multi-select-image__item-box img{
   width: 100%;
   border-radius: 5px 5px 0 0;
 }
-.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item-box p{
+.quiz-single-select-image .quiz-single-select-image__section .quiz-single-select-image__item-box p,
+.quiz-multi-select-image .quiz-multi-select-image__section .quiz-multi-select-image__item-box p{
   margin: 5px 0 5px 10px;
 }
 

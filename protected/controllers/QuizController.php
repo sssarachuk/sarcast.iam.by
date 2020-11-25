@@ -52,28 +52,30 @@ class QuizController extends Controller {
             case QuizQuestionType::SingleSelectImage:
                 $this->quizModel->questions[$this->currentIndex]->selectedOptions = array($selectedOption);
                 break;
-            case QuizQuestionType::MultiSelect:{
-                if(isset($_POST['selectedOptionChecked'])){
-                    $selectedOptionChecked = filter_var($_POST['selectedOptionChecked'], FILTER_VALIDATE_BOOLEAN);
 
-                    if($selectedOptionChecked){
-                        //find and push if not exists
-                        $selectedOptionIndex = $this->findSelectedIndex($selectedOption);
-                        if($selectedOptionIndex == -1){
-                            array_push($this->quizModel->questions[$this->currentIndex]->selectedOptions, $selectedOption);
+                case QuizQuestionType::MultiSelect:
+                case QuizQuestionType::MultiSelectImage:{
+                    if(isset($_POST['selectedOptionChecked'])){
+                        $selectedOptionChecked = filter_var($_POST['selectedOptionChecked'], FILTER_VALIDATE_BOOLEAN);
+
+                        if($selectedOptionChecked){
+                            //find and push if not exists
+                            $selectedOptionIndex = $this->findSelectedIndex($selectedOption);
+                            if($selectedOptionIndex == -1){
+                                array_push($this->quizModel->questions[$this->currentIndex]->selectedOptions, $selectedOption);
+                            }
                         }
-                    }
-                    else{
-                        //find and delete if exists
-                        $selectedOptionIndex = $this->findSelectedIndex($selectedOption);
-                        if($selectedOptionIndex >= 0)
-                        {
-                            array_splice($this->quizModel->questions[$this->currentIndex]->selectedOptions, $selectedOptionIndex, 1);
+                        else{
+                            //find and delete if exists
+                            $selectedOptionIndex = $this->findSelectedIndex($selectedOption);
+                            if($selectedOptionIndex >= 0)
+                            {
+                                array_splice($this->quizModel->questions[$this->currentIndex]->selectedOptions, $selectedOptionIndex, 1);
+                            }
                         }
                     }
                 }
-            }
-            break;
+                break;
         }
 
 
