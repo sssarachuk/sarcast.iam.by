@@ -32,6 +32,26 @@
                         'options'=>$model->options,
                         'selectedOptions'=>$model->selectedOptions
                     )); ?>
+                <?elseif ($model->type == QuizQuestionType::MultiSelectDropDown): ?>
+                    <?php $this->widget('QuizMultiSelectDropDownWidget', array(
+                        'options'=>$model->options,
+                        'selectedOptions'=>$model->selectedOptions
+                    )); ?>
+                <?elseif ($model->type == QuizQuestionType::RangeSelector): ?>
+                    <?php $this->widget('QuizRangeSelectorWidget', array(
+                        'options'=>$model->options,
+                        'selectedOptions'=>$model->selectedOptions
+                    )); ?>
+                <?elseif ($model->type == QuizQuestionType::Datepicker): ?>
+                    <?php $this->widget('QuizDatepickerWidget', array(
+                        'options'=>$model->options,
+                        'selectedOptions'=>$model->selectedOptions
+                    )); ?>
+                <?elseif ($model->type == QuizQuestionType::TextField): ?>
+                    <?php $this->widget('QuizTextFieldWidget', array(
+                        'options'=>$model->options,
+                        'selectedOptions'=>$model->selectedOptions
+                    )); ?>
                 <?else:?>
                     <?=$model->type?> Данный тип вопроса не существует в системе (обратитесь к администратору)
                 <?endif;?>
