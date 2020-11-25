@@ -33819,6 +33819,11 @@ input.input-pink {
     padding: 20px 30px 10px 30px;
 }
 
+
+.quiz-range-selector .quiz-range-selector__section input[type="text"]{
+    width: 70px;
+}
+
 .quiz-single-select .quiz-single-select__section .quiz-single-select__item,
 .quiz-multi-select .quiz-multi-select__section .quiz-multi-select__item {
   display: block;
@@ -33844,6 +33849,10 @@ input.input-pink {
   padding: 5px 20px;
   margin: 5px 0 0 15px;
   font-size: smaller;
+}
+
+.quiz-range-selector .quiz-range-selector__slider-container{
+    margin: 25px 0px;
 }
 
 .quiz-single-select-image .quiz-single-select-image__section,
@@ -33905,6 +33914,29 @@ input.input-pink {
   width: 30px;
   margin: -5px 0 0 0;
   cursor: pointer;
+}
+
+.ui-slider {
+  height: 5px;
+  background: #c5c5c5;
+}
+
+.ui-slider .ui-slider-range{
+  background: #e23a9a;
+  height: 6px;
+  top: -1px;
+}
+
+.ui-slider .ui-slider-handle{
+  border-radius: 50%;
+  border: solid 5px #e23a9a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  top: -0.5em;
+}
+
+.ui-slider .ui-slider-handle.ui-state-active{
+  background: none;
 }
 
 

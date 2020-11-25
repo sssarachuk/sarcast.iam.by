@@ -1,15 +1,17 @@
 $(document).ready(function(){
 
-    $("#quiz-range-selector-slider-range").slider({
+    const fromInput = $('#quiz-range-selector-from');
+    const toInput = $('#quiz-range-selector-to');
+    const slider = $("#quiz-range-selector-slider");
+
+    $("#quiz-range-selector-slider").slider({
         range: true,
-        min: 0,
-        max: 500,
-        values: [ 75, 300 ],
+        min: slider.data().min,
+        max: slider.data().max,
+        values: [ fromInput.val(), toInput.val() ],
         slide: function( event, ui ) {
-            $( "#quiz-range-selector" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            fromInput.val(ui.values[0]);
+            toInput.val(ui.values[1]);
         }
     });
-    $( "#quiz-range-selector" ).val( "$" + $( "#quiz-range-selector-slider-range" ).slider( "values", 0 ) +
-        " - $" + $( "#quiz-range-selector-slider-range" ).slider( "values", 1 ) );
-
 });

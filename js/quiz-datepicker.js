@@ -28,7 +28,7 @@ $(document).ready(function(){
         showOn: "button",
         buttonImage: "images/calendar-icon.png",
         buttonImageOnly: true,
-        buttonText: "Select date",
+        buttonText: "Выберите дату",
         minDate: 0,
     });
 
