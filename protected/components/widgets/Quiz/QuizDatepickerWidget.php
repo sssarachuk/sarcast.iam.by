@@ -11,10 +11,10 @@ class QuizDatepickerWidget extends QuizBaseWidget {
 
         $selectedDate = '';
         if(!is_null($this->selectedOptions) && count($this->selectedOptions) > 0){
-            $selectedDate = $this->selectedOptions[0];
+            $selectedDate = $this->selectedOptions[0]->value;
         }
         return $this->render('quiz-datepicker', array(
-            'selectedDate'=>$selectedDate->value,
+            'selectedDate'=>$selectedDate,
         ));
     }
 
