@@ -50,6 +50,7 @@ class QuizController extends Controller {
         switch($this->quizModel->questions[$this->currentIndex]->type){
             case QuizQuestionType::SingleSelect:
             case QuizQuestionType::SingleSelectImage:
+            case QuizQuestionType::Datepicker:
                 $this->quizModel->questions[$this->currentIndex]->selectedOptions = array($selectedOption);
                 break;
 

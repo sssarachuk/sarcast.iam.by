@@ -33746,6 +33746,7 @@ input.input-pink {
 
 .quiz .quiz-body .quiz-body__question{
   padding: 10px;
+  min-height: 350px;
 }
 .quiz .quiz-body .quiz-body__question h3 {
   padding-left: 15px;
@@ -33811,6 +33812,10 @@ input.input-pink {
 .quiz-single-select .quiz-single-select__section,
 .quiz-multi-select .quiz-multi-select__section {
     padding: 10px 30px 10px 30px;
+}
+
+.quiz-datepicker .quiz-datepicker__section {
+    padding: 20px 30px 10px 30px;
 }
 
 .quiz-single-select .quiz-single-select__section .quiz-single-select__item,
@@ -33891,6 +33896,12 @@ input.input-pink {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+}
+
+.ui-datepicker-trigger {
+  width: 30px;
+  margin: -5px 0 0 0;
+  cursor: pointer;
 }
 
 
