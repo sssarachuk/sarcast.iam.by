@@ -33814,7 +33814,8 @@ input.input-pink {
     padding: 10px 30px 10px 30px;
 }
 
-.quiz-datepicker .quiz-datepicker__section {
+.quiz-datepicker .quiz-datepicker__section,
+.quiz-range-selector .quiz-range-selector__section{
     padding: 20px 30px 10px 30px;
 }
 
@@ -33837,7 +33838,8 @@ input.input-pink {
 
 .quiz-multi-select .alert,
 .quiz-multi-select-image .alert,
-.quiz-datepicker .alert{
+.quiz-datepicker .alert,
+.quiz-range-selector .alert{
   display:inline-block;
   padding: 5px 20px;
   margin: 5px 0 0 15px;

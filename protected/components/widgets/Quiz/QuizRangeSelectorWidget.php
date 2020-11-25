@@ -3,6 +3,7 @@
 class QuizRangeSelectorWidget extends QuizBaseWidget {
 
     public function init(){
+        $this->initializeJqueryUI();
         $this->initializeJavascript('quiz-range-selector');
     }
 
