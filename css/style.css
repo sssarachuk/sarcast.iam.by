@@ -33836,10 +33836,11 @@ input.input-pink {
 }
 
 .quiz-multi-select .alert,
-.quiz-multi-select-image .alert{
+.quiz-multi-select-image .alert,
+.quiz-datepicker .alert{
+  display:inline-block;
   padding: 5px 20px;
   margin: 5px 0 0 15px;
-  width: 260px;
   font-size: smaller;
 }
 
