@@ -1,24 +1,9 @@
 <?php
 
-class QuizMultiSelectWidget extends CWidget {
-
-    public $options;
-    public $selectedOptions;
-
-    //will be called on view
-    public function optionIsSelected($option){
-        $result = false;
-        foreach($this->selectedOptions as $selectedOption){
-            if($option->value == $selectedOption->value){
-                $result = true;
-                break;
-            }
-        }
-        return $result;
-    }
+class QuizMultiSelectWidget extends QuizBaseWidget {
 
     public function init(){
-        Yii::app()->clientScript->registerScriptFile('js/quiz-multi-select.js', CClientScript::POS_END);
+        $this->initializeJavascript('quiz-multi-select');
     }
 
     public function run() {

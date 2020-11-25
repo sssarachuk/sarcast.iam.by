@@ -1,13 +1,15 @@
 <?php
 
-class QuizMultiSelectImageWidget extends CWidget {
+class QuizMultiSelectImageWidget extends QuizBaseWidget {
 
-    public $model;
+    public function init(){
+        $this->initializeJavascript('quiz-multi-select-image');
+    }
 
     public function run() {
-
         return $this->render('quiz-multi-select-image', array(
-            'model'=>$this->model,
+            'options'=>$this->options,
+            'selectedOptions'=>$this->selectedOptions,
         ));
     }
 

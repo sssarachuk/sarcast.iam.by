@@ -17,15 +17,23 @@
                         'options'=>$model->options,
                         'selectedOptions'=>$model->selectedOptions
                     )); ?>
+                <?elseif ($model->type == QuizQuestionType::SingleSelectDropDown): ?>
+                    <?php $this->widget('QuizSingleSelectDropDownWidget', array(
+                        'options'=>$model->options,
+                        'selectedOptions'=>$model->selectedOptions
+                    )); ?>
                 <?elseif ($model->type == QuizQuestionType::MultiSelect): ?>
                     <?php $this->widget('QuizMultiSelectWidget', array(
                             'options'=>$model->options,
                             'selectedOptions'=>$model->selectedOptions
                     )); ?>
                 <?elseif ($model->type == QuizQuestionType::MultiSelectImage): ?>
-                    <?php $this->widget('QuizMultiSelectImageWidget'); ?>
+                    <?php $this->widget('QuizMultiSelectImageWidget', array(
+                        'options'=>$model->options,
+                        'selectedOptions'=>$model->selectedOptions
+                    )); ?>
                 <?else:?>
-                    <?=$model->type?> не существует в системе
+                    <?=$model->type?> Данный тип вопроса не существует в системе (обратитесь к администратору)
                 <?endif;?>
             </div>
             <footer class="quiz-body__footer">

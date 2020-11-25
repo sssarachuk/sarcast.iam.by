@@ -10,5 +10,6 @@ abstract class QuizQuestionType
     const MultiSelectDropDown = 'MultiSelectDropDown';
     const RangeSelector = 'RangeSelector';
     const Datepicker = 'Datepicker';
+    const TextField = 'TextField';
 
 }
