@@ -33852,7 +33852,7 @@ input.input-pink {
 }
 
 .quiz-range-selector .quiz-range-selector__slider-container{
-    margin: 25px 0px;
+    margin: 25px 0px 10px 0px;
 }
 
 .quiz-single-select-image .quiz-single-select-image__section,
@@ -33936,7 +33936,7 @@ input.input-pink {
 }
 
 .ui-slider .ui-slider-handle.ui-state-active{
-  background: none;
+  background: white;
 }
 
 
