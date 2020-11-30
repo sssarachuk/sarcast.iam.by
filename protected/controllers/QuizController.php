@@ -53,9 +53,22 @@ class QuizController extends Controller {
             case QuizQuestionType::Datepicker:
                 $this->quizModel->questions[$this->currentIndex]->selectedOptions = array($selectedOption);
                 break;
+            case QuizQuestionType::RangeSelector:
+                if(isset($_POST['index']))
+                {
+                    $index = filter_var($_POST['index'], FILTER_VALIDATE_INT);
 
-                case QuizQuestionType::MultiSelect:
-                case QuizQuestionType::MultiSelectImage:{
+                    if(!is_null($index)){
+                        if(is_null($this->quizModel->questions[$this->currentIndex]->selectedOptions)){
+                            $this->quizModel->questions[$this->currentIndex]->selectedOptions = array(new QuizQuestionOption(), new QuizQuestionOption());
+                        }
+
+                        $this->quizModel->questions[$this->currentIndex]->selectedOptions[$index]->value = $selectedOption->value;
+                    }
+                }
+                break;
+            case QuizQuestionType::MultiSelect:
+            case QuizQuestionType::MultiSelectImage: {
                     if(isset($_POST['selectedOptionChecked'])){
                         $selectedOptionChecked = filter_var($_POST['selectedOptionChecked'], FILTER_VALIDATE_BOOLEAN);
 
@@ -165,6 +178,10 @@ class QuizController extends Controller {
                 array(
                     $this->generateOption(150, 150, null),
                     $this->generateOption(600, 600, null),
+                ),
+                array(
+                    $this->generateOption(150, 150, null),
+                    $this->generateOption(400, 400, null),
                 )
             ),
             $this->generateQuestion(
@@ -243,12 +260,13 @@ class QuizController extends Controller {
         );
     }
 
-    private function generateQuestion($text, $type, $options){
+    private function generateQuestion($text, $type, $options, $selectedOptions = array()){
         $question = new QuizQuestionModel();
 
         $question->text = $text;
         $question->type = $type;
         $question->options = $options;
+        $question->selectedOptions = $selectedOptions;
 
         return $question;
     }

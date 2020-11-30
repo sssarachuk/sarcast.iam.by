@@ -10,26 +10,28 @@
                     От <input type="text" id="quiz-range-selector-from"
                               maxlength="4"
                               pattern="\d*"
-                              value="100"
-                              data-step="5">
+                              value="<?=$selectedOptions[0]->value?>">
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                     До <input type="text" id="quiz-range-selector-to"
                               maxlength="4"
                               pattern="\d*"
-                              value="400"
-                              data-step="5">
+                              value="<?=$selectedOptions[1]->value?>">
                 </div>
             </div>
             <div class="quiz-range-selector__slider-container">
-                    <div id="quiz-range-selector-slider" data-min="0" data-max="500"></div>
+                    <div id="quiz-range-selector-slider"
+                         data-min="<?=$options[0]->value?>"
+                         data-max="<?=$options[1]->value?>">
+
+                    </div>
             </div>
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 text-left">
-                   <label>0</label>
+                   <label><?=$options[0]->value?></label>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                    <label>500</label>
+                    <label><?=$options[1]->value?></label>
                 </div>
             </div>
         </div>
