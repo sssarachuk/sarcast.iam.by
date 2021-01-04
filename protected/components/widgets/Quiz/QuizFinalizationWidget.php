@@ -7,6 +7,7 @@ class QuizFinalizationWidget extends CWidget {
     public $previousIndex;
     public $previousButtonDisabled;
     public $currentDiscount;
+    public $selectedSource;
 
     public function run() {
 
@@ -16,6 +17,7 @@ class QuizFinalizationWidget extends CWidget {
             'previousIndex'=>$this->previousIndex,
             'previousButtonDisabled'=>$this->previousButtonDisabled,
             'currentDiscount'=>$this->currentDiscount,
+            'selectedSource'=>'Email',
         ));
     }
 
