@@ -9,6 +9,7 @@
                 'previousButtonDisabled'=>$previousButtonDisabled,
                 'nextIndex'=>$nextIndex,
                 'nextButtonDisabled'=>$nextButtonDisabled,
+                'currentDiscount'=>$currentDiscount,
         )); ?>
     <?php endif ?>
 </main>

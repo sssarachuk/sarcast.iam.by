@@ -75,7 +75,7 @@
             <div class="quiz-body__aside__bonus-group">
                 <div class="quiz-body__aside__bonus-item discount">
                     <span class="discount__title">Ваша скидка: </span>
-                    <span class="discount__value">0%</span>
+                    <span class="discount__value"><?=$currentDiscount?>%</span>
                 </div>
                 <div class="quiz-body__aside__bonus-item">
                     Каталог поз для фотосессии

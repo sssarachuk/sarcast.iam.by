@@ -8,6 +8,7 @@ class QuizQuestionWidget extends CWidget {
     public $previousButtonDisabled;
     public $nextIndex;
     public $nextButtonDisabled;
+    public $currentDiscount;
 
     public function run() {
 
@@ -18,6 +19,7 @@ class QuizQuestionWidget extends CWidget {
             'previousButtonDisabled'=>$this->previousButtonDisabled,
             'nextIndex'=>$this->nextIndex,
             'nextButtonDisabled'=>$this->nextButtonDisabled,
+            'currentDiscount'=>$this->currentDiscount,
         ));
     }
 
