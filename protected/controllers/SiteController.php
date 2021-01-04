@@ -246,6 +246,18 @@ Utilities::var_dump(Utilities::collectObjectsVars($products, 'slug'));
 
             $this->render('policy',array('page' => $page));
         }
+		
+		public function actionInstagram(){
+			$page = Page::model()->find('name=:name', array(':name'=>'instagram'));
+
+			$this->metaTags = array(
+				'title'			=> $page->meta_title,
+				'description'	=> $page->meta_description,
+				'keywords'		=> $page->meta_keywords
+			);
+
+            $this->render('instagram',array('page' => $page));
+        }
 
         public function actionSend(){
             if(!isset($_POST['name']) || !$_POST['name'])
