@@ -13,6 +13,8 @@ class QuizController extends Controller {
         private $previousIndex = 0;
         private $currentIndex = 0;
         private $nextIndex = 0;
+        private $currentDiscount = 0;
+        private $maxDiscount = 15;
 
     public function actionIndex(){
 
@@ -24,6 +26,7 @@ class QuizController extends Controller {
 
             if($this->isStarted) {
                 $this->setIndexes();
+                $this->setCurrentDiscount();
             }
 
             if(isset($_POST['selectedOption'])){
@@ -39,6 +42,7 @@ class QuizController extends Controller {
                 'isStarted' => $this->isStarted,
                 'previousButtonDisabled' => $this->currentIndex == 0,
                 'nextButtonDisabled' => $this->currentIndex == count($this->quizModel->questions) - 1,
+                'currentDiscount' => $this->currentDiscount,
             ));
 
     }
@@ -108,6 +112,13 @@ class QuizController extends Controller {
             }
         }
         return $index;
+    }
+
+    private function setCurrentDiscount() {
+        $questionCount = count($this->quizModel->questions);
+        $step = ($this->maxDiscount / $questionCount);
+
+        $this->currentDiscount = $step * $this->currentIndex;
     }
 
     private function setIndexes(){

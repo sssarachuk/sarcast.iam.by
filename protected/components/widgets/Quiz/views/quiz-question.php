@@ -72,16 +72,16 @@
             </footer>
         </section>
         <aside class="col-xs-12 col-sm-4 col-md-4 quiz-body__aside">
-            <div class="quiz-body__aside__bonus-group">
-                <div class="quiz-body__aside__bonus-item discount">
+            <div class="bonus-group">
+                <div class="bonus-item discount">
                     <span class="discount__title">Ваша скидка: </span>
-                    <span class="discount__value">0%</span>
+                    <span class="discount__value"><?=$currentDiscount?>%</span>
                 </div>
-                <div class="quiz-body__aside__bonus-item">
+                <div class="bonus-item">
                     Каталог поз для фотосессии
                     <span class="mdi mdi-lock-outline"></span>
                 </div>
-                <div class="quiz-body__aside__bonus-item">
+                <div class="bonus-item">
                     Методички по подбору образа
                     <span class="mdi mdi-lock-outline"></span>
                 </div>

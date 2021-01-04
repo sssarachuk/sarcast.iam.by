@@ -1,25 +1,23 @@
 <?php
 
-class QuizQuestionWidget extends CWidget {
+class QuizFinalizationWidget extends CWidget {
 
     public $quizTitle;
     public $model;
     public $previousIndex;
     public $previousButtonDisabled;
-    public $nextIndex;
-    public $nextButtonDisabled;
     public $currentDiscount;
+    public $selectedSource;
 
     public function run() {
 
-        return $this->render('quiz-question', array(
+        return $this->render('quiz-finalization', array(
             'model'=>$this->model,
             'quizTitle'=>$this->quizTitle,
             'previousIndex'=>$this->previousIndex,
             'previousButtonDisabled'=>$this->previousButtonDisabled,
-            'nextIndex'=>$this->nextIndex,
-            'nextButtonDisabled'=>$this->nextButtonDisabled,
             'currentDiscount'=>$this->currentDiscount,
+            'selectedSource'=>'Email',
         ));
     }
 
