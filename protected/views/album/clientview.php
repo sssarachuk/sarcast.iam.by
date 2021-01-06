@@ -30,11 +30,11 @@ $IMG = new ModelToolImage();
                   <div class="col-xs-12 col-sm-12" style="margin-top: 30px;">
                   <div><span>Сделайте репост друзьям и близким</span>
                     <div class="ya-share2"
-                    data-services="vkontakte,odnoklassniki,facebook,whatsapp,viber,telegram"
+                    data-services="facebook,odnoklassniki,vkontakte,whatsapp,viber,telegram"
                     data-title="Альбом «<?=$album->h1?>»"
                     data-description="<?=$album->title?> <?=$hashtags?>"
                     data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_source=clientpost&date='.date('Ymd_His');?>">
+                    data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_repost=clientpost&date='.date('Ymd_His');?>">
                     </div>
                   </div><br>
                   </div>
@@ -161,7 +161,7 @@ $IMG = new ModelToolImage();
                 data-title="Альбом «<?=$album->h1?>»"
                 data-description="<?=$album->title?> <?=$hashtags?>"
                 data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_source=clientpost&date='.date('Ymd_His');?>">
+                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_repost=clientpost&date='.date('Ymd_His');?>">
                 </div>
               </div><br>
             </div>
@@ -177,7 +177,7 @@ $IMG = new ModelToolImage();
                 data-title="Альбом «<?=$album->h1?>»"
                 data-description="<?=$album->title?> <?=$hashtags?>"
                 data-image="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?><?=$album->showImagesUrl()[0];?>"
-                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_source=clientpost&date='.date('Ymd_His');?>">
+                data-url="<?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' .$_SERVER['HTTP_HOST']; ?>/album/<?=$album->id.'-'.$album->created_at.'?utm_repost=clientpost&date='.date('Ymd_His');?>">
                 </div>
               </div>
               <div><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"><span class="icon mdi mdi-arrow-down"></div>

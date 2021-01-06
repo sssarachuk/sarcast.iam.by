@@ -66,7 +66,7 @@ $IMG = new ModelToolImage();
                     <div class="col-xs-12 col-sm-2">
                     </div>
                    <div class="col-xs-12 col-sm-6">
-                     <p class="h3" style="margin:0;">Я вам перезвоню и подберу<br><b>выгодное предложение</b> по съемке</p>
+                     <p class="h3" style="margin:0;">Я Вам перезвоню и расскажу<br><b>о стоимости услуг</b><br>и бонусах</p>
                      <form id="callback" class="callback rd-mailform form_inline" method="post" action="">
                           <div class="form__inner">
                             <div class="form-wrap">
@@ -74,13 +74,13 @@ $IMG = new ModelToolImage();
                               <label class="form-label rd-input-label icon-gray-7" for="contact-phone" style="padding:5px;">Введите телефон</label>
                             </div>
                             <div class="form-button" style="padding-left:5px; padding-right:5px;">
-                              <button class="button button-primary button-ujarak button-pink" type="submit">Узнать подробнее&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+                              <button class="button button-primary button-ujarak button-pink" type="submit">Перезвоните мне&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
                             </div>
                           </div>
                           <span id="text-success"></span>
                           <textarea class="form-input f-1" id="contact-message" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>, Gift: true</textarea>
                         </form>
-                        <p class="icon-gray-7">*предложения и свободные даты ограничены</p>
+                        <p class="icon-gray-7">*закажите звонок и получите бонус</p>
                     </div>
                     <div class="col-xs-12 col-sm-2">
                       <img src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0OCA3OS4xNjQwMzYsIDIwMTkvMDgvMTMtMDE6MDY6NTcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjE5NjEzQzZEQjRBMDExRUE4NkZCOUM4Nzc1QkQyQjA3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjE5NjEzQzZDQjRBMDExRUE4NkZCOUM4Nzc1QkQyQjA3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NkMzRTUyQUVBMEY5MTFFQUFBQ0FBODc2Q0E4QTk4M0EiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NkMzRTUyQUZBMEY5MTFFQUFBQ0FBODc2Q0E4QTk4M0EiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAAGBAQEBQQGBQUGCQYFBgkLCAYG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" alt="Подарок 1" width="120" height="120">
@@ -177,37 +177,37 @@ $IMG = new ModelToolImage();
 
                                 <div class="tab-pane fade<? if ($counter == 2) { echo " in active"; } ?>" id="tabs-<?=$category->slug?>-<?=$counter?>">
 
-                                <div class="col-xs-12 col-sm-3">
-                                  </div>
                                 <div class="col-xs-12 col-sm-6">
-                                  <form id="callback-<?=$service->id?>" class="callback rd-mailform form_inline" method="post" action="">
+                                  <p><?=$service->description?></p>
+                                  <div class="box-info"><span class="box-info__icon icon mdi mdi-emoticon-happy"></span><span class="box-info__title"><?=$service->price?></span></div>                                  
+								  <form id="callback-<?=$service->id?>" class="callback rd-mailform form_inline" method="post" action="">
                                   <div class="form__inner">
                                     <div class="form-wrap">
                                       <input class="form-input phone f-1 required input-pink" id="contact-phone-<?=$service->id?>" type="text" name="phone">
                                       <label class="form-label rd-input-label icon-gray-7" for="contact-phone-<?=$service->id?>" style="padding:5px;">Введите телефон</label>
                                     </div>
                                     <div class="form-button" style="padding-left:5px; padding-right:5px;">
-                                      <button class="button button-primary button-ujarak button-pink" type="submit">Оставить заявку&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+                                      <button class="button button-primary button-ujarak button-pink" type="submit">Отправить заявку&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
                                     </div>
                                   </div>
                                   <span id="text-success-<?=$service->id?>"></span>
                                   <textarea class="form-input f-1" id="contact-message-<?=$service->id?>" name="message" style="display: none !important;">Url: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?><br><br>Заявка: <?=$service->title?> | <?=$category->h1?><br><br><?=$service->description?><br><br>Price: <?=$service->price?><br></textarea>
                                   </form>
                                 </div>
-                                <div class="col-xs-12 col-sm-3">
-                                </div>
-
-                                  <div class="col-xs-12 col-sm-12">
-                                  </div>
-
-                                <div class="col-xs-12 col-sm-6">
-                                  <p><?=$service->description?></p>
-                                  <div class="box-info"><span class="box-info__icon icon mdi mdi-emoticon-happy"></span><span class="box-info__title"><?=$service->price?></span></div>
-                                  <br><br>
-                                </div>
                                 <div class="col-xs-12 col-sm-6">
                                   <?php $images_url = $service->showImagesUrl(); ?>
                                   <img class="lazy nosave" data-src="<?=$IMG->resize(is_array($images_url) ? $images_url[0] : $images_url, 0, 400);?>" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAEALAAAAAABAAEAAAICTAEAOw==" alt="Стоимость <?=$category->h1?> - <?=$service->title;?> фото <?=$service->id;?>" height="400">
+                                </div>
+								
+								<div class="col-xs-12 col-sm-12">
+                                  </div>
+
+                                <div class="col-xs-12 col-sm-3">
+                                  </div>
+                                <div class="col-xs-12 col-sm-6">
+                                  
+                                </div>
+                                <div class="col-xs-12 col-sm-3">
                                 </div>
 
                               </div>
