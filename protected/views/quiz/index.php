@@ -5,7 +5,6 @@
         <?php if ($nextButtonDisabled == true): ?>
             <?php $this->widget('QuizFinalizationWidget', array(
                 'quizTitle'=>$quizTitle->title,
-                'model'=>$currentQuestion,
                 'previousIndex'=>$previousIndex,
                 'previousButtonDisabled'=>$previousButtonDisabled,
                 'currentDiscount'=>$currentDiscount,

@@ -7,27 +7,7 @@
             </header>
             <div class="quiz-body__question">
                 <h3>Заполните форму и получите точечный расчет стоимости съемки</h3>
-                <form>
-                    <label>Введите имя <input type="text" name="name"/></label>
-                    <br/>
-                    <label><input type="radio" name="source" value="Email"/>Email</label>
-                    <label><input type="radio" name="source" value="Viber"/>Viber</label>
-                    <label><input type="radio" name="source" value="Telegram"/>Telegram</label>
-                    <label><input type="radio" name="source" value="WhatsUp"/>WhatsUp</label>
-                    <br/>
-                    <?php switch($selectedSource):
-                    case 'Email': ?>
-                        <label>Введите Email <input type="text" name="email" /></label>
-                        <?php break; ?>
-                    <?php case 'Viber': ?>
-                        <?php case 'Telegram': ?>
-                        <?php case 'WhatsUp': ?>
-                        <label>Введите номер телефона: <input type="text" name="phone" /></label>
-                            <?php break; ?>
-                <?php endswitch; ?>
-
-
-                </form>
+                <?php $this->widget('QuizFinalizationFormWidget') ?>
             </div>
             <footer class="quiz-body__footer">
                 <button onClick='location.href="?index=<?=$previousIndex;?>"'
@@ -36,7 +16,7 @@
                     <span class="icon mdi mdi-arrow-left"></span>
                     Предыдущий
                 </button>
-                <button class="button button-primary button-ujarak button-pink button-inline">
+                <button id="btnGetResults" class="button button-primary button-ujarak button-pink button-inline">
                     <span class="icon mdi mdi-checkbox-marked-circle-outline"></span>
                     Получить результаты
                 </button>
