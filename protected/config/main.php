@@ -117,6 +117,7 @@ return array(
 		// this is used in contact page
 		'adminEmail'			=> К_ЕМЭЙЛ_АДМИНИСТРАТОРА,
 		'shopManagerEmail'		=> К_ЕМЭЙЛ_МЕНЕДЖЕРА,
+        'serviceEmail'          => К_ЕМЭЙЛ_СЕРВИСНЫЙ,
 		'productImagesWebDir'	=> '/up/i/product/',
 		'productImagesSysDir'	=> dirname(__FILE__) . '/../../up/i/product/',
 		'sliderImagesWebDir'	=> '/up/i/slider/',

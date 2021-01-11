@@ -13,7 +13,10 @@ class QuizFinalizationForm extends CFormModel {
     {
         return array(
             'name' => 'Введите имя',
-            'selectedSource' => 'Выберите куда присылать результаты?');
+            'selectedSource' => 'Выберите куда присылать результаты?',
+            'email' => 'Введите Email',
+            'phone' => 'Введите телефон'
+        );
     }
 
     public function rules()
@@ -21,6 +24,10 @@ class QuizFinalizationForm extends CFormModel {
         return array(
             array('name', 'required'),
             array('selectedSource', 'required'),
+            array('email', 'required', 'on' => 'Email'),
+            array('email', 'email', 'on' => 'Email'),
+            array('phone', 'required', 'on' => 'WatsUp, Telegram, Viber'),
+            array('phone', 'match', 'pattern' => '/^([+]?[0-9 ]+)$/', 'on' => 'WatsUp, Telegram, Viber'),
         );
     }
 }

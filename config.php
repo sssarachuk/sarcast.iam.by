@@ -22,6 +22,7 @@ define('PHONE_TEXT', '+375(29)6039949');
 //почта
 define('К_ЕМЭЙЛ_АДМИНИСТРАТОРА', 'sssarachuk@yandex.ru');
 define('К_ЕМЭЙЛ_МЕНЕДЖЕРА', 'ded48@inbox.ru');
+define('К_ЕМЭЙЛ_СЕРВИСНЫЙ', 'sarcast.iam@gmail.com');
 
 define('К_ПОДАРКИ_НА_ЭМЕЙЛ', 'https://drive.google.com/open?id=1BawVGaCiRb5Nf-_yJr6rDrIPR59Oh-Ff');
 //вопросы при получении фотографий (для всех)

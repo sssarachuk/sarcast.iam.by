@@ -33968,4 +33968,8 @@ input.input-pink {
     display: none;
 }
 
+.form-row.email, .form-row.phone{
+    display: none;
+}
+
 

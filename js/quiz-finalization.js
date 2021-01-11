@@ -1,3 +1,18 @@
+const hideShowEmailPhone = (type) => {
+    switch(type) {
+        case 'Telegram':
+        case 'Viber':
+        case 'WatsUp':
+            $(".form-row.email").hide();
+            $(".form-row.phone").show();
+            break;
+        case 'Email':
+            $(".form-row.phone").hide();
+            $(".form-row.email").show();
+            break;
+    }
+}
+
 $(document).ready(function() {
     const btnGetResults = $('#btnGetResults');
     const finalizationForm = $('#quizFinalizationForm')
@@ -11,6 +26,7 @@ $(document).ready(function() {
     for(let radio of radioButtons) {
         if($(radio).is(":checked")) {
             $(radio).parent().addClass('active');
+            hideShowEmailPhone($(radio).val());
         }
     }
 
@@ -22,8 +38,9 @@ $(document).ready(function() {
 
         if(targetElement.type == 'radio'){
             $(targetElement).parent().addClass('active');
-
         }
+
+        hideShowEmailPhone(targetElement.value);
     });
 
 });
