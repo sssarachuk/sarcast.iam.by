@@ -33974,12 +33974,41 @@ input.input-pink {
 
 .btn-wrapper {
   display: inline;
+  position: relative;
+}
+
+.btn-wrapper .mdi {
+  position: absolute;
+  top: -5px;
+  left: 7px;
+  font-size: 20px;
+  border-radius: 50%;
+  padding: 5px;
 }
 
 .btn-wrapper .btn {
-    padding: 10px;
+    padding: 10px 10px 10px 40px;
     font-size: 15px;
     text-transform: none;
+}
+
+.btn-wrapper.email .mdi {
+  background: darkgray;
+  color: #FFFFFF;
+}
+
+.btn-wrapper.viber .mdi {
+  background: #8074d6;
+  color: #FFFFFF;
+}
+
+.btn-wrapper.whatsapp .mdi {
+  background: #00bfa5;
+  color: #FFFFFF;
+}
+.btn-wrapper.telegram .mdi {
+  background: #0088cc;
+  color: #FFFFFF;
 }
 
 .btn.btn-light-grey {

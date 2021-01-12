@@ -1,7 +1,7 @@
 <?php
 
 class QuizFinalizationForm extends CFormModel {
-    public $sources = array('Email' => 'Email', 'WatsUp'=>'WatsUp', 'Telegram' => 'Telegram', 'Viber' => 'Viber');
+    public $sources = array('Email' => 'Email', 'WhatsApp'=>'WhatsApp', 'Telegram' => 'Telegram', 'Viber' => 'Viber');
 
     public $name;
     public $selectedSource;
