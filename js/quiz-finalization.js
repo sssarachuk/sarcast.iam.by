@@ -25,19 +25,19 @@ $(document).ready(function() {
 
     for(let radio of radioButtons) {
         if($(radio).is(":checked")) {
-            $(radio).parent().addClass('active');
+            $(radio).parent().find('label.btn').addClass('active');
             hideShowEmailPhone($(radio).val());
         }
     }
 
     $('.btn-group').on('change', function(e){
 
-        $(this).find('div.btn').removeClass('active');
+        $(this).find('label.btn').removeClass('active');
 
         const targetElement = e.target;
 
         if(targetElement.type == 'radio'){
-            $(targetElement).parent().addClass('active');
+            $(targetElement).parent().find('label.btn').addClass('active');
         }
 
         hideShowEmailPhone(targetElement.value);

@@ -33972,4 +33972,18 @@ input.input-pink {
     display: none;
 }
 
+.btn-wrapper {
+  display: inline;
+}
+
+.btn-wrapper .btn {
+    padding: 10px;
+    font-size: 15px;
+    text-transform: none;
+}
+
+.btn.btn-light-grey {
+   background: lightgrey;
+}
+
 
