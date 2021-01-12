@@ -19,6 +19,7 @@
                 <?php echo CHtml::activeRadioButtonList($model, 'selectedSource', $model->sources, array(
                     'container' => 'div',
                     'separator' => '',
+                    'class' => 'radio-button',
                     "template" => "<div class='btn btn-primary'>{label}{input}</div>"
                 )) ?>
             </div>
