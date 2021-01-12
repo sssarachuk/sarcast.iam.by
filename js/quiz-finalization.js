@@ -46,6 +46,11 @@ $(document).ready(function() {
                 iconElement.addClass('mdi-email');
                 break;
         }
+
+        $(iconElement).on('click', function() {
+            $(btnWrapper).find('label').click();
+        });
+
         $(btnWrapper).prepend(iconElement);
 
     }
