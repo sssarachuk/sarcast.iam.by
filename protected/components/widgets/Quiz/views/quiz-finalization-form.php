@@ -20,7 +20,11 @@
                     'container' => 'div',
                     'separator' => '',
                     'class' => 'radio-button',
-                    "template" => "<div class='btn btn-primary'>{label}{input}</div>"
+                    'template' => '
+                        <div class="btn-wrapper">
+                            {label}{input}
+                        </div>',
+                    'labelOptions' => array('class' => 'btn btn-light-grey'),
                 )) ?>
             </div>
             <?php echo CHtml::error($model, 'selectedSource', array('class' => 'invalid-feedback')); ?>

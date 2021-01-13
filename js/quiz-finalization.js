@@ -2,7 +2,7 @@ const hideShowEmailPhone = (type) => {
     switch(type) {
         case 'Telegram':
         case 'Viber':
-        case 'WatsUp':
+        case 'WhatsApp':
             $(".form-row.email").hide();
             $(".form-row.phone").show();
             break;
@@ -21,23 +21,49 @@ $(document).ready(function() {
         finalizationForm.submit();
     });
 
-    const radioButtons = $('.btn-group').find('input[type=radio]');
+    const btnWrappers = $('.btn-group').find('.btn-wrapper');
 
-    for(let radio of radioButtons) {
+    for(let btnWrapper of btnWrappers) {
+        const radio = $(btnWrapper).find('input[type=radio]');
+        const value = $(radio).val();
+        $(btnWrapper).addClass(value.toLowerCase());
         if($(radio).is(":checked")) {
             $(radio).parent().addClass('active');
-            hideShowEmailPhone($(radio).val());
+            hideShowEmailPhone(value);
         }
+
+        const iconElement = $('<span>').addClass('mdi');
+
+        switch(value) {
+            case 'Telegram':
+                iconElement.addClass('mdi-telegram');
+                break;
+            case 'Viber':
+            case 'WhatsApp':
+                iconElement.addClass('mdi-whatsapp');
+                break;
+            case 'Email':
+                iconElement.addClass('mdi-email');
+                break;
+        }
+
+        $(iconElement).on('click', function() {
+            $(btnWrapper).find('label').click();
+        });
+
+        $(btnWrapper).prepend(iconElement);
+
     }
+
 
     $('.btn-group').on('change', function(e){
 
-        $(this).find('div.btn').removeClass('active');
+        $(this).find('label.btn').removeClass('active');
 
         const targetElement = e.target;
 
         if(targetElement.type == 'radio'){
-            $(targetElement).parent().addClass('active');
+            $(targetElement).parent().find('label.btn').addClass('active');
         }
 
         hideShowEmailPhone(targetElement.value);

@@ -38,7 +38,7 @@ class QuizFinalizationFormWidget extends CWidget {
             case 'Email': $message .= '<label>'.$this->model->attributes['email'].'</label>'; break;
             case 'Telegram':
             case 'Viber':
-            case 'WatsUp': $message .= '<label>'.$this->model->attributes['phone'].'</label>'; break;
+            case 'WhatsApp': $message .= '<label>'.$this->model->attributes['phone'].'</label>'; break;
         }
 
         $quizModel = $this->session->get('quizModel');
