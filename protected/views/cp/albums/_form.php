@@ -17,7 +17,21 @@
 		<?=$form->dropDownList($model, 'category_id', CHtml::listData(Category::model()->findAll(), 'id', 'h1'), array('empty' => 'Выберите категорию')); ?>
 		<?php echo $form->error($model,'category_id'); ?>
 	</div>
-	<br>	
+	<br>
+	<div class="row">
+		<?php echo $form->labelEx($model,'gallery1_link'); ?>
+		<?php echo $form->textField($model,'gallery1_link'); ?>
+		<?php echo $form->error($model,'gallery1_link'); ?>
+		<small>(весь отснятый НЕобработанный материал - ссылка на скачивание с облака)</small>
+	</div>
+    <br>
+    <div class="row">
+		<?php echo $form->labelEx($model,'gallery2_link'); ?>
+		<?php echo $form->textField($model,'gallery2_link'); ?>
+		<?php echo $form->error($model,'gallery2_link'); ?>
+		<small>(готовые Обработанные фотографии - ссылка на скачивание с облака)</small>
+	</div>
+	<br>
 	<div class="row">
 		<?php echo $form->labelEx($model,'folder'); ?>
 		<?php echo $form->textField($model,'folder'); ?>
@@ -39,20 +53,6 @@
 	</div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить'); ?>
-	</div>
-	<br>	
-    <div class="row">
-		<?php echo $form->labelEx($model,'gallery1_link'); ?>
-		<?php echo $form->textField($model,'gallery1_link'); ?>
-		<?php echo $form->error($model,'gallery1_link'); ?>
-		<small>(весь отснятый НЕобработанный материал - ссылка на скачивание с облака)</small>
-	</div>
-    <br>
-    <div class="row">
-		<?php echo $form->labelEx($model,'gallery2_link'); ?>
-		<?php echo $form->textField($model,'gallery2_link'); ?>
-		<?php echo $form->error($model,'gallery2_link'); ?>
-		<small>(готовые Обработанные фотографии - ссылка на скачивание с облака)</small>
 	</div>
 	<br>
 	<div class="row">
