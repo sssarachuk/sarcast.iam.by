@@ -88,10 +88,10 @@ class Album extends ActiveRecord
 		return array(
 			'id' => 'ID',
             'category_id' => 'Категория',
-			'title' => 'Длинный заголовок Title rus',
-            'title_eng' => 'Длинный заголовок Title eng',
-            'h1' => 'Короткий заголовок H1 rus',
-            'h1_eng' => 'Короткий заголовок H1 eng',
+			'title' => '(RUS) Длинный заголовок Title',
+            'title_eng' => '(ENG) Длинный заголовок Title',
+            'h1' => '(RUS) Короткий заголовок H1',
+            'h1_eng' => '(ENG) Короткий заголовок H1',
 			'slug' => 'Slug',
 			'folder' => 'Папка сохранения',
 			'photos' => 'Фотографии',
@@ -100,17 +100,17 @@ class Album extends ActiveRecord
 			'sort'	=> 'Сортировка',
             'gallery1_link'	=> 'Ссылка на фото БЕЗ обработки',
             'gallery2_link'	=> 'Ссылка на фото С обработкой',
-            'text1'	=> 'Описание альбома в начале страницы (rus)',
-            'text1_eng'	=> 'Описание альбома в начале страницы (перевод на eng)',
-            'text2'	=> 'Описание альбома в конце страницы (rus)',
-			'text2_eng'	=> 'Описание альбома в конце страницы (перевод на eng)',
+            'text1'	=> '(RUS) Описание альбома в начале страницы',
+            'text1_eng'	=> '(ENG) Описание альбома в начале страницы (перевод)',
+            'text2'	=> '(RUS) Описание альбома в конце страницы',
+			'text2_eng'	=> '(ENG) Описание альбома в конце страницы (перевод)',
 			'review_before' => 'Отзыв клиента (исходный)',
 			'review_after' => 'Отзыв клиента (публичный)',
 			'comments' => 'Комментарии коллег (исходные)',
-            'seo_description'	=> 'Описание - seo rus',
-            'seo_description_eng'	=> 'Description - seo eng',
-            'seo_keywords'	=> 'Ключевые слова - seo rus',
-            'seo_keywords_eng'	=> 'Keywords - seo eng'
+            'seo_description'	=> '(RUS) Описание - seo',
+            'seo_description_eng'	=> '(ENG) Description - seo',
+            'seo_keywords'	=> '(RUS) Ключевые слова - seo',
+            'seo_keywords_eng'	=> '(ENG) Keywords - seo'
 		);
 	}
 

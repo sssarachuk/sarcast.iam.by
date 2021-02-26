@@ -19,6 +19,20 @@
 	</div>
 	<br>
 	<div class="row">
+		<?php echo $form->labelEx($model,'folder'); ?>
+		<?php echo $form->textField($model,'folder'); ?>
+		<?php echo $form->error($model,'folder'); ?>
+        <small>(латиницей и без пробелов, удобно как Имя-папки-на-компе)</small>
+	</div>
+	<br>
+	<div class="row">
+		<?php echo $form->labelEx($model,'sort'); ?>
+		<?php echo $form->textField($model,'sort'); ?>
+		<?php echo $form->error($model,'sort'); ?>
+		<small>(сортировка по возрастанию, цифры меньше 0 делают альбом скрытым, цифра -100500 не показывает даже в скрытых)</small>
+	</div>
+	<br>
+	<div class="row">
 		<?php echo $form->labelEx($model,'gallery1_link'); ?>
 		<?php echo $form->textField($model,'gallery1_link'); ?>
 		<?php echo $form->error($model,'gallery1_link'); ?>
@@ -30,14 +44,7 @@
 		<?php echo $form->textField($model,'gallery2_link'); ?>
 		<?php echo $form->error($model,'gallery2_link'); ?>
 		<small>(готовые Обработанные фотографии - ссылка на скачивание с облака)</small>
-	</div>
-	<br>
-	<div class="row">
-		<?php echo $form->labelEx($model,'folder'); ?>
-		<?php echo $form->textField($model,'folder'); ?>
-		<?php echo $form->error($model,'folder'); ?>
-        <small>(латиницей и без пробелов, удобно как Имя-папки-на-компе)</small>
-	</div>
+	</div>	
 	<br>
 	<div class="row">
 		<?php echo $form->labelEx($model,'photos'); ?>
@@ -53,14 +60,7 @@
 	</div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить'); ?>
-	</div>
-	<br>
-	<div class="row">
-		<?php echo $form->labelEx($model,'sort'); ?>
-		<?php echo $form->textField($model,'sort'); ?>
-		<?php echo $form->error($model,'sort'); ?>
-		<small>(сортировка по возрастанию, цифры меньше 0 делают альбом скрытым, цифра -100500 не показывает даже в скрытых)</small>
-	</div>
+	</div>	
 	<br>
 	<div class="row">
 		<?php echo $form->labelEx($model,'h1'); ?>
