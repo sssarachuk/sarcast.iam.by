@@ -154,7 +154,7 @@
               <!-- Brand-->
               <a class="brand" href="/">
                 <div class="brand__name"><img src="/images/logo-inverse-209x35.png" alt="" width="209" height="35"/>
-                </div><span class="brand__slogan">нравятся фотографии? забронируйте вашу дату</span>
+                </div><span class="brand__slogan">расскажите как вы меня нашли и получите pdf по позированию</span>
               </a>
               <!-- RD Mailform-->
               <form id="callback-footer" class="callback rd-mailform form_inline" method="post" action="">
@@ -164,8 +164,8 @@
                         <label class="form-label rd-input-label icon-gray-7 rights" style="margin-top:0;" for="contact-phone-footer">Введите телефон *</label>
                       </div>
                     </div>
-                    <div class="form-button" style="text-align:center;">
-                        <button class="button button-primary button-ujarak button-pink" type="submit">Забронировать дату&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+                    <div class="form-button" style="text-align:center;">						
+                        <button class="button button-primary button-ujarak button-pink" type="submit">Получить подарок&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
                         <br><span id="text-success-footer"></span>
                       </div>
                       <textarea class="form-input f-1" id="contact-message-footer" name="message-footer" style="display: none !important;">Url from footer: <?=((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?></textarea>
