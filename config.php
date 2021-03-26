@@ -13,7 +13,7 @@ define('TWITTER_АККАУНТ', '@sarachuk_sergey');
 define('INSTAGRAM_АККАУНТ', 'https://www.instagram.com/sarachuk.sergey/');
 define('VKONTAKTE_АККАУНТ', 'https://m.vk.com/write6783151');
 define('FACEBOOK_АККАУНТ', 'https://www.facebook.com/sarachuk');
-define('WHATSAPP_АККАУНТ', 'https://api.whatsapp.com/send?phone=375296039949');
+define('WHATSAPP_АККАУНТ', 'https://api.whatsapp.com/send?phone=375296039949&text=Здравствуйте! Подскажите стоимость съёмки ');
 define('VIBER_АККАУНТ', 'viber://chat?number=375296039949');
 define('TELEGRAM_АККАУНТ', 'https://t.me/sarachuk');
 define('PHONE_LINK', 'tel:+375296039949');
