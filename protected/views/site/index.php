@@ -187,7 +187,7 @@ $IMG = new ModelToolImage();
                                       <label class="form-label rd-input-label icon-gray-7" for="contact-phone-<?=$service->id?>" style="padding:5px;">Введите телефон</label>
                                     </div>
                                     <div class="form-button" style="padding-left:5px; padding-right:5px;">
-                                      <button class="button button-primary button-ujarak button-pink" type="submit">Отправить заявку&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
+                                      <button class="button button-primary button-ujarak button-pink" type="submit">Оставить заявку&nbsp;<span class="icon mdi mdi-keyboard-return"></span></button>
                                     </div>
                                   </div>
                                   <span id="text-success-<?=$service->id?>"></span>
@@ -375,7 +375,7 @@ $IMG = new ModelToolImage();
         </div>
       </section>
 <!-- FAQ-->
-<!--Отправить заявку + получить подарок-->
+<!--Оставить заявку + получить подарок-->
 <!--<section id="send-form2" class="section section-md bg-gray-lighter text-center">
 <div class="shell">
   <div class="range range-md-center">
@@ -438,4 +438,4 @@ $IMG = new ModelToolImage();
   </div>
 </div>
 </section>-->
-<!--Отправить заявку + получить подарок-->
+<!--Оставить заявку + получить подарок-->
