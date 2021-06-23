@@ -232,7 +232,7 @@ $IMG = new ModelToolImage();
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                  <br>
-                 <h2>Почему 5 лет подряд клиенты доверяют мне?</h2>
+                 <h2>Почему 6 лет подряд клиенты доверяют мне?</h2>
                  <br>
                   <div class="range range-30">
                 <div class="cell-xs-10 cell-sm-6 cell-md-4">
