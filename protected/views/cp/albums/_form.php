@@ -55,7 +55,7 @@
 	</div>
 	<br>
 	<div class="row">
-		<?=CHtml::label('Изображение', 'image')?>
+		<?=CHtml::label('Изображение (рекомендуемый размер 1080px по ширине)', 'image')?>
 		<?=CHtml::activeFileField($model, 'image'); ?>
 	</div>
 	<div class="row buttons">
